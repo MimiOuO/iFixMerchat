@@ -35,7 +35,7 @@
     self.userNameField.keyboardType = UIKeyboardTypeNumberPad;
     [scroll addSubview:self.userNameField];
     
-    UIView *split1 = [UIView creatView:frame(23, self.userNameField.bottom + margin, ksWidth - 46, 0.5) inView:scroll bgColor:appBottomLineColor];
+    UIView *split1 = [UIView creatView:frame(23, self.userNameField.bottom + Margin, ksWidth - 46, 0.5) inView:scroll bgColor:appBottomLineColor];
     
     UIButton *btn = [UIButton creatBtn:frame(23, self.userNameField.bottom + 28, ksWidth - 46, 40) inView:scroll bgImage:@"denglu-anniu" WithTag:1 target:self action:@selector(handleLoginEvent:)];
     UILabel *btnlabel = [UILabel creatLabel:frame(23, self.userNameField.bottom + 28, ksWidth - 46, 40) inView:scroll text:@"获取验证码" color:appWhiteColor size:16];

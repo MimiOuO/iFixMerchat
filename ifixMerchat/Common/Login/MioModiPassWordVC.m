@@ -31,9 +31,9 @@
 }
 
 -(void)creatUI{
-    UILabel *oldLabel = [UILabel creatLabel:frame(margin, margin + NavHeight, 100, 14) inView:self.view text:@"原密码" color:appSubColor size:14];
+    UILabel *oldLabel = [UILabel creatLabel:frame(Margin, Margin + NavHeight, 100, 14) inView:self.view text:@"原密码" color:appSubColor size:14];
 
-    _oldTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, margin + oldLabel.bottom, ksWidth, 44)];
+    _oldTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, Margin + oldLabel.bottom, ksWidth, 44)];
     _oldTextField.backgroundColor = appWhiteColor;
     _oldTextField.font = [UIFont systemFontOfSize:14];
     _oldTextField.secureTextEntry = YES;
@@ -44,14 +44,14 @@
     [self.view addSubview:_oldTextField];
     
     if (!_isHavePassword) {
-        oldLabel.frame = frame(margin,  NavHeight, 100, 0);
-        _oldTextField.frame = frame(margin,  NavHeight, 100, 0);
+        oldLabel.frame = frame(Margin,  NavHeight, 100, 0);
+        _oldTextField.frame = frame(Margin,  NavHeight, 100, 0);
     }
     
     
-    UILabel *passwordLabel = [UILabel creatLabel:frame(margin, margin + _oldTextField.bottom, 100, 14) inView:self.view text:@"新密码" color:appSubColor size:14];
+    UILabel *passwordLabel = [UILabel creatLabel:frame(Margin, Margin + _oldTextField.bottom, 100, 14) inView:self.view text:@"新密码" color:appSubColor size:14];
     
-    _passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, margin + passwordLabel.bottom, ksWidth, 44)];
+    _passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, Margin + passwordLabel.bottom, ksWidth, 44)];
     _passwordTextField.backgroundColor = appWhiteColor;
     _passwordTextField.font = [UIFont systemFontOfSize:14];
     _passwordTextField.secureTextEntry = YES;
@@ -60,7 +60,7 @@
     _passwordTextField.leftViewMode =UITextFieldViewModeAlways;
     [self.view addSubview:_passwordTextField];
     
-    UIView *split = [UIView creatView:frame(margin, _passwordTextField.bottom - 0.5, ksWidth - margin, 0.5) inView:self.view bgColor:appBottomLineColor];
+    UIView *split = [UIView creatView:frame(Margin, _passwordTextField.bottom - 0.5, ksWidth - Margin, 0.5) inView:self.view bgColor:appBottomLineColor];
     
     _repeatTextField = [[UITextField alloc] initWithFrame:CGRectMake(0,_passwordTextField.bottom, ksWidth, 44)];
     _repeatTextField.backgroundColor = appWhiteColor;
@@ -71,7 +71,7 @@
     _repeatTextField.leftViewMode =UITextFieldViewModeAlways;
     [self.view addSubview:_repeatTextField];
     
-    UILabel *tipLab = [UILabel creatLabel:frame(margin, _repeatTextField.bottom + margin, 100, 12) inView:self.view text:@"6~20位密码" color:appGrayTextColor size:12];
+    UILabel *tipLab = [UILabel creatLabel:frame(Margin, _repeatTextField.bottom + Margin, 100, 12) inView:self.view text:@"6~20位密码" color:appGrayTextColor size:12];
 
 
 }

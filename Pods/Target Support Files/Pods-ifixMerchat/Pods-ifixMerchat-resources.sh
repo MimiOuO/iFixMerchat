@@ -97,11 +97,17 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/AAChartKit/AAChartKitLib.bundle"
+  install_resource "${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle"
+  install_resource "${PODS_ROOT}/HXPhotoPicker/照片选择器/HXPhotoPicker/Resource/HXPhotoPicker.bundle"
   install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
   install_resource "${PODS_ROOT}/YBImageBrowser/YBImageBrowser/YBImageBrowser.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/AAChartKit/AAChartKitLib.bundle"
+  install_resource "${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle"
+  install_resource "${PODS_ROOT}/HXPhotoPicker/照片选择器/HXPhotoPicker/Resource/HXPhotoPicker.bundle"
   install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
   install_resource "${PODS_ROOT}/YBImageBrowser/YBImageBrowser/YBImageBrowser.bundle"

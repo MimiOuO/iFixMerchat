@@ -1,4 +1,5 @@
 PODS:
+  - AAChartKit (4.0.0)
   - AFNetworking (3.2.1):
     - AFNetworking/NSURLSession (= 3.2.1)
     - AFNetworking/Reachability (= 3.2.1)
@@ -14,6 +15,13 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - AMap3DMap (7.3.0):
+    - AMapFoundation (~> 1.6.3)
+  - AMapFoundation (1.6.3)
+  - AMapSearch (7.3.0):
+    - AMapFoundation (~> 1.6.3)
+  - FSTextView (1.8)
+  - HXPhotoPicker (2.4.2)
   - Hyphenate (3.6.5)
   - IQKeyboardManager (6.5.5)
   - JCore (2.2.2)
@@ -42,11 +50,21 @@ PODS:
   - Masonry (1.1.0)
   - MJExtension (3.2.1)
   - MJRefresh (3.3.1)
+  - Protobuf (3.11.4)
   - Qiniu (7.3.2)
   - SDAutoLayout (2.2.1)
   - SDWebImage (5.6.1):
     - SDWebImage/Core (= 5.6.1)
   - SDWebImage/Core (5.6.1)
+  - SSZipArchive (2.2.2)
+  - SVGAPlayer (2.5.2):
+    - SVGAPlayer/Core (= 2.5.2)
+    - SVGAPlayer/ProtoFiles (= 2.5.2)
+  - SVGAPlayer/Core (2.5.2):
+    - SSZipArchive (>= 1.8.1)
+    - SVGAPlayer/ProtoFiles
+  - SVGAPlayer/ProtoFiles (2.5.2):
+    - Protobuf (~> 3.4)
   - SVProgressHUD (2.2.5)
   - WMPageController (2.3.0)
   - YBImageBrowser (3.0.9):
@@ -61,6 +79,11 @@ PODS:
   - YYImage/Core (1.0.4)
 
 DEPENDENCIES:
+  - AAChartKit
+  - AMap3DMap
+  - AMapSearch
+  - FSTextView
+  - HXPhotoPicker (~> 2.4.2)
   - Hyphenate (~> 3.6.5)
   - IQKeyboardManager
   - JJException
@@ -73,6 +96,7 @@ DEPENDENCIES:
   - Qiniu
   - SDAutoLayout
   - SDWebImage
+  - SVGAPlayer
   - SVProgressHUD
   - WMPageController (~> 2.3.0)
   - YBImageBrowser
@@ -80,7 +104,13 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AAChartKit
     - AFNetworking
+    - AMap3DMap
+    - AMapFoundation
+    - AMapSearch
+    - FSTextView
+    - HXPhotoPicker
     - Hyphenate
     - IQKeyboardManager
     - JCore
@@ -91,9 +121,12 @@ SPEC REPOS:
     - Masonry
     - MJExtension
     - MJRefresh
+    - Protobuf
     - Qiniu
     - SDAutoLayout
     - SDWebImage
+    - SSZipArchive
+    - SVGAPlayer
     - SVProgressHUD
     - WMPageController
     - YBImageBrowser
@@ -101,7 +134,13 @@ SPEC REPOS:
     - YYImage
 
 SPEC CHECKSUMS:
+  AAChartKit: a62caf524117fcf19e7c8b4f10acbf58dcb08359
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AMap3DMap: af917126ce9571f86806401c80e9b5e34c2a8e9d
+  AMapFoundation: 9ed923193b357ebb30a073e9fe255d3c24054d5a
+  AMapSearch: a048bcca3bf0b8083345070e1f193f814bd8dc01
+  FSTextView: 9e2ca07bb6bb0fb7e77b49b2717adf81f3c620b5
+  HXPhotoPicker: 0b0751fe5d64271edefcd5cc4ffa9b6300ca58b7
   Hyphenate: de934686fa85bc436175a8c1b087bda40a5164d0
   IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
   JCore: 2e6690b41b1b59c4a768e0a3187c311911c02ca8
@@ -112,15 +151,18 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
   MJRefresh: eeda70fbf0ad277f3178cef1cd0c3532591d6237
+  Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   Qiniu: a248627a07bb8a39c6a11ae8059b7161c363539b
   SDAutoLayout: 8bf6b3bbc8b01f775d4defbb4fda2ace805461be
   SDWebImage: 7edb9c3ea661e77a66661f7f044de8c1b55d1120
+  SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
+  SVGAPlayer: c666a7886b72ee77d494c49aa4fd61df175dd103
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   WMPageController: 9f219bb8912a1a1f51af11fde61e2682a7b7e7f2
   YBImageBrowser: 7ecc8bf33ffa5f3b94c397c29b4f3638dd37f527
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
 
-PODFILE CHECKSUM: 8ea1195a6ae11f452bb240dc5f5420c720246e57
+PODFILE CHECKSUM: 969f9bb058483b742aa44978babf6fc8f889144e
 
 COCOAPODS: 1.8.4

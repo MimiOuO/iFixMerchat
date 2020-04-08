@@ -119,7 +119,7 @@
         make.height.equalTo(@17);
     }];
     
-    UIButton *friendBtn = [UIButton creatBtn:frame(ksWidth - margin - 30, 7 + StatusHeight, 30, 30) inView:self.view bgImage:@"message_add" WithTag:1 target:self action:@selector(friendClick)];
+    UIButton *friendBtn = [UIButton creatBtn:frame(ksWidth - Margin - 30, 7 + StatusHeight, 30, 30) inView:self.view bgImage:@"message_add" WithTag:1 target:self action:@selector(friendClick)];
     
 //    [self enableSearchController];
 //    [self.searchButton mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -151,7 +151,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return margin;
+    return Margin;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -261,7 +261,7 @@
         }
         
         if (indexPath.row != 1) {
-            UIView *split = [UIView creatView:frame(10, 67.5, ksWidth - 2*margin -10, 0.5) inView:cell bgColor:appBottomLineColor];
+            UIView *split = [UIView creatView:frame(10, 67.5, ksWidth - 2*Margin -10, 0.5) inView:cell bgColor:appBottomLineColor];
         }
         return cell;
     }
@@ -273,7 +273,7 @@
     EMConversationModel *model = [self.dataArray objectAtIndex:indexPath.row];
     cell.model = model;
     if (indexPath.row != self.dataArray.count - 1 ) {
-        UIView *split = [UIView creatView:frame(10, 67.5, ksWidth - 2*margin -10, 0.5) inView:cell bgColor:appBottomLineColor];
+        UIView *split = [UIView creatView:frame(10, 67.5, ksWidth - 2*Margin -10, 0.5) inView:cell bgColor:appBottomLineColor];
     }
  
     

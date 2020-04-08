@@ -18,4 +18,10 @@ pod 'Hyphenate', '~> 3.6.5'
 pod 'JPush', '3.2.2-noidfa'
 pod 'LookinServer', :configurations => ['Debug']
 pod 'Masonry'
+pod 'HXPhotoPicker', '~> 2.4.2'
+pod 'FSTextView'
+pod 'SVGAPlayer'
+pod 'AMap3DMap'
+pod 'AMapSearch'
+pod 'AAChartKit'
 end

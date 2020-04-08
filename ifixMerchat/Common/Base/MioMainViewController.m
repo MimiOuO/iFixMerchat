@@ -8,7 +8,7 @@
 
 #import "MioMainViewController.h"
 #import "MioBaseNavigationController.h"
-#import "ViewController.h"
+#import "TestViewController.h"
 #import "EMConversationsViewController.h"
 @interface MioMainViewController ()
 
@@ -59,16 +59,17 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTip:) name:@"showTip" object:nil];
     
     //首页
-    [self addChildVc:[ViewController new] title:@"首页" image:@"tab_home_ordinary" selectedImage:@"tab_home_selected"];
+    [self addChildVc:[TestViewController new] title:@"首页" image:@"tab_home_ordinary" selectedImage:@"tab_home_selected"];
     //发现
-    [self addChildVc:[ViewController new] title:@"发现" image:@"tab_found_ordinary" selectedImage:@"tab_found_selected"];
+    [self addChildVc:[TestViewController new] title:@"发现" image:@"tab_found_ordinary" selectedImage:@"tab_found_selected"];
     //消息
     [self addChildVc:[EMConversationsViewController new] title:@"消息" image:@"tab_message_ordinary" selectedImage:@"tab_message_selected"];
     //我的
-    [self addChildVc:[ViewController new] title:@"我的" image:@"tab_my_ordinary" selectedImage:@"tab_my_selected"];
+    [self addChildVc:[TestViewController new] title:@"我的" image:@"tab_my_ordinary" selectedImage:@"tab_my_selected"];
 	
-
 }
+
+
 
 #pragma mark - 添加子控制器
 - (void)addChildVc:(UIViewController *)childVc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage{
@@ -80,7 +81,7 @@
     // 禁用图片渲染
     childVc.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    MioBaseNavigationController *nav = [[MioBaseNavigationController alloc]initWithRootViewController:childVc];
+    MioBaseNavigationController *nav = [[MioBaseNavigationController alloc] initWithRootViewController:childVc];
 
     //设置item按钮
     nav.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[[UIImage imageNamed:image]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:selectedImage]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
@@ -121,8 +122,8 @@
     pulse.fromValue= [NSNumber numberWithFloat:0.9];
     pulse.toValue= [NSNumber numberWithFloat:1.1];
     [[((UIButton *)tabbarbuttonArray[index]) layer] addAnimation:pulse forKey:nil];
-    
-    
 }
+
+
 
 @end

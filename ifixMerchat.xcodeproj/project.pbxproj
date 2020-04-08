@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230779462434791E00EFCD1D /* MioApplyShopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 230779452434791E00EFCD1D /* MioApplyShopVC.m */; };
+		230779492435CA9D00EFCD1D /* MyUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 230779472435CA9C00EFCD1D /* MyUploadManager.m */; };
+		2307794B2436CA2400EFCD1D /* login.svga in Resources */ = {isa = PBXBuildFile; fileRef = 2307794A2436C9F700EFCD1D /* login.svga */; };
+		230779542436E1BF00EFCD1D /* PlaceAroundTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 230779522436E1BE00EFCD1D /* PlaceAroundTableView.m */; };
+		2307795A2436E21C00EFCD1D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 230779582436E21C00EFCD1D /* ViewController.m */; };
+		2307795D24370C6D00EFCD1D /* MioShopTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2307795C24370C6D00EFCD1D /* MioShopTypeView.m */; };
 		23AB23122431C77700DBB427 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23112431C77700DBB427 /* AppDelegate.m */; };
-		23AB23182431C77700DBB427 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23172431C77700DBB427 /* ViewController.m */; };
+		23AB23182431C77700DBB427 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23172431C77700DBB427 /* TestViewController.m */; };
 		23AB231D2431C77A00DBB427 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23AB231C2431C77A00DBB427 /* Assets.xcassets */; };
 		23AB23202431C77A00DBB427 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23AB231E2431C77A00DBB427 /* LaunchScreen.storyboard */; };
 		23AB23232431C77A00DBB427 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23222431C77A00DBB427 /* main.m */; };
@@ -363,16 +369,28 @@
 		23C6CC3A2432E4D700CFC4E3 /* EMConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C6CAF42432E4D600CFC4E3 /* EMConversationCell.m */; };
 		23C6CC3B2432E4D700CFC4E3 /* MioMessegeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C6CAF72432E4D600CFC4E3 /* MioMessegeCell.m */; };
 		23C6CC3C2432E4D700CFC4E3 /* MessegeTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C6CAF82432E4D600CFC4E3 /* MessegeTestVC.m */; };
+		23FBDC8A243C26C000B6E0E1 /* ChartTestVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FBDC89243C26C000B6E0E1 /* ChartTestVCViewController.m */; };
 		5CA174672C385023D74DBFDC /* libPods-ifixMerchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0645FB88911F74AAFEEE8435 /* libPods-ifixMerchat.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0645FB88911F74AAFEEE8435 /* libPods-ifixMerchat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ifixMerchat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		230779442434791E00EFCD1D /* MioApplyShopVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioApplyShopVC.h; sourceTree = "<group>"; };
+		230779452434791E00EFCD1D /* MioApplyShopVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioApplyShopVC.m; sourceTree = "<group>"; };
+		230779472435CA9C00EFCD1D /* MyUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUploadManager.m; sourceTree = "<group>"; };
+		230779482435CA9C00EFCD1D /* MyUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUploadManager.h; sourceTree = "<group>"; };
+		2307794A2436C9F700EFCD1D /* login.svga */ = {isa = PBXFileReference; lastKnownFileType = file; path = login.svga; sourceTree = "<group>"; };
+		230779522436E1BE00EFCD1D /* PlaceAroundTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceAroundTableView.m; sourceTree = "<group>"; };
+		230779532436E1BF00EFCD1D /* PlaceAroundTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceAroundTableView.h; sourceTree = "<group>"; };
+		230779582436E21C00EFCD1D /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		230779592436E21C00EFCD1D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2307795B24370C6D00EFCD1D /* MioShopTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioShopTypeView.h; sourceTree = "<group>"; };
+		2307795C24370C6D00EFCD1D /* MioShopTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioShopTypeView.m; sourceTree = "<group>"; };
 		23AB230D2431C77700DBB427 /* ifixMerchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ifixMerchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23AB23102431C77700DBB427 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		23AB23112431C77700DBB427 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		23AB23162431C77700DBB427 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		23AB23172431C77700DBB427 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		23AB23162431C77700DBB427 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		23AB23172431C77700DBB427 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		23AB231C2431C77A00DBB427 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23AB231F2431C77A00DBB427 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23AB23212431C77A00DBB427 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -870,6 +888,8 @@
 		23C6CAF72432E4D600CFC4E3 /* MioMessegeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioMessegeCell.m; sourceTree = "<group>"; };
 		23C6CAF82432E4D600CFC4E3 /* MessegeTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessegeTestVC.m; sourceTree = "<group>"; };
 		23C6CAF92432E4D600CFC4E3 /* EMConversationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMConversationCell.h; sourceTree = "<group>"; };
+		23FBDC88243C26C000B6E0E1 /* ChartTestVCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartTestVCViewController.h; sourceTree = "<group>"; };
+		23FBDC89243C26C000B6E0E1 /* ChartTestVCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChartTestVCViewController.m; sourceTree = "<group>"; };
 		A4641F2232E4633554341B90 /* Pods-ifixMerchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ifixMerchat.release.xcconfig"; path = "Target Support Files/Pods-ifixMerchat/Pods-ifixMerchat.release.xcconfig"; sourceTree = "<group>"; };
 		F3BA9128231AE7F4DDA884B5 /* Pods-ifixMerchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ifixMerchat.debug.xcconfig"; path = "Target Support Files/Pods-ifixMerchat/Pods-ifixMerchat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -922,9 +942,20 @@
 				23C6C9182432E4D500CFC4E3 /* Messege */,
 				23AB23102431C77700DBB427 /* AppDelegate.h */,
 				23AB23112431C77700DBB427 /* AppDelegate.m */,
-				23AB23162431C77700DBB427 /* ViewController.h */,
-				23AB23172431C77700DBB427 /* ViewController.m */,
+				23AB23162431C77700DBB427 /* TestViewController.h */,
+				23AB23172431C77700DBB427 /* TestViewController.m */,
+				230779442434791E00EFCD1D /* MioApplyShopVC.h */,
+				230779452434791E00EFCD1D /* MioApplyShopVC.m */,
+				230779592436E21C00EFCD1D /* ViewController.h */,
+				230779582436E21C00EFCD1D /* ViewController.m */,
+				23FBDC88243C26C000B6E0E1 /* ChartTestVCViewController.h */,
+				23FBDC89243C26C000B6E0E1 /* ChartTestVCViewController.m */,
+				230779532436E1BF00EFCD1D /* PlaceAroundTableView.h */,
+				230779522436E1BE00EFCD1D /* PlaceAroundTableView.m */,
+				2307795B24370C6D00EFCD1D /* MioShopTypeView.h */,
+				2307795C24370C6D00EFCD1D /* MioShopTypeView.m */,
 				23AB231C2431C77A00DBB427 /* Assets.xcassets */,
+				2307794A2436C9F700EFCD1D /* login.svga */,
 				23AB237B2431C8DF00DBB427 /* PrefixHeader.pch */,
 				23AB231E2431C77A00DBB427 /* LaunchScreen.storyboard */,
 				23AB23212431C77A00DBB427 /* Info.plist */,
@@ -947,6 +978,8 @@
 		23AB232A2431C89800DBB427 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				230779482435CA9C00EFCD1D /* MyUploadManager.h */,
+				230779472435CA9C00EFCD1D /* MyUploadManager.m */,
 				23AB23362431C89800DBB427 /* MioDeleteRequest.h */,
 				23AB23302431C89800DBB427 /* MioDeleteRequest.m */,
 				23AB23382431C89800DBB427 /* MioGetRequest.h */,
@@ -1511,32 +1544,32 @@
 		23C6CA4F2432E4D600CFC4E3 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				23C6CA502432E4D600CFC4E3 /* EMNotificationHelper.m */,
-				23C6CA512432E4D600CFC4E3 /* EMColorDefine.h */,
-				23C6CA522432E4D600CFC4E3 /* EMGlobalVariables.h */,
-				23C6CA532432E4D600CFC4E3 /* EMEmojiHelper.m */,
-				23C6CA542432E4D600CFC4E3 /* EMConversationHelper.m */,
-				23C6CA552432E4D600CFC4E3 /* Category */,
-				23C6CA5C2432E4D600CFC4E3 /* EMDemoOptions.m */,
-				23C6CA5D2432E4D600CFC4E3 /* EMEmoticonGroup.m */,
-				23C6CA5E2432E4D600CFC4E3 /* SharedImgs */,
-				23C6CA732432E4D600CFC4E3 /* EMChineseToPinyin.h */,
-				23C6CA742432E4D600CFC4E3 /* EMDateHelper.h */,
-				23C6CA752432E4D600CFC4E3 /* EMRealtimeSearch.h */,
-				23C6CA762432E4D600CFC4E3 /* EMGlobalVariables.m */,
-				23C6CA772432E4D600CFC4E3 /* EMNotificationHelper.h */,
-				23C6CA782432E4D600CFC4E3 /* View */,
-				23C6CA7D2432E4D600CFC4E3 /* EMConversationHelper.h */,
-				23C6CA7E2432E4D600CFC4E3 /* EMEmojiHelper.h */,
-				23C6CA7F2432E4D600CFC4E3 /* EMEmoticonGroup.h */,
 				23C6CA802432E4D600CFC4E3 /* 3rdParty */,
-				23C6CAD32432E4D600CFC4E3 /* EMDefines.h */,
-				23C6CAD42432E4D600CFC4E3 /* EMHeaders.h */,
-				23C6CAD52432E4D600CFC4E3 /* ViewController */,
-				23C6CAED2432E4D600CFC4E3 /* EMDemoOptions.h */,
-				23C6CAEE2432E4D600CFC4E3 /* EMRealtimeSearch.m */,
-				23C6CAEF2432E4D600CFC4E3 /* EMDateHelper.m */,
+				23C6CA552432E4D600CFC4E3 /* Category */,
+				23C6CA732432E4D600CFC4E3 /* EMChineseToPinyin.h */,
 				23C6CAF02432E4D600CFC4E3 /* EMChineseToPinyin.m */,
+				23C6CA512432E4D600CFC4E3 /* EMColorDefine.h */,
+				23C6CA7D2432E4D600CFC4E3 /* EMConversationHelper.h */,
+				23C6CA542432E4D600CFC4E3 /* EMConversationHelper.m */,
+				23C6CA742432E4D600CFC4E3 /* EMDateHelper.h */,
+				23C6CAEF2432E4D600CFC4E3 /* EMDateHelper.m */,
+				23C6CAD32432E4D600CFC4E3 /* EMDefines.h */,
+				23C6CAED2432E4D600CFC4E3 /* EMDemoOptions.h */,
+				23C6CA5C2432E4D600CFC4E3 /* EMDemoOptions.m */,
+				23C6CA7E2432E4D600CFC4E3 /* EMEmojiHelper.h */,
+				23C6CA532432E4D600CFC4E3 /* EMEmojiHelper.m */,
+				23C6CA7F2432E4D600CFC4E3 /* EMEmoticonGroup.h */,
+				23C6CA5D2432E4D600CFC4E3 /* EMEmoticonGroup.m */,
+				23C6CA522432E4D600CFC4E3 /* EMGlobalVariables.h */,
+				23C6CA762432E4D600CFC4E3 /* EMGlobalVariables.m */,
+				23C6CAD42432E4D600CFC4E3 /* EMHeaders.h */,
+				23C6CA772432E4D600CFC4E3 /* EMNotificationHelper.h */,
+				23C6CA502432E4D600CFC4E3 /* EMNotificationHelper.m */,
+				23C6CA752432E4D600CFC4E3 /* EMRealtimeSearch.h */,
+				23C6CAEE2432E4D600CFC4E3 /* EMRealtimeSearch.m */,
+				23C6CA5E2432E4D600CFC4E3 /* SharedImgs */,
+				23C6CA782432E4D600CFC4E3 /* View */,
+				23C6CAD52432E4D600CFC4E3 /* ViewController */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1899,6 +1932,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2307794B2436CA2400EFCD1D /* login.svga in Resources */,
 				23C6CB4C2432E4D700CFC4E3 /* msg_file_white@3x.png in Resources */,
 				23C6CB482432E4D700CFC4E3 /* msg_bg_recv@2x.png in Resources */,
 				23C6CB952432E4D700CFC4E3 /* animate_00040.png in Resources */,
@@ -2190,6 +2224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23FBDC8A243C26C000B6E0E1 /* ChartTestVCViewController.m in Sources */,
 				23C6CAFA2432E4D700CFC4E3 /* EMNotificationCell.m in Sources */,
 				23C6CC1E2432E4D700CFC4E3 /* PSTCollectionView.m in Sources */,
 				23C6CC122432E4D700CFC4E3 /* MWGridViewController.m in Sources */,
@@ -2224,13 +2259,15 @@
 				23AB23942431D32A00DBB427 /* MioBaseNavigationController.m in Sources */,
 				23C6CC222432E4D700CFC4E3 /* SDWebImageDecoder.m in Sources */,
 				23AB23AE2431DA5300DBB427 /* MioBoundPhoneVC.m in Sources */,
+				2307795A2436E21C00EFCD1D /* ViewController.m in Sources */,
 				23C6CB622432E4D700CFC4E3 /* EMVideoInfoViewController.m in Sources */,
 				23C6CC1C2432E4D700CFC4E3 /* PSTGridLayoutSection.m in Sources */,
 				23C6CB5D2432E4D700CFC4E3 /* EMCallOptions+NSCoding.m in Sources */,
-				23AB23182431C77700DBB427 /* ViewController.m in Sources */,
+				23AB23182431C77700DBB427 /* TestViewController.m in Sources */,
 				23AB23A82431DA5300DBB427 /* MioPasswordLoginVC.m in Sources */,
 				23AB23952431D32A00DBB427 /* MioNavView.m in Sources */,
 				23C6CB022432E4D700CFC4E3 /* EMAudioRecordHelper.mm in Sources */,
+				230779462434791E00EFCD1D /* MioApplyShopVC.m in Sources */,
 				23C6CBE52432E4D700CFC4E3 /* EMButton.m in Sources */,
 				23C6CC092432E4D700CFC4E3 /* wav.mm in Sources */,
 				23C6CBED2432E4D700CFC4E3 /* NSObject+Alert.m in Sources */,
@@ -2249,6 +2286,7 @@
 				23AB233B2431C89800DBB427 /* MioDeleteRequest.m in Sources */,
 				23AB23592431C8BA00DBB427 /* UILabel+MioExtension.m in Sources */,
 				23AB233C2431C89800DBB427 /* MioGetRequest.m in Sources */,
+				230779542436E1BF00EFCD1D /* PlaceAroundTableView.m in Sources */,
 				23C6CC152432E4D700CFC4E3 /* PSTCollectionViewController.m in Sources */,
 				23C6CB552432E4D700CFC4E3 /* EMMessageModel.m in Sources */,
 				23C6CB612432E4D700CFC4E3 /* EM1v1CallViewController.m in Sources */,
@@ -2307,6 +2345,7 @@
 				23AB23A92431DA5300DBB427 /* MioModiPassWordVC.m in Sources */,
 				23C6CAFD2432E4D700CFC4E3 /* EMChatBarItem.m in Sources */,
 				23C6CC112432E4D700CFC4E3 /* MWTapDetectingView.m in Sources */,
+				230779492435CA9D00EFCD1D /* MyUploadManager.m in Sources */,
 				23AB23552431C8BA00DBB427 /* UIButton+MioExtension.m in Sources */,
 				23C6CB2E2432E4D700CFC4E3 /* MioRedPacketBubbleView.m in Sources */,
 				23C6CC2B2432E4D700CFC4E3 /* EMTextFieldViewController.m in Sources */,
@@ -2315,6 +2354,7 @@
 				23C6CB2D2432E4D700CFC4E3 /* EMMessageBubbleView.m in Sources */,
 				23C6CB562432E4D700CFC4E3 /* EMImageBrowser.m in Sources */,
 				23AB235E2431C8BA00DBB427 /* NSDictionary+jlExtension.m in Sources */,
+				2307795D24370C6D00EFCD1D /* MioShopTypeView.m in Sources */,
 				23C6CB242432E4D700CFC4E3 /* EMMessageStatusView.m in Sources */,
 				23C6CBE42432E4D700CFC4E3 /* CallSettingViewController.m in Sources */,
 				23C6CC292432E4D700CFC4E3 /* EMRefreshTableViewController.m in Sources */,
@@ -2458,6 +2498,7 @@
 				DEVELOPMENT_TEAM = HVAX46T7G6;
 				GCC_PREFIX_HEADER = ifixMerchat/PrefixHeader.pch;
 				INFOPLIST_FILE = ifixMerchat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2481,6 +2522,7 @@
 				DEVELOPMENT_TEAM = HVAX46T7G6;
 				GCC_PREFIX_HEADER = ifixMerchat/PrefixHeader.pch;
 				INFOPLIST_FILE = ifixMerchat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

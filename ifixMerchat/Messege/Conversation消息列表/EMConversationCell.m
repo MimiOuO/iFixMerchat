@@ -223,9 +223,9 @@ static int kConversation_AtAll = 2;
 }
 
 - (void)setFrame:(CGRect)frame {
-    frame.origin.x += margin;
+    frame.origin.x += Margin;
 
-    frame.size.width -= 2 * margin;
+    frame.size.width -= 2 * Margin;
 
     [super setFrame:frame];
 }

@@ -8,7 +8,8 @@
 
 #import "MioVerifyCodeVC.h"
 #import "HWTFCursorView.h"
-
+#import "MioUserAgreementVC.h"
+#import <SVGA.h>
 @interface MioVerifyCodeVC ()
 @property (nonatomic, strong) HWTFCursorView *code4View;
 @end
@@ -26,15 +27,37 @@
     
     UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NavHeight, ksWidth, ksHeight - NavHeight)];
     [self.view addSubview:scroll];
-    UILabel *titleLabel = [UILabel creatLabel:frame(23,  94, 200, 25) inView:scroll text:@"请输入验证码" color:appSubColor size:18];
-    titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    UILabel *titleLabel = [UILabel creatLabel:frame(19,  IPHONE_X?60:30, 200, 30) inView:scroll text:@"请输入验证码" color:appSubColor size:18];
+    titleLabel.font = [UIFont boldSystemFontOfSize:30];
     
-    UILabel *tipLab = [UILabel creatLabel:frame(23, titleLabel.bottom + 26, 200, 17) inView:scroll text:[NSString stringWithFormat:@"验证码已发送至 %@",self.phoneNumber] color:appGrayTextColor size:12];
+    UILabel *tipLab = [UILabel creatLabel:frame(19, titleLabel.bottom + 59, 200, 17) inView:scroll text:[NSString stringWithFormat:@"验证码已发送至 %@",self.phoneNumber] color:appGrayTextColor size:12];
     
     _code4View = [[HWTFCursorView alloc] initWithCount:6 kmargin:20];
-    _code4View.frame = CGRectMake(23, tipLab.bottom + margin, ksWidth - 46  , 50);
+    _code4View.frame = CGRectMake(19, tipLab.bottom + 20, ksWidth - 38  , 50);
     
     [scroll addSubview:_code4View];
+    
+    
+    SVGAPlayer *logoPlayer = [[SVGAPlayer alloc] initWithFrame:CGRectMake(0, ksHeight - ksWidth*0.972 - NavHeight, ksWidth, ksWidth*0.972)];
+    [scroll addSubview:logoPlayer];
+    SVGAParser *parser = [[SVGAParser alloc] init];
+    [parser parseWithNamed:@"login" inBundle:nil completionBlock:^(SVGAVideoEntity * _Nonnull videoItem) {
+            if (videoItem != nil) {
+                NSLog(@"请求完毕");
+                logoPlayer.videoItem = videoItem;
+                [logoPlayer startAnimation];
+                
+
+            
+        }
+    } failureBlock:^(NSError * _Nonnull error) {
+         NSLog(@"%@",error);
+     }];
+    
+    UILabel *tip = [UILabel creatLabel:frame(ksWidth/2 - 120, ksHeight - NavHeight - SafeBottomH - 34, 100, 17) inView:scroll text:@"登录即代表您同意" color:appSubColor size:12];
+    UIButton *agreeMentBtn = [UIButton creatBtn:frame(tip.right, tip.top, 140, 17) inView:scroll bgColor:appClearColor title:@"《用户协议与隐私政策》" WithTag:1 target:self action:@selector(xieyi)];
+          agreeMentBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+          [agreeMentBtn setTitleColor:rgb(113, 140, 255) forState:UIControlStateNormal];
 
 }
 
@@ -73,19 +96,20 @@
         [userdefault synchronize];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccess" object:nil];
-
-        if (user.gender == 2) {
+        [self dismissViewControllerAnimated:YES completion:^{
             
-        }else{
-            [self dismissViewControllerAnimated:YES completion:^{
-            
-            }];
-        }
+        }];
+        
+        
     } failure:^(NSString *errorInfo) {
         [SVProgressHUD showErrorWithStatus:@"验证码不正确"];
     }];
 }
 
-
+-(void)xieyi{
+    MioUserAgreementVC *vc = [[MioUserAgreementVC alloc] init];
+    vc.url = @"https://duoduo.apphw.com/policy.html";
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 @end

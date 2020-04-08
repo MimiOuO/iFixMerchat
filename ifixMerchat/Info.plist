@@ -2,6 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>定位可以让我们提供您附近的大神和动态，以便于找到更适合你的内容</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>定位可以让我们提供您附近的大神和动态，以便于找到更适合你的内容</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>定位可以让我们提供您附近的大神和动态，以便于找到更适合你的内容</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>我们需要照片以用于您的头像或者发布的动态，以便于更多人了解你</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>我们需要照片以用于您的头像或者发布的动态，以便于更多人了解你</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -37,5 +52,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

@@ -8,7 +8,7 @@
 //
 
 #import "MioPasswordLoginVC.h"
-
+#import <SVGA.h>
 #import "MioUserAgreementVC.h"
 #import "UITextField+NumberFormat.h"
 @interface MioPasswordLoginVC ()<UITextFieldDelegate>
@@ -32,17 +32,16 @@
     [self.view addSubview:scroll];
     
 
-    
-    UIImageView *logoImage = [UIImageView creatImgView:frame(23,  35, 49, 49) inView:scroll image:@"ios-template-1024" radius:12];
-    UILabel *titleLabel = [UILabel creatLabel:frame(23, logoImage.bottom + 14, 200, 25) inView:scroll text:@"欢迎来到多多陪玩" color:appSubColor size:18];
-    titleLabel.font = [UIFont boldSystemFontOfSize:18];
+
+    UILabel *titleLabel = [UILabel creatLabel:frame(19, IPHONE_X?60:30, 200, 30) inView:scroll text:@"密码登录" color:appSubColor size:30];
+    titleLabel.font = [UIFont boldSystemFontOfSize:30];
     
     //======================================================================//
     //                               用户名
     //======================================================================//
+    UILabel *accoutLab = [UILabel creatLabel:frame(19, titleLabel.bottom + 60, 35, 16) inView:scroll text:@"账号" color:appSubColor size:16 alignment:NSTextAlignmentLeft];
     
-    
-    self.userNameField = [[UITextField alloc] initWithFrame:CGRectMake(23, titleLabel.bottom + 54 ,  ksWidth - 46, 17)];
+    self.userNameField = [[UITextField alloc] initWithFrame:CGRectMake(80, titleLabel.bottom + 59 ,  ksWidth - 46, 17)];
     self.userNameField.delegate = self;
     self.userNameField.font = [UIFont systemFontOfSize:16];
     self.userNameField.placeholder = @"请输入手机号";
@@ -53,12 +52,14 @@
     self.userNameField.keyboardType = UIKeyboardTypeNumberPad;
     [scroll addSubview:self.userNameField];
     
-    UIView *split1 = [UIView creatView:frame(23, self.userNameField.bottom + margin, ksWidth - 46, 0.5) inView:scroll bgColor:appBottomLineColor];
+    UIView *split1 = [UIView creatView:frame(23, self.userNameField.bottom + 21, ksWidth - 46, 0.5) inView:scroll bgColor:appBottomLineColor];
     
     //======================================================================//
     //                               密码
     //======================================================================//
-    self.passwordField = [[UITextField alloc] initWithFrame:CGRectMake(23, split1.bottom + 18 ,  ksWidth - 46, 17)];
+    UILabel *paswLab = [UILabel creatLabel:frame(19, split1.bottom + 30, 35, 16) inView:scroll text:@"密码" color:appSubColor size:16 alignment:NSTextAlignmentLeft];
+    
+    self.passwordField = [[UITextField alloc] initWithFrame:CGRectMake(80, split1.bottom + 30 ,  ksWidth - 46, 17)];
     self.passwordField.font = [UIFont systemFontOfSize:16];
     self.passwordField.placeholder = @"请输入登录密码";
     self.passwordField.textColor = appSubColor;
@@ -66,20 +67,35 @@
     self.passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [scroll addSubview:self.passwordField];
     
-    UIView *split2 = [UIView creatView:frame(23, self.passwordField.bottom + margin, ksWidth - 46, 0.5) inView:scroll bgColor:appBottomLineColor];
+    UIView *split2 = [UIView creatView:frame(23, self.passwordField.bottom + 21, ksWidth - 46, 0.5) inView:scroll bgColor:appBottomLineColor];
     
-    _agreeBtn = [UIButton creatBtn:frame(23, split2.bottom + margin, 16, 16) inView:scroll bgImage:@"" WithTag:1 target:self action:@selector(agreeBtnClick:)];
-       [_agreeBtn setImage:[UIImage imageNamed:@"mine_Great_Selected"] forState:UIControlStateSelected];
-       [_agreeBtn setImage:[UIImage imageNamed:@"mine_Great_Normal"] forState:UIControlStateNormal];
-    UILabel *tip = [UILabel creatLabel:frame(_agreeBtn.right + margin, _agreeBtn.top, 63, 17) inView:scroll text:@"阅读并同意" color:appGrayTextColor size:12];
-    UIButton *agreeMentBtn = [UIButton creatBtn:frame(tip.right, _agreeBtn.top, 150, 17) inView:scroll bgColor:appClearColor title:@"《用户协议与隐私政策》" WithTag:1 target:self action:@selector(xieyi)];
-       agreeMentBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-       [agreeMentBtn setTitleColor:appMainColor forState:UIControlStateNormal];
+   SVGAPlayer *logoPlayer = [[SVGAPlayer alloc] initWithFrame:CGRectMake(0, ksHeight -  ksWidth*0.972 - NavHeight, ksWidth, ksWidth*0.972)];
+   [scroll addSubview:logoPlayer];
+   SVGAParser *parser = [[SVGAParser alloc] init];
+   [parser parseWithNamed:@"login" inBundle:nil completionBlock:^(SVGAVideoEntity * _Nonnull videoItem) {
+           if (videoItem != nil) {
+               NSLog(@"请求完毕");
+               logoPlayer.videoItem = videoItem;
+               [logoPlayer startAnimation];
+               
+
+           
+       }
+   } failureBlock:^(NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+    }];
+
+   
+   UILabel *tip = [UILabel creatLabel:frame(ksWidth/2 - 120, ksHeight - NavHeight - SafeBottomH - 34, 100, 17) inView:scroll text:@"登录即代表您同意" color:appSubColor size:12];
+   UIButton *agreeMentBtn = [UIButton creatBtn:frame(tip.right, tip.top, 140, 17) inView:scroll bgColor:appClearColor title:@"《用户协议与隐私政策》" WithTag:1 target:self action:@selector(xieyi)];
+         agreeMentBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+         [agreeMentBtn setTitleColor:rgb(113, 140, 255) forState:UIControlStateNormal];
     
-    UIButton *btn = [UIButton creatBtn:frame(23, agreeMentBtn.bottom + 18, ksWidth - 46, 40) inView:scroll bgImage:@"denglu-anniu" WithTag:1 target:self action:@selector(handleLoginEvent:)];
-    UILabel *btnlabel = [UILabel creatLabel:frame(23, agreeMentBtn.bottom + 18, ksWidth - 46, 40) inView:scroll text:@"登录" color:appWhiteColor size:14];
+    UIButton *btn = [UIButton creatBtn:frame(19, split2.bottom + 40, ksWidth - 38, 44) inView:scroll bgImage:@"button" WithTag:1 target:self action:@selector(handleLoginEvent:)];
+    UILabel *btnlabel = [UILabel creatLabel:frame(19, split2.bottom + 40, ksWidth - 38, 44) inView:scroll text:@"登录" color:appWhiteColor size:14];
     btnlabel.textAlignment = NSTextAlignmentCenter;
     
+
 
 }
 
@@ -97,10 +113,7 @@
         [SVProgressHUD showErrorWithStatus:@"请输入正确密码！"];
         return;
     }
-    if (!_agreeBtn.selected) {
-        [SVProgressHUD showInfoWithStatus:@"请先同意用户协议！"];
-        return;
-    }
+
     
     [SVProgressHUD show];
     NSDictionary *dic = @{

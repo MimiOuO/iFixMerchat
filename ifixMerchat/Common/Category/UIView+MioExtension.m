@@ -7,7 +7,8 @@
 //
 
 #import "UIView+MioExtension.h"
-
+typedef void (^XP_WhenTappedBlock)();
+static char kWhenTappedBlockKey;
 @implementation UIView (MioExtension)
 
 +(UIView *)creatViewWinView:(UIView *)view bgColor:(UIColor *)bgColor{
@@ -153,5 +154,48 @@
     [shape setPath:rounded.CGPath];
     
     self.layer.mask = shape;
+}
+
+- (void)whenTapped:(void (^)())block {
+    
+    UITapGestureRecognizer *gesture = [self addTapGestureRecognizerWithTaps:1 touches:1 selector:@selector(viewWasTapped)];
+    
+    [self addRequiredToDoubleTapsRecognizer:gesture];
+    [self setBlock:block forKey:&kWhenTappedBlockKey];
+}
+- (void)viewWasTapped {
+    [self runBlockForKey:&kWhenTappedBlockKey];
+}
+- (void)runBlockForKey:(void *)blockKey {
+    XP_WhenTappedBlock block = objc_getAssociatedObject(self, blockKey);
+    
+    if (block) block();
+}
+
+- (UITapGestureRecognizer *)addTapGestureRecognizerWithTaps:(NSUInteger)taps touches:(NSUInteger)touches selector:(SEL)selector {
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:selector];
+    
+    tapGesture.delegate = self;
+    tapGesture.numberOfTapsRequired = taps;
+    tapGesture.numberOfTouchesRequired = touches;
+    [self addGestureRecognizer:tapGesture];
+    return tapGesture;
+}
+
+- (void)addRequiredToDoubleTapsRecognizer:(UIGestureRecognizer *)recognizer {
+    for (UIGestureRecognizer *gesture in[self gestureRecognizers]) {
+        if ([gesture isKindOfClass:[UITapGestureRecognizer class]]) {
+            UITapGestureRecognizer *tapGesture = (UITapGestureRecognizer *)gesture;
+            
+            if (tapGesture.numberOfTouchesRequired == 2 && tapGesture.numberOfTapsRequired == 1) {
+                [recognizer requireGestureRecognizerToFail:tapGesture];
+            }
+        }
+    }
+}
+
+- (void)setBlock:(XP_WhenTappedBlock)block forKey:(void *)blockKey {
+    self.userInteractionEnabled = YES;
+    objc_setAssociatedObject(self, blockKey, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 @end

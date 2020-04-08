@@ -32,6 +32,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)addRoundedCorners:(UIRectCorner)corners
                 withRadii:(CGSize)radii;
-
+- (void)whenTapped:(void (^)())block;
 @end
 NS_ASSUME_NONNULL_END

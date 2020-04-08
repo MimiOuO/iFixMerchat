@@ -12,6 +12,7 @@
 #import "EMDemoHelper.h"
 #import "DemoCallManager.h"
 #import "DemoConfManager.h"
+#import "MioLoginVC.h"
 @interface AppDelegate ()
 
 @end
@@ -24,7 +25,10 @@
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
+    
     self.window.rootViewController = [[MioMainViewController alloc] init];
+
+    
     [self.window makeKeyAndVisible];
     
     JJException.exceptionWhenTerminate = NO;
