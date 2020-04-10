@@ -29,6 +29,7 @@
     self.view.backgroundColor = appWhiteColor;
 
     [self.navView.centerButton setTitle:@"" forState:UIControlStateNormal];
+    self.navView.split.hidden = YES;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wxLoginSuccess:) name:@"wxLoginSuccess" object:nil];
     [self creatUI];

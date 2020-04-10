@@ -11,8 +11,9 @@
 #import <QiniuSDK.h>
 #import <FSTextView.h>
 #import "MyUploadManager.h"
-#import "ViewController.h"
+#import "MamapVC.h"
 #import "MioShopTypeView.h"
+#import "MioAFPutRequest.h"
 @interface MioApplyShopVC ()<HXPhotoViewControllerDelegate,HXPhotoViewDelegate,AMapDelegate>
 
 @property (nonatomic, strong) UITextField *shopName;
@@ -21,7 +22,7 @@
 @property (nonatomic, strong) UITextField *adress;
 @property (nonatomic, strong) UITextField *detailAdress;
 @property (nonatomic, strong) UILabel *distance;
-@property (nonatomic, strong) UILabel *gps;
+@property (nonatomic, strong) NSMutableArray *locationArr;
 @property (nonatomic, strong) FSTextView *intro;
 @property (nonatomic, strong) NSArray *shopDisplayArr;
 @property (nonatomic, strong) UITextField *realName;
@@ -39,6 +40,8 @@
 @property (nonatomic, strong) NSMutableArray *shopShowsImgArr;
 @property (nonatomic, strong) NSMutableArray *shopShowsKeyArr;
 
+@property (nonatomic, strong) NSArray *allPhotoKeysArr;
+
 @property (nonatomic, strong) UIImageView *frontPhoto;
 @property (strong, nonatomic) HXPhotoManager *threeManager;
 @property (nonatomic, strong) UIImageView *backPhoto;
@@ -52,20 +55,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     WEAKSELF;
-    [self.navView.leftButton setImage:backArrowWhiteIcon forState:UIControlStateNormal];
+
     [self.navView.centerButton setTitle:@"店铺资料" forState:UIControlStateNormal];
     [self.navView.centerButton setTitleColor:appWhiteColor forState:UIControlStateNormal];
     [self.navView.rightButton setTitle:@"提交" forState:UIControlStateNormal];
     [self.navView.rightButton setTitleColor:appWhiteColor forState:UIControlStateNormal];
+    self.navView.split.hidden = YES;
     self.navView.mainView.backgroundColor = appMainColor;
     self.navView.rightButtonBlock = ^{
         [weakSelf uploadAllPhoto];
     };
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
+    
     
     self.view.backgroundColor = appMainColor;
     
     _shopShowsImgArr = [[NSMutableArray alloc] init];
     _shopShowsKeyArr = [[NSMutableArray alloc] init];
+    _locationArr = [[NSMutableArray alloc] init];
     [self getQiniuToken];
     [self creatUI];
 }
@@ -74,6 +81,16 @@
     [super viewWillAppear:animated];
     
     [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleLightContent;
+}
+
+//禁用滑动返回
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    id traget = self.navigationController.interactivePopGestureRecognizer.delegate;
+    UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc]initWithTarget:traget action:nil];
+    [self.view addGestureRecognizer:pan];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -147,7 +164,7 @@
     _adress.placeholder = @"请选择地址";
     [bgview addSubview:_adress];
     [_adress whenTapped:^{
-        ViewController *vc = [[ViewController alloc] init];
+        MamapVC *vc = [[MamapVC alloc] init];
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }];
@@ -297,17 +314,17 @@
     
 }
 
-//- (void)photoViewChangeComplete:(HXPhotoView *)photoView
-//allAssetList:(NSArray<PHAsset *> *)allAssetList
-// photoAssets:(NSArray<PHAsset *> *)photoAssets
-// videoAssets:(NSArray<PHAsset *> *)videoAssets
-//                       original:(BOOL)isOriginal{
-//    [self uploadImagesToQiNiuWithImages:photoAssets];
-//}
-
-- (void)pickAdressWithAdress:(NSString *)adress City:(NSString *)city lat:(CGFloat)lat lon:(CGFloat)lon{
+#pragma mark - 高德
+- (void)pickAdressWithAdress:(NSString *)adress Province:(NSString *)province City:(NSString *)city District:(NSString *)district lat:(CGFloat)lat lon:(CGFloat)lon{
+    [_locationArr addObject:adress];
+    [_locationArr addObject:province];
+    [_locationArr addObject:city];
+    [_locationArr addObject:district];
+    [_locationArr addObject:[NSString stringWithFormat:@"%f",lat]];
+    [_locationArr addObject:[NSString stringWithFormat:@"%f",lon]];
     _adress.text = adress;
 }
+
 
 #pragma mark - 七牛
 -(void)getQiniuToken{
@@ -330,47 +347,115 @@
 -(void)uploadImagesToQiNiuWithImages:(NSArray *)images{
     
     [SVProgressHUD show];
+
     [[MyUploadManager shareInsance] uploadImageArray:images withToken:_qiniuToken success:^(NSMutableArray *imageNameArray) {
-        [SVProgressHUD showSuccessWithStatus:@"上传七牛成功"];
-        
-        
-        
-
-
-        NSLog(@"上传成功");
+        [SVProgressHUD showSuccessWithStatus:@"上传图片成功"];
+        self.allPhotoKeysArr = imageNameArray;
+        [self upToSever];
     } failure:^(NSMutableArray *errorArr) {
         if (errorArr.count) {
-            [SVProgressHUD showErrorWithStatus:@"上传七牛失败"];
+            [SVProgressHUD showErrorWithStatus:@"上传图片失败"];
+
         }
     }];
+    
 }
 
 -(void)uploadAllPhoto{
-    [self uploadImagesToQiNiuWithImages:self.shopShowsImgArr];
+    
+    //店铺名为空
+    if (_shopName.text.length < 3 | _shopName.text.length > 12) {
+        [SVProgressHUD showErrorWithStatus:@"请输入3-12个字符的店铺名"];return;
+    }
+ 
+    //店铺图片为空
+    if (_avatar.image == [UIImage imageNamed:@"logo_default"]) {
+        [SVProgressHUD showErrorWithStatus:@"请选择店铺照片"];return;
+    }
+    //联系方式少于八位
+    if (_phone.text.length < 8 | _phone.text.length > 15) {
+        [SVProgressHUD showErrorWithStatus:@"联系方式不能少于八位"];return;
+    }
+    //所在位置没有选择
+    if (!_adress.text.length) {
+        [SVProgressHUD showErrorWithStatus:@"没有选择所在位置"];return;
+    }
+    
+    //店铺介绍为空
+    if (!_intro.text.length) {
+        [SVProgressHUD showErrorWithStatus:@"没有填写店铺介绍"];return;
+    }
+
+    //姓名为空
+    if (!_realName.text.length) {
+        [SVProgressHUD showErrorWithStatus:@"真实姓名为空"];return;
+    }
+    //身份证位数不对
+    if (_idcardNumber.text.length != 18) {
+        [SVProgressHUD showErrorWithStatus:@"身份证位数不对"];return;
+    }
+    //身份证正面为空
+    if (_frontPhoto.image == [UIImage imageNamed:@"id_icon_positive"]) {
+        [SVProgressHUD showErrorWithStatus:@"请选择身份证照片"];return;
+    }
+    //身份证反面为空
+    if (_backPhoto.image == [UIImage imageNamed:@"id_icon_reverse"]) {
+        [SVProgressHUD showErrorWithStatus:@"请选择身份证照片"];return;
+    }
+    //展示图至少一个
+    if (_shopShowsImgArr.count < 1) {
+        [SVProgressHUD showErrorWithStatus:@"至少上传一张展示图"];return;
+    }
+    
+    
+    NSMutableArray *allImgArr = [[NSMutableArray alloc] init];
+    [allImgArr addObject:_avatar.image];
+    [allImgArr addObject:_frontPhoto.image];
+    [allImgArr addObject:_backPhoto.image];
+    [allImgArr addObjectsFromArray:self.shopShowsImgArr];
+    [self uploadImagesToQiNiuWithImages:allImgArr];
 }
 
 -(void)upToSever{
 
+//    MioAFPutRequest *manger = [MioAFPutRequest shareManager];
+//    [MioAFPutRequest requestWithUrl:api_me params:@{@"shop_contact_phone":@"123"} successBlock:^(NSDictionary * _Nonnull object) {
+//        [SVProgressHUD showSuccessWithStatus:@"111"];
+//    } failureBlock:^(NSError * _Nonnull error) {
+//        [SVProgressHUD showSuccessWithStatus:error.userInfo[@"Content-Type"] ];
+//    }];
+    
+    NSMutableArray *showArr = [NSMutableArray arrayWithArray:_allPhotoKeysArr];
+    [showArr removeObjectsInRange:NSMakeRange(0, 3)];
+    
     NSDictionary *params = @{
-                          @"avatar":_key,
+                          @"shop_title":_shopName.text,
+                          @"shop_cover":_allPhotoKeysArr[0],
+                          @"shop_contact_phone":_phone.text,
+                          @"shop_doorplate":_locationArr[0],
+                          @"shop_province":_locationArr[1],
+                          @"shop_city":_locationArr[2],
+                          @"shop_district":_locationArr[3],
+                          @"shop_latitude":_locationArr[4],
+                          @"shop_longitude":_locationArr[5],
+                          @"shop_service_scope":[_distance.text substringToIndex:([_distance.text length]-2)],
+                          @"shop_introduce":_intro.text,
+                          @"shop_master_name":_realName.text,
+                          @"shop_id_card":_idcardNumber.text,
+                          @"shop_id_card_positive":_allPhotoKeysArr[1],
+                          @"shop_id_card_back":_allPhotoKeysArr[2],
+                          @"shop_images":showArr,
+
                           };
-     
-    MioPutRequest *request = [[MioPutRequest alloc] initWithRequestUrl:api_modifyInfo argument:params];
-
-    [request success:^(NSDictionary *result) {
+//
+    [MioPutReq(api_me, params) success:^(NSDictionary *result){
         NSDictionary *data = [result objectForKey:@"data"];
-
-        [self dismissViewControllerAnimated:YES completion:^{
-            [MioPostReq(api_getNewCoupon, @{@"k":@"v"}) success:^(NSDictionary *result){
-                NSArray *data = [result objectForKey:@"data"];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"getNewCouponSuccess" object:nil userInfo:result];
-            } failure:^(NSString *errorInfo) {}];
-        }];
 
     } failure:^(NSString *errorInfo) {
         [SVProgressHUD showErrorWithStatus:@"提交失败"];
-
     }];
+    
+
 }
 
 - (NSString *)getNowTimeTimestamp3{

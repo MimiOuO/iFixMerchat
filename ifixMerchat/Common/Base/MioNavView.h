@@ -11,6 +11,7 @@
 
 
 @property (nonatomic, strong) UIView    *mainView;
+@property (nonatomic, strong) UIView    *split;
 @property (nonatomic, strong) UIButton  *leftButton;
 @property (nonatomic, strong) UIButton  *leftTwoButton;
 @property (nonatomic, strong) UIButton  *rightButton;

@@ -10,6 +10,7 @@
 #import "MioBaseNavigationController.h"
 #import "TestViewController.h"
 #import "EMConversationsViewController.h"
+#import "MioHomeVC.h"
 @interface MioMainViewController ()
 
 @property (nonatomic, strong) UIControl *shadowView;
@@ -39,7 +40,8 @@
     // 将自定义 View 添加到 tabBar 上
     [self.tabBar insertSubview:bgView atIndex:0];
     
-    UIImageView *upShaow = [UIImageView creatImgView:frame(0, -13, ksWidth, 13) inView:self.tabBar image:@"Home_upshadow" radius:0];
+//    UIImageView *upShaow = [UIImageView creatImgView:frame(0, -13, ksWidth, 13) inView:self.tabBar image:@"Home_upshadow" radius:0];
+    UIView *split = [UIView creatView:frame(0, 0, ksWidth, 0.5) inView:self.tabBar bgColor:rgba(0, 0, 0, 0.1)];
     self.tabBar.backgroundImage = [[UIImage alloc]init];
     self.tabBar.shadowImage = [[UIImage alloc]init];
     if (@available(iOS 13.0, *)) {
@@ -52,21 +54,29 @@
         [self.tabBar setShadowImage:[UIImage new]];
     }
 
+
     
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showCouponView:) name:@"getNewCouponSuccess" object:nil];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(login) name:@"login" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTip:) name:@"showTip" object:nil];
     
     //首页
-    [self addChildVc:[TestViewController new] title:@"首页" image:@"tab_home_ordinary" selectedImage:@"tab_home_selected"];
+    [self addChildVc:[MioHomeVC new] title:@"店铺" image:@"tab_icon_store" selectedImage:@"tab_icon_store_selected"];
     //发现
-    [self addChildVc:[TestViewController new] title:@"发现" image:@"tab_found_ordinary" selectedImage:@"tab_found_selected"];
+    [self addChildVc:[TestViewController new] title:@"订单" image:@"tab_icon_order" selectedImage:@"tab_icon_order_selected"];
     //消息
-    [self addChildVc:[EMConversationsViewController new] title:@"消息" image:@"tab_message_ordinary" selectedImage:@"tab_message_selected"];
+    [self addChildVc:[EMConversationsViewController new] title:@"消息" image:@"tab_icon_message" selectedImage:@"tab_icon_message_selected"];
     //我的
-    [self addChildVc:[TestViewController new] title:@"我的" image:@"tab_my_ordinary" selectedImage:@"tab_my_selected"];
+//    [self addChildVc:[TestViewController new] title:@"我的" image:@"tab_my_ordinary" selectedImage:@"tab_my_selected"];
 	
+    
+//    {if (![MioUserInfo shareUserInfo].isLogin) {\
+//        MioLoginVC *vc = [[MioLoginVC alloc] init];\
+//        MioBaseNavigationController *nav = [[MioBaseNavigationController alloc] initWithRootViewController:vc];\
+//        nav.modalPresentationStyle = 0;\
+//        [self presentViewController:nav animated:NO completion:nil];\
+//        return;\
+//    }}
 }
 
 
@@ -91,6 +101,7 @@
     
     //选中字体颜色
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:appMainColor,NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateSelected];
+    self.tabBar.tintColor = appMainColor;
     
     [nav.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -2)];
     
@@ -117,13 +128,22 @@
     CABasicAnimation*pulse = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     pulse.timingFunction= [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     pulse.duration = 0.08;
-    pulse.repeatCount= 1;
+    pulse.repeatCount = 1;
     pulse.autoreverses= YES;
     pulse.fromValue= [NSNumber numberWithFloat:0.9];
     pulse.toValue= [NSNumber numberWithFloat:1.1];
     [[((UIButton *)tabbarbuttonArray[index]) layer] addAnimation:pulse forKey:nil];
 }
 
+-(void)login{
+    
+    MioLoginVC *vc = [[MioLoginVC alloc] init];
+    MioBaseNavigationController *nav = [[MioBaseNavigationController alloc] initWithRootViewController:vc];
+    nav.modalPresentationStyle = 0;
+    [self presentViewController:nav animated:YES completion:nil];
+    return;
+    
+}
 
 
 @end

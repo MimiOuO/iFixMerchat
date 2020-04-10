@@ -115,7 +115,7 @@
     }
     
 
-    MioPutRequest *request = [[MioPutRequest alloc] initWithRequestUrl:api_modifyPassword argument:dic];
+    MioPutRequest *request = [[MioPutRequest alloc] initWithRequestUrl:api_base argument:dic];
     
     [request success:^(NSDictionary *result) {
         NSDictionary *data = [result objectForKey:@"data"];

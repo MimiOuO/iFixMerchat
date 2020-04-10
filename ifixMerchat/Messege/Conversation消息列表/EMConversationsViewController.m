@@ -119,7 +119,9 @@
         make.height.equalTo(@17);
     }];
     
-    UIButton *friendBtn = [UIButton creatBtn:frame(ksWidth - Margin - 30, 7 + StatusHeight, 30, 30) inView:self.view bgImage:@"message_add" WithTag:1 target:self action:@selector(friendClick)];
+    UIView *split = [UIView creatView:frame(0, NavHeight - 0.5, ksWidth, 0.5) inView:self.view bgColor:rgba(0, 0, 0, 0.1)];
+    
+//    UIButton *friendBtn = [UIButton creatBtn:frame(ksWidth - Margin - 30, 7 + StatusHeight, 30, 30) inView:self.view bgImage:@"message_add" WithTag:1 target:self action:@selector(friendClick)];
     
 //    [self enableSearchController];
 //    [self.searchButton mas_remakeConstraints:^(MASConstraintMaker *make) {

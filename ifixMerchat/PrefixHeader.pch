@@ -179,14 +179,18 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 
 
 //正式服务器
-#define api_base @"https://duoduo.apphw.com/api"
+//#define api_base @"https://duoduo.apphw.com/api"
 //测试服务器
-//#define api_base @"http://api.giggsgame.com/api"
-
+#define api_base @"http://test.giggsgame.com/api"
 //登录
+#define api_me                      @"" api_base"/shop-auth/me"
 #define api_getVerifyCode           @"" api_base"/verification_codes"
-#define api_login                   @"" api_base"/users"
-#define api_passwordLogin           @"" api_base"/auth/login"
+#define api_login                   @"" api_base"/shop/login-phone"
+#define api_passwordLogin           @"" api_base"/shop/login-password"
+#define api_QNToken                 @"" api_base"/upload/token"
+
+
+
 #define api_wxLogin                 @"" api_base"/socials/wechat_service_account/authorizations"
 #define api_boundPhone              @"" api_base"/my/phone"
 //首页
@@ -216,7 +220,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define api_otherUserinfo(user_id)  [NSString stringWithFormat:@"" api_base"/users/%@",user_id]
 #define api_modifyInfo              @"" api_base"/me"
 #define api_modifyPassword          @"" api_base"/my/password"
-#define api_QNToken                 @"" api_base"/auth/upload/token"
+
 #define api_follow(user_id)         [NSString stringWithFormat:@"" api_base"/users/%@/follows",user_id]
 #define api_getFollows              @"" api_base"/follows"
 #define api_getFans                 @"" api_base"/fans"

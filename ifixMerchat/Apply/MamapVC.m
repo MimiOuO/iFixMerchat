@@ -6,7 +6,7 @@
 //  Copyright © 2015年 FENGSHENG. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MamapVC.h"
 #import <MAMapKit/MAMapKit.h>
 #import <MAMapKit/MAMapView.h>
 #import <AMapSearchKit/AMapSearchKit.h>
@@ -15,7 +15,7 @@
 
 #define kAPIKey @"9bf32a51820b2e27ebb50e64e43d9958"
 
-@interface ViewController ()<MAMapViewDelegate, PlaceAroundTableViewDeleagate>
+@interface MamapVC ()<MAMapViewDelegate, PlaceAroundTableViewDeleagate>
 
 @property (nonatomic, strong) MAMapView            *mapView;
 @property (nonatomic, strong) AMapSearchAPI        *search;
@@ -38,7 +38,7 @@
 
 @end
 
-@implementation ViewController
+@implementation MamapVC
 
 #pragma mark - Utility
 
@@ -53,7 +53,7 @@
     request.types = self.currentType;
     request.sortrule = 0;
     request.page     = self.searchPage;
-    
+    request.requireExtension = YES;
     [self.search AMapPOIAroundSearch:request];
 }
 
@@ -95,8 +95,8 @@
     self.isMapViewRegionChangedFromTableView = YES;
     
     CLLocationCoordinate2D location = CLLocationCoordinate2DMake(selectedPoi.location.latitude, selectedPoi.location.longitude);
-    if ([self.delegate respondsToSelector:@selector(pickAdressWithAdress:City:lat:lon:)]) {
-        [self.delegate pickAdressWithAdress:Str( selectedPoi.address,selectedPoi.name) City:@"" lat:selectedPoi.location.latitude lon:selectedPoi.location.longitude];
+    if ([self.delegate respondsToSelector:@selector(pickAdressWithAdress:Province:City:District:lat:lon:)]) {
+        [self.delegate pickAdressWithAdress:Str( selectedPoi.address,selectedPoi.name) Province:selectedPoi.province City:selectedPoi.city District:selectedPoi.district  lat:selectedPoi.location.latitude lon:selectedPoi.location.longitude];
     }
     [self.mapView setCenterCoordinate:location animated:YES];
     [self.navigationController popViewControllerAnimated:YES];

@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
+    self.navView.split.hidden = YES;    
     self.view.backgroundColor =appWhiteColor;
     [self creatUI];
     
@@ -131,6 +132,7 @@
         [userdefault setObject:user.id forKey:@"user_id"];
         [userdefault setObject:user.nickname forKey:@"nickname"];
         [userdefault setObject:user.avatar forKey:@"avatar"];
+        [userdefault setObject:[[data objectForKey:@"shop"] objectForKey:@"shop_status"] forKey:@"shop_status"];
         [userdefault synchronize];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccess" object:nil];

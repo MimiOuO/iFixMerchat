@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 @protocol  AMapDelegate<NSObject>
-- (void)pickAdressWithAdress:(NSString *)adress City:(NSString *)city lat:(CGFloat)lat lon:(CGFloat)lon;
+- (void)pickAdressWithAdress:(NSString *)adress Province:(NSString *)province City:(NSString *)city District:(NSString *)district lat:(CGFloat)lat lon:(CGFloat)lon;
 @end
-@interface ViewController : UIViewController
+@interface MamapVC : UIViewController
 @property(nonatomic, weak)id <AMapDelegate>delegate;
 
 @end

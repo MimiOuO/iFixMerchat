@@ -11,8 +11,18 @@
 		230779492435CA9D00EFCD1D /* MyUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 230779472435CA9C00EFCD1D /* MyUploadManager.m */; };
 		2307794B2436CA2400EFCD1D /* login.svga in Resources */ = {isa = PBXBuildFile; fileRef = 2307794A2436C9F700EFCD1D /* login.svga */; };
 		230779542436E1BF00EFCD1D /* PlaceAroundTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 230779522436E1BE00EFCD1D /* PlaceAroundTableView.m */; };
-		2307795A2436E21C00EFCD1D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 230779582436E21C00EFCD1D /* ViewController.m */; };
+		2307795A2436E21C00EFCD1D /* MamapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 230779582436E21C00EFCD1D /* MamapVC.m */; };
 		2307795D24370C6D00EFCD1D /* MioShopTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2307795C24370C6D00EFCD1D /* MioShopTypeView.m */; };
+		235705D124401855007C3F87 /* MioHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 235705D024401855007C3F87 /* MioHomeVC.m */; };
+		237E079A243DBA0F009B44E1 /* MioShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 237E0799243DBA0F009B44E1 /* MioShopModel.m */; };
+		237E079D243DC3A4009B44E1 /* MioApplyErrorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 237E079C243DC3A4009B44E1 /* MioApplyErrorVC.m */; };
+		237E07A0243EF3EF009B44E1 /* MioAFPutRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 237E079E243EF3EF009B44E1 /* MioAFPutRequest.m */; };
+		23A45C47243D966200ADCE2F /* MioApplyWaitVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A45C46243D966200ADCE2F /* MioApplyWaitVC.m */; };
+		23A45C4A243D979D00ADCE2F /* inreview.svga in Resources */ = {isa = PBXBuildFile; fileRef = 23A45C48243D96E400ADCE2F /* inreview.svga */; };
+		23A45C4B243D97A200ADCE2F /* 不通过动画.svga in Resources */ = {isa = PBXBuildFile; fileRef = 23A45C49243D96E400ADCE2F /* 不通过动画.svga */; };
+		23A45C4F243D9AB900ADCE2F /* MioCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A45C4E243D9AB900ADCE2F /* MioCommentVC.m */; };
+		23A45C52243D9ADA00ADCE2F /* MioCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A45C51243D9ADA00ADCE2F /* MioCommentCell.m */; };
+		23A45C55243D9AF900ADCE2F /* MioCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A45C54243D9AF900ADCE2F /* MioCommentModel.m */; };
 		23AB23122431C77700DBB427 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23112431C77700DBB427 /* AppDelegate.m */; };
 		23AB23182431C77700DBB427 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23172431C77700DBB427 /* TestViewController.m */; };
 		23AB231D2431C77A00DBB427 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23AB231C2431C77A00DBB427 /* Assets.xcassets */; };
@@ -382,10 +392,28 @@
 		2307794A2436C9F700EFCD1D /* login.svga */ = {isa = PBXFileReference; lastKnownFileType = file; path = login.svga; sourceTree = "<group>"; };
 		230779522436E1BE00EFCD1D /* PlaceAroundTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceAroundTableView.m; sourceTree = "<group>"; };
 		230779532436E1BF00EFCD1D /* PlaceAroundTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceAroundTableView.h; sourceTree = "<group>"; };
-		230779582436E21C00EFCD1D /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		230779592436E21C00EFCD1D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		230779582436E21C00EFCD1D /* MamapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MamapVC.m; sourceTree = "<group>"; };
+		230779592436E21C00EFCD1D /* MamapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MamapVC.h; sourceTree = "<group>"; };
 		2307795B24370C6D00EFCD1D /* MioShopTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioShopTypeView.h; sourceTree = "<group>"; };
 		2307795C24370C6D00EFCD1D /* MioShopTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioShopTypeView.m; sourceTree = "<group>"; };
+		235705CF24401855007C3F87 /* MioHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioHomeVC.h; sourceTree = "<group>"; };
+		235705D024401855007C3F87 /* MioHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioHomeVC.m; sourceTree = "<group>"; };
+		237E0798243DBA0F009B44E1 /* MioShopModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioShopModel.h; sourceTree = "<group>"; };
+		237E0799243DBA0F009B44E1 /* MioShopModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioShopModel.m; sourceTree = "<group>"; };
+		237E079B243DC3A4009B44E1 /* MioApplyErrorVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioApplyErrorVC.h; sourceTree = "<group>"; };
+		237E079C243DC3A4009B44E1 /* MioApplyErrorVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioApplyErrorVC.m; sourceTree = "<group>"; };
+		237E079E243EF3EF009B44E1 /* MioAFPutRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioAFPutRequest.m; sourceTree = "<group>"; };
+		237E079F243EF3EF009B44E1 /* MioAFPutRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioAFPutRequest.h; sourceTree = "<group>"; };
+		23A45C45243D966200ADCE2F /* MioApplyWaitVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioApplyWaitVC.h; sourceTree = "<group>"; };
+		23A45C46243D966200ADCE2F /* MioApplyWaitVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioApplyWaitVC.m; sourceTree = "<group>"; };
+		23A45C48243D96E400ADCE2F /* inreview.svga */ = {isa = PBXFileReference; lastKnownFileType = file; path = inreview.svga; sourceTree = "<group>"; };
+		23A45C49243D96E400ADCE2F /* 不通过动画.svga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "不通过动画.svga"; sourceTree = "<group>"; };
+		23A45C4D243D9AB900ADCE2F /* MioCommentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioCommentVC.h; sourceTree = "<group>"; };
+		23A45C4E243D9AB900ADCE2F /* MioCommentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioCommentVC.m; sourceTree = "<group>"; };
+		23A45C50243D9ADA00ADCE2F /* MioCommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioCommentCell.h; sourceTree = "<group>"; };
+		23A45C51243D9ADA00ADCE2F /* MioCommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioCommentCell.m; sourceTree = "<group>"; };
+		23A45C53243D9AF900ADCE2F /* MioCommentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioCommentModel.h; sourceTree = "<group>"; };
+		23A45C54243D9AF900ADCE2F /* MioCommentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioCommentModel.m; sourceTree = "<group>"; };
 		23AB230D2431C77700DBB427 /* ifixMerchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ifixMerchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23AB23102431C77700DBB427 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		23AB23112431C77700DBB427 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -917,6 +945,47 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		235705CE2440183E007C3F87 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				237E0798243DBA0F009B44E1 /* MioShopModel.h */,
+				237E0799243DBA0F009B44E1 /* MioShopModel.m */,
+				235705CF24401855007C3F87 /* MioHomeVC.h */,
+				235705D024401855007C3F87 /* MioHomeVC.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		23A45C44243D95BE00ADCE2F /* Apply */ = {
+			isa = PBXGroup;
+			children = (
+				230779442434791E00EFCD1D /* MioApplyShopVC.h */,
+				230779452434791E00EFCD1D /* MioApplyShopVC.m */,
+				230779592436E21C00EFCD1D /* MamapVC.h */,
+				230779582436E21C00EFCD1D /* MamapVC.m */,
+				230779532436E1BF00EFCD1D /* PlaceAroundTableView.h */,
+				230779522436E1BE00EFCD1D /* PlaceAroundTableView.m */,
+				23A45C45243D966200ADCE2F /* MioApplyWaitVC.h */,
+				23A45C46243D966200ADCE2F /* MioApplyWaitVC.m */,
+				237E079B243DC3A4009B44E1 /* MioApplyErrorVC.h */,
+				237E079C243DC3A4009B44E1 /* MioApplyErrorVC.m */,
+			);
+			path = Apply;
+			sourceTree = "<group>";
+		};
+		23A45C4C243D9A8600ADCE2F /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				23A45C4D243D9AB900ADCE2F /* MioCommentVC.h */,
+				23A45C4E243D9AB900ADCE2F /* MioCommentVC.m */,
+				23A45C50243D9ADA00ADCE2F /* MioCommentCell.h */,
+				23A45C51243D9ADA00ADCE2F /* MioCommentCell.m */,
+				23A45C53243D9AF900ADCE2F /* MioCommentModel.h */,
+				23A45C54243D9AF900ADCE2F /* MioCommentModel.m */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
 		23AB23042431C77700DBB427 = {
 			isa = PBXGroup;
 			children = (
@@ -938,24 +1007,23 @@
 		23AB230F2431C77700DBB427 /* ifixMerchat */ = {
 			isa = PBXGroup;
 			children = (
+				235705CE2440183E007C3F87 /* Home */,
+				23A45C44243D95BE00ADCE2F /* Apply */,
 				23AB23292431C88600DBB427 /* Common */,
 				23C6C9182432E4D500CFC4E3 /* Messege */,
+				23A45C4C243D9A8600ADCE2F /* Comment */,
 				23AB23102431C77700DBB427 /* AppDelegate.h */,
 				23AB23112431C77700DBB427 /* AppDelegate.m */,
 				23AB23162431C77700DBB427 /* TestViewController.h */,
 				23AB23172431C77700DBB427 /* TestViewController.m */,
-				230779442434791E00EFCD1D /* MioApplyShopVC.h */,
-				230779452434791E00EFCD1D /* MioApplyShopVC.m */,
-				230779592436E21C00EFCD1D /* ViewController.h */,
-				230779582436E21C00EFCD1D /* ViewController.m */,
 				23FBDC88243C26C000B6E0E1 /* ChartTestVCViewController.h */,
 				23FBDC89243C26C000B6E0E1 /* ChartTestVCViewController.m */,
-				230779532436E1BF00EFCD1D /* PlaceAroundTableView.h */,
-				230779522436E1BE00EFCD1D /* PlaceAroundTableView.m */,
 				2307795B24370C6D00EFCD1D /* MioShopTypeView.h */,
 				2307795C24370C6D00EFCD1D /* MioShopTypeView.m */,
 				23AB231C2431C77A00DBB427 /* Assets.xcassets */,
 				2307794A2436C9F700EFCD1D /* login.svga */,
+				23A45C49243D96E400ADCE2F /* 不通过动画.svga */,
+				23A45C48243D96E400ADCE2F /* inreview.svga */,
 				23AB237B2431C8DF00DBB427 /* PrefixHeader.pch */,
 				23AB231E2431C77A00DBB427 /* LaunchScreen.storyboard */,
 				23AB23212431C77A00DBB427 /* Info.plist */,
@@ -978,6 +1046,8 @@
 		23AB232A2431C89800DBB427 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				237E079F243EF3EF009B44E1 /* MioAFPutRequest.h */,
+				237E079E243EF3EF009B44E1 /* MioAFPutRequest.m */,
 				230779482435CA9C00EFCD1D /* MyUploadManager.h */,
 				230779472435CA9C00EFCD1D /* MyUploadManager.m */,
 				23AB23362431C89800DBB427 /* MioDeleteRequest.h */,
@@ -1932,6 +2002,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23A45C4B243D97A200ADCE2F /* 不通过动画.svga in Resources */,
+				23A45C4A243D979D00ADCE2F /* inreview.svga in Resources */,
 				2307794B2436CA2400EFCD1D /* login.svga in Resources */,
 				23C6CB4C2432E4D700CFC4E3 /* msg_file_white@3x.png in Resources */,
 				23C6CB482432E4D700CFC4E3 /* msg_bg_recv@2x.png in Resources */,
@@ -2226,8 +2298,11 @@
 			files = (
 				23FBDC8A243C26C000B6E0E1 /* ChartTestVCViewController.m in Sources */,
 				23C6CAFA2432E4D700CFC4E3 /* EMNotificationCell.m in Sources */,
+				23A45C4F243D9AB900ADCE2F /* MioCommentVC.m in Sources */,
 				23C6CC1E2432E4D700CFC4E3 /* PSTCollectionView.m in Sources */,
+				23A45C47243D966200ADCE2F /* MioApplyWaitVC.m in Sources */,
 				23C6CC122432E4D700CFC4E3 /* MWGridViewController.m in Sources */,
+				237E079A243DBA0F009B44E1 /* MioShopModel.m in Sources */,
 				23C6CBEF2432E4D700CFC4E3 /* EMEmoticonGroup.m in Sources */,
 				23C6CC3C2432E4D700CFC4E3 /* MessegeTestVC.m in Sources */,
 				23AB23932431D32A00DBB427 /* MioAgeView.m in Sources */,
@@ -2259,7 +2334,7 @@
 				23AB23942431D32A00DBB427 /* MioBaseNavigationController.m in Sources */,
 				23C6CC222432E4D700CFC4E3 /* SDWebImageDecoder.m in Sources */,
 				23AB23AE2431DA5300DBB427 /* MioBoundPhoneVC.m in Sources */,
-				2307795A2436E21C00EFCD1D /* ViewController.m in Sources */,
+				2307795A2436E21C00EFCD1D /* MamapVC.m in Sources */,
 				23C6CB622432E4D700CFC4E3 /* EMVideoInfoViewController.m in Sources */,
 				23C6CC1C2432E4D700CFC4E3 /* PSTGridLayoutSection.m in Sources */,
 				23C6CB5D2432E4D700CFC4E3 /* EMCallOptions+NSCoding.m in Sources */,
@@ -2279,8 +2354,10 @@
 				23C6CC362432E4D700CFC4E3 /* EMRealtimeSearch.m in Sources */,
 				23AB23572431C8BA00DBB427 /* UIImageView+MioExtension.m in Sources */,
 				23C6CC0A2432E4D700CFC4E3 /* amrFileCodec.mm in Sources */,
+				237E079D243DC3A4009B44E1 /* MioApplyErrorVC.m in Sources */,
 				23C6CB222432E4D700CFC4E3 /* EMChatBar.m in Sources */,
 				23C6CC1F2432E4D700CFC4E3 /* PSTGridLayoutRow.m in Sources */,
+				235705D124401855007C3F87 /* MioHomeVC.m in Sources */,
 				23C6CB572432E4D700CFC4E3 /* EMAudioPlayerHelper.mm in Sources */,
 				23AB23912431D32A00DBB427 /* MioUserInfo.m in Sources */,
 				23AB233B2431C89800DBB427 /* MioDeleteRequest.m in Sources */,
@@ -2332,6 +2409,7 @@
 				23C6CBEC2432E4D700CFC4E3 /* UIViewController+Util.m in Sources */,
 				23C6CC132432E4D700CFC4E3 /* MWGridCell.m in Sources */,
 				23AB235B2431C8BA00DBB427 /* NSArray+jlExtension.m in Sources */,
+				23A45C52243D9ADA00ADCE2F /* MioCommentCell.m in Sources */,
 				23C6CB272432E4D700CFC4E3 /* EMMsgExtGifBubbleView.m in Sources */,
 				23AB23AB2431DA5300DBB427 /* MioLoginVC.m in Sources */,
 				23C6CB672432E4D700CFC4E3 /* ConfInviteUsersViewController.m in Sources */,
@@ -2359,7 +2437,9 @@
 				23C6CBE42432E4D700CFC4E3 /* CallSettingViewController.m in Sources */,
 				23C6CC292432E4D700CFC4E3 /* EMRefreshTableViewController.m in Sources */,
 				23C6CC102432E4D700CFC4E3 /* MWPhoto.m in Sources */,
+				237E07A0243EF3EF009B44E1 /* MioAFPutRequest.m in Sources */,
 				23C6CBE32432E4D700CFC4E3 /* EMCallViewController.m in Sources */,
+				23A45C55243D9AF900ADCE2F /* MioCommentModel.m in Sources */,
 				23AB235D2431C8BA00DBB427 /* UITextField+NumberFormat.m in Sources */,
 				23C6CC0B2432E4D700CFC4E3 /* MWPhotoBrowser.m in Sources */,
 			);

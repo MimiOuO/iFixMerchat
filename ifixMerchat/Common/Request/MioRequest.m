@@ -100,16 +100,8 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:nil];
 
             
-        }else if (self.responseStatusCode == 403) {
-            info = @"403";
-        }else if (self.responseStatusCode == 404) {
-            info = @"404";
-        }else if (self.responseStatusCode == 405) {
-            info = @"405";
         }else if (self.responseStatusCode== 500) {
             info = @"服务器报错,请稍后再试!";
-        }else if (self.responseStatusCode== 400) {
-            info = [self.responseObject objectForKey:@"message"];
         }else
         {
             info = [self.responseObject objectForKey:@"message"];

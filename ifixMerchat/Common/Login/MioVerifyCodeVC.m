@@ -20,7 +20,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = appWhiteColor;
     [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
-    
+    self.navView.split.hidden = YES;    
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHiden:) name:@"verifyCode" object:nil];
     
@@ -90,6 +90,7 @@
         NSString * token = [data objectForKey:@"access_token"];
         MioUserInfo *user = [MioUserInfo mj_objectWithKeyValues:[data objectForKey:@"user"]];
         [userdefault setObject:token forKey:@"token"];
+        [userdefault setObject:[[data objectForKey:@"shop"] objectForKey:@"shop_status"] forKey:@"shop_status"];
         [userdefault setObject:user.id forKey:@"user_id"];
         [userdefault setObject:user.nickname forKey:@"nickname"];
         [userdefault setObject:user.avatar forKey:@"avatar"];

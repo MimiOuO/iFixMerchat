@@ -20,7 +20,7 @@
     if (!_mainView) {
         _mainView = [UIView new];
         _mainView.backgroundColor = appWhiteColor;
-        
+        _split = [UIView creatView:frame(0, self.height - 0.5, ksWidth, 0.5) inView:_mainView bgColor:rgba(0, 0, 0, 0.1)];
         
         [self addSubview:_mainView];
 		_mainView.frame = CGRectMake(0, 0, ksWidth, NavHeight);
@@ -54,6 +54,7 @@
         self.centerButton = centerButton;
         [_centerButton addTarget:self action:@selector(clickCenterButton) forControlEvents:UIControlEventTouchUpInside];
         [self.centerButton.superview layoutIfNeeded];
+        
     }
     return _centerButton;
 }
@@ -88,6 +89,7 @@
  *  UI 界面
  */
 - (void)setupUI{
+    
     [self lineLabel];
 }
 
