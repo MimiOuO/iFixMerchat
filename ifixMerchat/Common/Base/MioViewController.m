@@ -31,7 +31,7 @@
 		self.automaticallyAdjustsScrollViewInsets = NO;
 	}
 	//设置背景颜色
-	self.view.backgroundColor = appbgColor;
+	self.view.backgroundColor = appWhiteColor;
     //隐藏自带的导航栏
     self.navigationController.navigationBar.hidden = YES;
 

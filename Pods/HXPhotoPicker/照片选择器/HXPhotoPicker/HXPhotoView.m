@@ -292,6 +292,7 @@
         }
     }
     HXPhotoSubViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HXPhotoSubViewCellId" forIndexPath:indexPath];
+
     cell.delegate = self;
     cell.canEdit = self.collectionView.editEnabled;
     if (self.deleteImageName) {
@@ -300,6 +301,7 @@
     cell.model = self.dataList[indexPath.item];
     cell.showDeleteNetworkPhotoAlert = self.showDeleteNetworkPhotoAlert;
     cell.hideDeleteButton = self.hideDeleteButton;
+
     return cell;
 }
  

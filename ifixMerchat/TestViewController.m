@@ -97,6 +97,11 @@
         MioLoginVC *vc = [[MioLoginVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
+    
+    UIButton *login4btn = [UIButton creatBtn:frame(100, 400, 100, 50) inView:self.view bgColor:appMainColor title:@"申请店铺" action:^{
+        MioApplyShopVC *vc = [[MioApplyShopVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
 }
 
 @end

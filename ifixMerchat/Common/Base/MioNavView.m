@@ -24,7 +24,7 @@
         
         [self addSubview:_mainView];
 		_mainView.frame = CGRectMake(0, 0, ksWidth, NavHeight);
-
+        
         [_mainView.superview layoutIfNeeded];
     }
     return _mainView;

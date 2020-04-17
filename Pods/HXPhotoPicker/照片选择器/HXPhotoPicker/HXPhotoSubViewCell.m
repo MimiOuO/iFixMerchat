@@ -242,7 +242,7 @@
 {
     [super layoutSubviews];
     self.imageView.frame = self.bounds;
-    
+
     self.stateLb.frame = CGRectMake(0, self.hx_h - 18, self.hx_w - 4, 18);
     self.bottomMaskLayer.frame = CGRectMake(0, self.hx_h - 25, self.hx_w, 25);
     

@@ -10,6 +10,10 @@
 #import "MioApplyShopVC.h"
 #import "MioApplyWaitVC.h"
 #import "MioApplyErrorVC.h"
+#import "MioSettingVC.h"
+#import "MioAddProductVC.h"
+#import "MioProductListVC.h"
+#import "MioOrderDetailVC.h"
 @interface MioHomeVC ()
 @property (nonatomic, strong) UILabel *followCountLab;
 @property (nonatomic, strong) UILabel *fansCountLab;
@@ -33,6 +37,7 @@
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleLightContent;
     [self requestShop];
+
 }
 
 -(void)requestShop{
@@ -148,7 +153,8 @@
     
     //评论
     UIButton *cmtBtn = [UIButton creatBtn:frame(0, 443 + StatusHeight, ksWidth, 46) inView:self.view bgColor:appClearColor title:@"" action:^{
-        
+        MioProductListVC *vc = [[MioProductListVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }];
     UIImageView *cmtImg = [UIImageView creatImgView:frame(30, 11, 24, 24) inView:cmtBtn image:@"store_icon_comments" radius:0];
     UILabel *cmtLab = [UILabel creatLabel:frame(64, 0, 100, 46) inView:cmtBtn text:@"评论管理" color:appSubColor size:15 alignment:NSTextAlignmentLeft];
@@ -156,7 +162,8 @@
     
     //商品
     UIButton *goodsBtn = [UIButton creatBtn:frame(0, cmtBtn.bottom , ksWidth, 46) inView:self.view bgColor:appClearColor title:@"" action:^{
-        
+        MioAddProductVC *vc = [[MioAddProductVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }];
     UIImageView *goodsImg = [UIImageView creatImgView:frame(30, 11, 24, 24) inView:goodsBtn image:@"store_icon_goods" radius:0];
     UILabel *goodsLab = [UILabel creatLabel:frame(64, 0, 100, 46) inView:goodsBtn text:@"商品管理" color:appSubColor size:15 alignment:NSTextAlignmentLeft];
@@ -164,7 +171,8 @@
     
     //设置
     UIButton *settingBtn = [UIButton creatBtn:frame(0, goodsBtn.bottom, ksWidth, 46) inView:self.view bgColor:appClearColor title:@"" action:^{
-        
+        MioSettingVC *vc = [[MioSettingVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }];
     UIImageView *settingImg = [UIImageView creatImgView:frame(30, 11, 24, 24) inView:settingBtn image:@"store_icon_set" radius:0];
     UILabel *settingLab = [UILabel creatLabel:frame(64, 0, 100, 46) inView:settingBtn text:@"设置" color:appSubColor size:15 alignment:NSTextAlignmentLeft];
@@ -172,7 +180,8 @@
 
     
     UIButton *grabBtn = [UIButton creatBtn:frame(ksWidth - 62 -11, ksHeight - 130 - SafeBottomH, 62, 62) inView:self.view bgImage:@"store_button_order" action:^{
-        
+        MioOrderDetailVC *vc = [[MioOrderDetailVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }];
 }
 

@@ -55,7 +55,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     WEAKSELF;
-
+    [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
+    
     [self.navView.centerButton setTitle:@"店铺资料" forState:UIControlStateNormal];
     [self.navView.centerButton setTitleColor:appWhiteColor forState:UIControlStateNormal];
     [self.navView.rightButton setTitle:@"提交" forState:UIControlStateNormal];
@@ -204,7 +205,7 @@
     _idcardNumber.font = Font(14);
     _idcardNumber.placeholder = @"请输入身份证号码";
     [bgview addSubview:_idcardNumber];
-    
+
     _photoView = [HXPhotoView photoManager:self.twoManager];
     _photoView.frame = frame(36, shopShowLab.bottom+ 15, ksWidth - 72, 70);
 //    ViewRadius(_photoView, 0);

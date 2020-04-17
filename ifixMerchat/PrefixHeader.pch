@@ -188,8 +188,9 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define api_login                   @"" api_base"/shop/login-phone"
 #define api_passwordLogin           @"" api_base"/shop/login-password"
 #define api_QNToken                 @"" api_base"/upload/token"
-
-
+#define api_type                    @"" api_base"/category"
+#define api_addProduct              @"" api_base"/shop-auth/product"
+#define api_getProduct              @"" api_base"/shop-auth/products"
 
 #define api_wxLogin                 @"" api_base"/socials/wechat_service_account/authorizations"
 #define api_boundPhone              @"" api_base"/my/phone"

@@ -13,6 +13,10 @@
 		230779542436E1BF00EFCD1D /* PlaceAroundTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 230779522436E1BE00EFCD1D /* PlaceAroundTableView.m */; };
 		2307795A2436E21C00EFCD1D /* MamapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 230779582436E21C00EFCD1D /* MamapVC.m */; };
 		2307795D24370C6D00EFCD1D /* MioShopTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2307795C24370C6D00EFCD1D /* MioShopTypeView.m */; };
+		2344AA442443FADB00469EFA /* MioSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2344AA432443FADB00469EFA /* MioSettingVC.m */; };
+		234FF8CB24444C5400FE34F7 /* MioAboutUsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 234FF8CA24444C5400FE34F7 /* MioAboutUsVC.m */; };
+		234FF8D22445467C00FE34F7 /* MioAddProductVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 234FF8D12445467C00FE34F7 /* MioAddProductVC.m */; };
+		234FF8D52445469800FE34F7 /* MioProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 234FF8D42445469800FE34F7 /* MioProductModel.m */; };
 		235705D124401855007C3F87 /* MioHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 235705D024401855007C3F87 /* MioHomeVC.m */; };
 		237E079A243DBA0F009B44E1 /* MioShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 237E0799243DBA0F009B44E1 /* MioShopModel.m */; };
 		237E079D243DC3A4009B44E1 /* MioApplyErrorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 237E079C243DC3A4009B44E1 /* MioApplyErrorVC.m */; };
@@ -60,6 +64,21 @@
 		23AB23AE2431DA5300DBB427 /* MioBoundPhoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23A62431DA5300DBB427 /* MioBoundPhoneVC.m */; };
 		23AB23B12431DAB500DBB427 /* MioLargeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23B02431DAB500DBB427 /* MioLargeButton.m */; };
 		23AB23B42431DAEE00DBB427 /* TFQClickAreaButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23B32431DAEE00DBB427 /* TFQClickAreaButton.m */; };
+		23C24FB824459EC400EE0BE2 /* MioSkuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FB724459EC400EE0BE2 /* MioSkuCell.m */; };
+		23C24FCD2446A4CA00EE0BE2 /* STPickerDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FBA2446A4CA00EE0BE2 /* STPickerDate.m */; };
+		23C24FCE2446A4CA00EE0BE2 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23C24FBD2446A4CA00EE0BE2 /* area.plist */; };
+		23C24FCF2446A4CA00EE0BE2 /* STPickerArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FBF2446A4CA00EE0BE2 /* STPickerArea.m */; };
+		23C24FD02446A4CA00EE0BE2 /* STPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FC02446A4CA00EE0BE2 /* STPickerView.m */; };
+		23C24FD12446A4CA00EE0BE2 /* UIView+STPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FC12446A4CA00EE0BE2 /* UIView+STPicker.m */; };
+		23C24FD22446A4CA00EE0BE2 /* STPickerViewUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FC42446A4CA00EE0BE2 /* STPickerViewUI.m */; };
+		23C24FD32446A4CA00EE0BE2 /* STPickerSingle.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FC52446A4CA00EE0BE2 /* STPickerSingle.m */; };
+		23C24FD42446A4CA00EE0BE2 /* STPickTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FC62446A4CA00EE0BE2 /* STPickTime.m */; };
+		23C24FD52446A4CA00EE0BE2 /* STPickerDouble.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FCB2446A4CA00EE0BE2 /* STPickerDouble.m */; };
+		23C24FD62446A4CA00EE0BE2 /* NSCalendar+STPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FCC2446A4CA00EE0BE2 /* NSCalendar+STPicker.m */; };
+		23C24FD92446EA5A00EE0BE2 /* MioModifyProductVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FD82446EA5A00EE0BE2 /* MioModifyProductVC.m */; };
+		23C24FDC2446EBAC00EE0BE2 /* MioProductListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FDB2446EBAC00EE0BE2 /* MioProductListVC.m */; };
+		23C24FDF2446F64300EE0BE2 /* MioProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FDE2446F64300EE0BE2 /* MioProductCell.m */; };
+		23C24FE324483E2200EE0BE2 /* MioOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FE224483E2200EE0BE2 /* MioOrderDetailVC.m */; };
 		23C6CAFA2432E4D700CFC4E3 /* EMNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C6C91C2432E4D500CFC4E3 /* EMNotificationCell.m */; };
 		23C6CAFB2432E4D700CFC4E3 /* EMNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C6C91D2432E4D500CFC4E3 /* EMNotificationViewController.m */; };
 		23C6CAFD2432E4D700CFC4E3 /* EMChatBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C6C9262432E4D500CFC4E3 /* EMChatBarItem.m */; };
@@ -380,11 +399,10 @@
 		23C6CC3B2432E4D700CFC4E3 /* MioMessegeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C6CAF72432E4D600CFC4E3 /* MioMessegeCell.m */; };
 		23C6CC3C2432E4D700CFC4E3 /* MessegeTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C6CAF82432E4D600CFC4E3 /* MessegeTestVC.m */; };
 		23FBDC8A243C26C000B6E0E1 /* ChartTestVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FBDC89243C26C000B6E0E1 /* ChartTestVCViewController.m */; };
-		5CA174672C385023D74DBFDC /* libPods-ifixMerchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0645FB88911F74AAFEEE8435 /* libPods-ifixMerchat.a */; };
+		D29BF3EC7FB14B1E75FC4006 /* libPods-ifixMerchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB6069E29C029B2B9430D85 /* libPods-ifixMerchat.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0645FB88911F74AAFEEE8435 /* libPods-ifixMerchat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ifixMerchat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		230779442434791E00EFCD1D /* MioApplyShopVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioApplyShopVC.h; sourceTree = "<group>"; };
 		230779452434791E00EFCD1D /* MioApplyShopVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioApplyShopVC.m; sourceTree = "<group>"; };
 		230779472435CA9C00EFCD1D /* MyUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUploadManager.m; sourceTree = "<group>"; };
@@ -396,6 +414,14 @@
 		230779592436E21C00EFCD1D /* MamapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MamapVC.h; sourceTree = "<group>"; };
 		2307795B24370C6D00EFCD1D /* MioShopTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioShopTypeView.h; sourceTree = "<group>"; };
 		2307795C24370C6D00EFCD1D /* MioShopTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioShopTypeView.m; sourceTree = "<group>"; };
+		2344AA422443FADB00469EFA /* MioSettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSettingVC.h; sourceTree = "<group>"; };
+		2344AA432443FADB00469EFA /* MioSettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSettingVC.m; sourceTree = "<group>"; };
+		234FF8C924444C5300FE34F7 /* MioAboutUsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioAboutUsVC.h; sourceTree = "<group>"; };
+		234FF8CA24444C5400FE34F7 /* MioAboutUsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioAboutUsVC.m; sourceTree = "<group>"; };
+		234FF8D02445467C00FE34F7 /* MioAddProductVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioAddProductVC.h; sourceTree = "<group>"; };
+		234FF8D12445467C00FE34F7 /* MioAddProductVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioAddProductVC.m; sourceTree = "<group>"; };
+		234FF8D32445469800FE34F7 /* MioProductModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioProductModel.h; sourceTree = "<group>"; };
+		234FF8D42445469800FE34F7 /* MioProductModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioProductModel.m; sourceTree = "<group>"; };
 		235705CF24401855007C3F87 /* MioHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioHomeVC.h; sourceTree = "<group>"; };
 		235705D024401855007C3F87 /* MioHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioHomeVC.m; sourceTree = "<group>"; };
 		237E0798243DBA0F009B44E1 /* MioShopModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioShopModel.h; sourceTree = "<group>"; };
@@ -488,6 +514,35 @@
 		23AB23B02431DAB500DBB427 /* MioLargeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioLargeButton.m; sourceTree = "<group>"; };
 		23AB23B22431DAEE00DBB427 /* TFQClickAreaButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFQClickAreaButton.h; sourceTree = "<group>"; };
 		23AB23B32431DAEE00DBB427 /* TFQClickAreaButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFQClickAreaButton.m; sourceTree = "<group>"; };
+		23C24FB624459EC400EE0BE2 /* MioSkuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSkuCell.h; sourceTree = "<group>"; };
+		23C24FB724459EC400EE0BE2 /* MioSkuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSkuCell.m; sourceTree = "<group>"; };
+		23C24FBA2446A4CA00EE0BE2 /* STPickerDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPickerDate.m; sourceTree = "<group>"; };
+		23C24FBB2446A4CA00EE0BE2 /* STPickTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPickTime.h; sourceTree = "<group>"; };
+		23C24FBC2446A4CA00EE0BE2 /* STPickerSingle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPickerSingle.h; sourceTree = "<group>"; };
+		23C24FBD2446A4CA00EE0BE2 /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
+		23C24FBE2446A4CA00EE0BE2 /* STPickerViewUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPickerViewUI.h; sourceTree = "<group>"; };
+		23C24FBF2446A4CA00EE0BE2 /* STPickerArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPickerArea.m; sourceTree = "<group>"; };
+		23C24FC02446A4CA00EE0BE2 /* STPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPickerView.m; sourceTree = "<group>"; };
+		23C24FC12446A4CA00EE0BE2 /* UIView+STPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+STPicker.m"; sourceTree = "<group>"; };
+		23C24FC22446A4CA00EE0BE2 /* NSCalendar+STPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+STPicker.h"; sourceTree = "<group>"; };
+		23C24FC32446A4CA00EE0BE2 /* STPickerDouble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPickerDouble.h; sourceTree = "<group>"; };
+		23C24FC42446A4CA00EE0BE2 /* STPickerViewUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPickerViewUI.m; sourceTree = "<group>"; };
+		23C24FC52446A4CA00EE0BE2 /* STPickerSingle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPickerSingle.m; sourceTree = "<group>"; };
+		23C24FC62446A4CA00EE0BE2 /* STPickTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPickTime.m; sourceTree = "<group>"; };
+		23C24FC72446A4CA00EE0BE2 /* STPickerDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPickerDate.h; sourceTree = "<group>"; };
+		23C24FC82446A4CA00EE0BE2 /* UIView+STPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+STPicker.h"; sourceTree = "<group>"; };
+		23C24FC92446A4CA00EE0BE2 /* STPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPickerView.h; sourceTree = "<group>"; };
+		23C24FCA2446A4CA00EE0BE2 /* STPickerArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPickerArea.h; sourceTree = "<group>"; };
+		23C24FCB2446A4CA00EE0BE2 /* STPickerDouble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPickerDouble.m; sourceTree = "<group>"; };
+		23C24FCC2446A4CA00EE0BE2 /* NSCalendar+STPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendar+STPicker.m"; sourceTree = "<group>"; };
+		23C24FD72446EA5A00EE0BE2 /* MioModifyProductVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioModifyProductVC.h; sourceTree = "<group>"; };
+		23C24FD82446EA5A00EE0BE2 /* MioModifyProductVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioModifyProductVC.m; sourceTree = "<group>"; };
+		23C24FDA2446EBAC00EE0BE2 /* MioProductListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioProductListVC.h; sourceTree = "<group>"; };
+		23C24FDB2446EBAC00EE0BE2 /* MioProductListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioProductListVC.m; sourceTree = "<group>"; };
+		23C24FDD2446F64300EE0BE2 /* MioProductCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioProductCell.h; sourceTree = "<group>"; };
+		23C24FDE2446F64300EE0BE2 /* MioProductCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioProductCell.m; sourceTree = "<group>"; };
+		23C24FE124483E2200EE0BE2 /* MioOrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioOrderDetailVC.h; sourceTree = "<group>"; };
+		23C24FE224483E2200EE0BE2 /* MioOrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioOrderDetailVC.m; sourceTree = "<group>"; };
 		23C6C91A2432E4D500CFC4E3 /* EMNotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMNotificationCell.h; sourceTree = "<group>"; };
 		23C6C91B2432E4D500CFC4E3 /* EMNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMNotificationViewController.h; sourceTree = "<group>"; };
 		23C6C91C2432E4D500CFC4E3 /* EMNotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMNotificationCell.m; sourceTree = "<group>"; };
@@ -919,6 +974,7 @@
 		23FBDC88243C26C000B6E0E1 /* ChartTestVCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartTestVCViewController.h; sourceTree = "<group>"; };
 		23FBDC89243C26C000B6E0E1 /* ChartTestVCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChartTestVCViewController.m; sourceTree = "<group>"; };
 		A4641F2232E4633554341B90 /* Pods-ifixMerchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ifixMerchat.release.xcconfig"; path = "Target Support Files/Pods-ifixMerchat/Pods-ifixMerchat.release.xcconfig"; sourceTree = "<group>"; };
+		DAB6069E29C029B2B9430D85 /* libPods-ifixMerchat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ifixMerchat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3BA9128231AE7F4DDA884B5 /* Pods-ifixMerchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ifixMerchat.debug.xcconfig"; path = "Target Support Files/Pods-ifixMerchat/Pods-ifixMerchat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -929,7 +985,7 @@
 			files = (
 				23C6CC072432E4D700CFC4E3 /* libopencore-amrwb.a in Frameworks */,
 				23C6CC082432E4D700CFC4E3 /* libopencore-amrnb.a in Frameworks */,
-				5CA174672C385023D74DBFDC /* libPods-ifixMerchat.a in Frameworks */,
+				D29BF3EC7FB14B1E75FC4006 /* libPods-ifixMerchat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -943,6 +999,36 @@
 				A4641F2232E4633554341B90 /* Pods-ifixMerchat.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		2344AA412443FAB300469EFA /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				234FF8C924444C5300FE34F7 /* MioAboutUsVC.h */,
+				234FF8CA24444C5400FE34F7 /* MioAboutUsVC.m */,
+				2344AA422443FADB00469EFA /* MioSettingVC.h */,
+				2344AA432443FADB00469EFA /* MioSettingVC.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		234FF8CF2445466300FE34F7 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				234FF8D02445467C00FE34F7 /* MioAddProductVC.h */,
+				234FF8D12445467C00FE34F7 /* MioAddProductVC.m */,
+				23C24FD72446EA5A00EE0BE2 /* MioModifyProductVC.h */,
+				23C24FD82446EA5A00EE0BE2 /* MioModifyProductVC.m */,
+				23C24FB624459EC400EE0BE2 /* MioSkuCell.h */,
+				23C24FB724459EC400EE0BE2 /* MioSkuCell.m */,
+				234FF8D32445469800FE34F7 /* MioProductModel.h */,
+				234FF8D42445469800FE34F7 /* MioProductModel.m */,
+				23C24FDA2446EBAC00EE0BE2 /* MioProductListVC.h */,
+				23C24FDB2446EBAC00EE0BE2 /* MioProductListVC.m */,
+				23C24FDD2446F64300EE0BE2 /* MioProductCell.h */,
+				23C24FDE2446F64300EE0BE2 /* MioProductCell.m */,
+			);
+			path = Product;
 			sourceTree = "<group>";
 		};
 		235705CE2440183E007C3F87 /* Home */ = {
@@ -1007,6 +1093,9 @@
 		23AB230F2431C77700DBB427 /* ifixMerchat */ = {
 			isa = PBXGroup;
 			children = (
+				23C24FE024483A4300EE0BE2 /* Order */,
+				234FF8CF2445466300FE34F7 /* Product */,
+				2344AA412443FAB300469EFA /* Setting */,
 				235705CE2440183E007C3F87 /* Home */,
 				23A45C44243D95BE00ADCE2F /* Apply */,
 				23AB23292431C88600DBB427 /* Common */,
@@ -1035,6 +1124,7 @@
 		23AB23292431C88600DBB427 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				23C24FB92446A4CA00EE0BE2 /* STPickerView */,
 				23AB23992431DA5300DBB427 /* Login */,
 				23AB237C2431D32A00DBB427 /* Base */,
 				23AB23402431C8BA00DBB427 /* Category */,
@@ -1137,6 +1227,41 @@
 				23AB23A42431DA5300DBB427 /* MioVerifyCodeVC.m */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		23C24FB92446A4CA00EE0BE2 /* STPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				23C24FBD2446A4CA00EE0BE2 /* area.plist */,
+				23C24FC22446A4CA00EE0BE2 /* NSCalendar+STPicker.h */,
+				23C24FCC2446A4CA00EE0BE2 /* NSCalendar+STPicker.m */,
+				23C24FCA2446A4CA00EE0BE2 /* STPickerArea.h */,
+				23C24FBF2446A4CA00EE0BE2 /* STPickerArea.m */,
+				23C24FC72446A4CA00EE0BE2 /* STPickerDate.h */,
+				23C24FBA2446A4CA00EE0BE2 /* STPickerDate.m */,
+				23C24FC32446A4CA00EE0BE2 /* STPickerDouble.h */,
+				23C24FCB2446A4CA00EE0BE2 /* STPickerDouble.m */,
+				23C24FBC2446A4CA00EE0BE2 /* STPickerSingle.h */,
+				23C24FC52446A4CA00EE0BE2 /* STPickerSingle.m */,
+				23C24FC92446A4CA00EE0BE2 /* STPickerView.h */,
+				23C24FC02446A4CA00EE0BE2 /* STPickerView.m */,
+				23C24FBE2446A4CA00EE0BE2 /* STPickerViewUI.h */,
+				23C24FC42446A4CA00EE0BE2 /* STPickerViewUI.m */,
+				23C24FBB2446A4CA00EE0BE2 /* STPickTime.h */,
+				23C24FC62446A4CA00EE0BE2 /* STPickTime.m */,
+				23C24FC82446A4CA00EE0BE2 /* UIView+STPicker.h */,
+				23C24FC12446A4CA00EE0BE2 /* UIView+STPicker.m */,
+			);
+			path = STPickerView;
+			sourceTree = "<group>";
+		};
+		23C24FE024483A4300EE0BE2 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				23C24FE124483E2200EE0BE2 /* MioOrderDetailVC.h */,
+				23C24FE224483E2200EE0BE2 /* MioOrderDetailVC.m */,
+			);
+			path = Order;
 			sourceTree = "<group>";
 		};
 		23C6C9182432E4D500CFC4E3 /* Messege */ = {
@@ -1937,7 +2062,7 @@
 		F26E630F12BEBF9B63203EA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0645FB88911F74AAFEEE8435 /* libPods-ifixMerchat.a */,
+				DAB6069E29C029B2B9430D85 /* libPods-ifixMerchat.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1976,6 +2101,7 @@
 				TargetAttributes = {
 					23AB230C2431C77700DBB427 = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -2071,6 +2197,7 @@
 				23C6CB522432E4D700CFC4E3 /* chat_clear@3x.png in Resources */,
 				23C6CB532432E4D700CFC4E3 /* chat_clear@2x.png in Resources */,
 				23C6CB792432E4D700CFC4E3 /* animate_00036.png in Resources */,
+				23C24FCE2446A4CA00EE0BE2 /* area.plist in Resources */,
 				23C6CB8A2432E4D700CFC4E3 /* animate_00056.png in Resources */,
 				23C6CB452432E4D700CFC4E3 /* msg_img_broken@2x.png in Resources */,
 				23C6CBC82432E4D700CFC4E3 /* ring_gray@3x.png in Resources */,
@@ -2302,15 +2429,19 @@
 				23C6CC1E2432E4D700CFC4E3 /* PSTCollectionView.m in Sources */,
 				23A45C47243D966200ADCE2F /* MioApplyWaitVC.m in Sources */,
 				23C6CC122432E4D700CFC4E3 /* MWGridViewController.m in Sources */,
+				23C24FD52446A4CA00EE0BE2 /* STPickerDouble.m in Sources */,
 				237E079A243DBA0F009B44E1 /* MioShopModel.m in Sources */,
 				23C6CBEF2432E4D700CFC4E3 /* EMEmoticonGroup.m in Sources */,
+				23C24FDF2446F64300EE0BE2 /* MioProductCell.m in Sources */,
 				23C6CC3C2432E4D700CFC4E3 /* MessegeTestVC.m in Sources */,
 				23AB23932431D32A00DBB427 /* MioAgeView.m in Sources */,
 				23C6CB232432E4D700CFC4E3 /* EMMessageCell.m in Sources */,
 				23C6CB652432E4D700CFC4E3 /* Live2ViewController.m in Sources */,
+				23C24FD32446A4CA00EE0BE2 /* STPickerSingle.m in Sources */,
 				23C6CBE22432E4D700CFC4E3 /* CallResolutionViewController.m in Sources */,
 				23C6CC0C2432E4D700CFC4E3 /* MWCaptionView.m in Sources */,
 				23C6CBEA2432E4D700CFC4E3 /* EMConversationHelper.m in Sources */,
+				23C24FE324483E2200EE0BE2 /* MioOrderDetailVC.m in Sources */,
 				23C6CC392432E4D700CFC4E3 /* EMConversationsViewController.m in Sources */,
 				23C6CC182432E4D700CFC4E3 /* PSTGridLayoutInfo.m in Sources */,
 				23C6CB662432E4D700CFC4E3 /* EMConferenceViewController.m in Sources */,
@@ -2320,6 +2451,7 @@
 				23C6CB642432E4D700CFC4E3 /* DemoConfManager.m in Sources */,
 				23C6CC042432E4D700CFC4E3 /* EMGlobalVariables.m in Sources */,
 				23C6CC382432E4D700CFC4E3 /* EMChineseToPinyin.m in Sources */,
+				23C24FD12446A4CA00EE0BE2 /* UIView+STPicker.m in Sources */,
 				23C6CBE92432E4D700CFC4E3 /* EMEmojiHelper.m in Sources */,
 				23C6CC202432E4D700CFC4E3 /* PSTCollectionViewLayout.m in Sources */,
 				23C6CC352432E4D700CFC4E3 /* EMTextViewController.m in Sources */,
@@ -2332,10 +2464,12 @@
 				23C6CC212432E4D700CFC4E3 /* PSTGridLayoutItem.m in Sources */,
 				23C6CB602432E4D700CFC4E3 /* Call1v1VideoViewController.m in Sources */,
 				23AB23942431D32A00DBB427 /* MioBaseNavigationController.m in Sources */,
+				23C24FCD2446A4CA00EE0BE2 /* STPickerDate.m in Sources */,
 				23C6CC222432E4D700CFC4E3 /* SDWebImageDecoder.m in Sources */,
 				23AB23AE2431DA5300DBB427 /* MioBoundPhoneVC.m in Sources */,
 				2307795A2436E21C00EFCD1D /* MamapVC.m in Sources */,
 				23C6CB622432E4D700CFC4E3 /* EMVideoInfoViewController.m in Sources */,
+				23C24FB824459EC400EE0BE2 /* MioSkuCell.m in Sources */,
 				23C6CC1C2432E4D700CFC4E3 /* PSTGridLayoutSection.m in Sources */,
 				23C6CB5D2432E4D700CFC4E3 /* EMCallOptions+NSCoding.m in Sources */,
 				23AB23182431C77700DBB427 /* TestViewController.m in Sources */,
@@ -2348,6 +2482,7 @@
 				23C6CBED2432E4D700CFC4E3 /* NSObject+Alert.m in Sources */,
 				23C6CC062432E4D700CFC4E3 /* EMAvatarNameCell.m in Sources */,
 				23C6CB4E2432E4D700CFC4E3 /* EMLocationViewController.m in Sources */,
+				23C24FD92446EA5A00EE0BE2 /* MioModifyProductVC.m in Sources */,
 				23C6CB542432E4D700CFC4E3 /* EMChatViewController.m in Sources */,
 				23AB23562431C8BA00DBB427 /* NSString+MioExtension.m in Sources */,
 				23C6CB582432E4D700CFC4E3 /* EMMsgTranspondViewController.m in Sources */,
@@ -2355,6 +2490,9 @@
 				23AB23572431C8BA00DBB427 /* UIImageView+MioExtension.m in Sources */,
 				23C6CC0A2432E4D700CFC4E3 /* amrFileCodec.mm in Sources */,
 				237E079D243DC3A4009B44E1 /* MioApplyErrorVC.m in Sources */,
+				234FF8CB24444C5400FE34F7 /* MioAboutUsVC.m in Sources */,
+				23C24FCF2446A4CA00EE0BE2 /* STPickerArea.m in Sources */,
+				23C24FD02446A4CA00EE0BE2 /* STPickerView.m in Sources */,
 				23C6CB222432E4D700CFC4E3 /* EMChatBar.m in Sources */,
 				23C6CC1F2432E4D700CFC4E3 /* PSTGridLayoutRow.m in Sources */,
 				235705D124401855007C3F87 /* MioHomeVC.m in Sources */,
@@ -2369,6 +2507,7 @@
 				23C6CB612432E4D700CFC4E3 /* EM1v1CallViewController.m in Sources */,
 				23C6CAFE2432E4D700CFC4E3 /* EaseEmotionEscape.m in Sources */,
 				23C6CC3A2432E4D700CFC4E3 /* EMConversationCell.m in Sources */,
+				23C24FD42446A4CA00EE0BE2 /* STPickTime.m in Sources */,
 				23AB23122431C77700DBB427 /* AppDelegate.m in Sources */,
 				23C6CBEE2432E4D700CFC4E3 /* EMDemoOptions.m in Sources */,
 				23AB238F2431D32A00DBB427 /* MioEmpty.m in Sources */,
@@ -2382,9 +2521,11 @@
 				23AB233F2431C89800DBB427 /* MioRequest.m in Sources */,
 				23C6CC142432E4D700CFC4E3 /* DACircularProgressView.m in Sources */,
 				23C6CBEB2432E4D700CFC4E3 /* UIViewController+HUD.m in Sources */,
+				234FF8D52445469800FE34F7 /* MioProductModel.m in Sources */,
 				23C6CC1D2432E4D700CFC4E3 /* PSTCollectionViewItemKey.m in Sources */,
 				23C6CB2B2432E4D700CFC4E3 /* EMMsgImageBubbleView.m in Sources */,
 				23C6CC0E2432E4D700CFC4E3 /* UIImage+MWPhotoBrowser.m in Sources */,
+				23C24FDC2446EBAC00EE0BE2 /* MioProductListVC.m in Sources */,
 				23AB23972431D32A00DBB427 /* MioMainViewController.m in Sources */,
 				23C6CB292432E4D700CFC4E3 /* EMMsgVideoBubbleView.m in Sources */,
 				23AB235C2431C8BA00DBB427 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
@@ -2394,6 +2535,7 @@
 				23C6CC3B2432E4D700CFC4E3 /* MioMessegeCell.m in Sources */,
 				23C6CB5C2432E4D700CFC4E3 /* Call1v1AudioViewController.m in Sources */,
 				23C6CB2F2432E4D700CFC4E3 /* EMMsgLocationBubbleView.m in Sources */,
+				23C24FD22446A4CA00EE0BE2 /* STPickerViewUI.m in Sources */,
 				23AB23B42431DAEE00DBB427 /* TFQClickAreaButton.m in Sources */,
 				23C6CB692432E4D700CFC4E3 /* ConfInviteUserCell.m in Sources */,
 				23AB23AA2431DA5300DBB427 /* HWTFCursorView.m in Sources */,
@@ -2428,6 +2570,8 @@
 				23C6CB2E2432E4D700CFC4E3 /* MioRedPacketBubbleView.m in Sources */,
 				23C6CC2B2432E4D700CFC4E3 /* EMTextFieldViewController.m in Sources */,
 				23C6CB2A2432E4D700CFC4E3 /* EMMsgFileBubbleView.m in Sources */,
+				234FF8D22445467C00FE34F7 /* MioAddProductVC.m in Sources */,
+				2344AA442443FADB00469EFA /* MioSettingVC.m in Sources */,
 				23C6CC052432E4D700CFC4E3 /* EMBadgeLabel.m in Sources */,
 				23C6CB2D2432E4D700CFC4E3 /* EMMessageBubbleView.m in Sources */,
 				23C6CB562432E4D700CFC4E3 /* EMImageBrowser.m in Sources */,
@@ -2438,6 +2582,7 @@
 				23C6CC292432E4D700CFC4E3 /* EMRefreshTableViewController.m in Sources */,
 				23C6CC102432E4D700CFC4E3 /* MWPhoto.m in Sources */,
 				237E07A0243EF3EF009B44E1 /* MioAFPutRequest.m in Sources */,
+				23C24FD62446A4CA00EE0BE2 /* NSCalendar+STPicker.m in Sources */,
 				23C6CBE32432E4D700CFC4E3 /* EMCallViewController.m in Sources */,
 				23A45C55243D9AF900ADCE2F /* MioCommentModel.m in Sources */,
 				23AB235D2431C8BA00DBB427 /* UITextField+NumberFormat.m in Sources */,
@@ -2574,7 +2719,9 @@
 			baseConfigurationReference = F3BA9128231AE7F4DDA884B5 /* Pods-ifixMerchat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = HVAX46T7G6;
 				GCC_PREFIX_HEADER = ifixMerchat/PrefixHeader.pch;
 				INFOPLIST_FILE = ifixMerchat/Info.plist;
@@ -2589,6 +2736,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jgs.ifixMerchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ifixMerchat/ifixMerchat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2598,7 +2748,9 @@
 			baseConfigurationReference = A4641F2232E4633554341B90 /* Pods-ifixMerchat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = HVAX46T7G6;
 				GCC_PREFIX_HEADER = ifixMerchat/PrefixHeader.pch;
 				INFOPLIST_FILE = ifixMerchat/Info.plist;
@@ -2613,6 +2765,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jgs.ifixMerchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ifixMerchat/ifixMerchat-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
