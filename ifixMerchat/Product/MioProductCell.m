@@ -49,6 +49,7 @@
         UIView *split2 = [UIView creatView:frame(Margin + (ksWidth - 2 * Margin)/3, 126, 0.5, 25) inView:self.contentView bgColor:rgb(238, 238, 238)];
         UIView *split3 = [UIView creatView:frame(Margin + (ksWidth - 2 * Margin)/3 * 2, 126, 0.5, 25) inView:self.contentView bgColor:rgb(238, 238, 238)];
         WEAKSELF;
+
         _deleteBtn = [UIButton creatBtn:frame(Margin, 117, (ksWidth-2*Margin)/3, 43) inView:self.contentView bgColor:appClearColor title:@"删除" action:^{
             if([self.delegate respondsToSelector:@selector(clickDelete:)]) {
                 [self.delegate clickDelete:weakSelf.model];
@@ -69,7 +70,7 @@
         
         _modifyBtn = [UIButton creatBtn:frame(_upDownBtn.right, 117, (ksWidth-2*Margin)/3, 43) inView:self.contentView bgColor:appClearColor title:@"修改" action:^{
             if([self.delegate respondsToSelector:@selector(clickModify:)]) {
-                [self.delegate clickModify:weakSelf.model];
+                [self.delegate clickModify:_model];
             }
         }];
         [_modifyBtn setTitleColor:appMainColor forState:UIControlStateNormal];
@@ -94,4 +95,6 @@
     }
 
 }
+
+
 @end

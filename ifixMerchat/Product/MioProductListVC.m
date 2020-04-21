@@ -10,11 +10,13 @@
 #import "MioProductCell.h"
 #import "MioProductModel.h"
 #import "MioAddProductVC.h"
+#import "MioModifyProductVC.h"
 @interface MioProductListVC ()<UITableViewDelegate,UITableViewDataSource,ProductDelegate>
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, assign) NSInteger status;
-@property (nonatomic, strong) NSMutableArray *followArr;
+@property (nonatomic, strong) NSMutableArray *listArr;
+
 @end
 
 @implementation MioProductListVC
@@ -35,18 +37,19 @@
     [con addTarget:self action:@selector(segCChanged:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:con];
     UIView *split = [UIView creatView:frame(0, NavHeight + 48.5, ksWidth, 0.5) inView:self.view bgColor:appBottomLineColor];
-    _followArr = [[NSMutableArray alloc] init];
+    _listArr = [[NSMutableArray alloc] init];
     _page = 1;
-    _status = 0;
+    _status = 1;
     [self getProduct];
     [self creatUI];
 }
 
 -(void)getProduct{
-    [MioGetReq(api_getProduct, (@{@"page":[NSString stringWithFormat:@"%ld",(long)_page],@"product_status":[NSString stringWithFormat:@"%ld",(long)_status]})) success:^(NSDictionary *result){
+    NSLog(@"%ld",(long)_status);
+    [MioGetReq(api_getProducts, (@{@"page":[NSString stringWithFormat:@"%ld",(long)_page],@"product_status":[NSString stringWithFormat:@"%ld",(long)_status]})) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         [_tableview.mj_footer endRefreshing];
-        [_followArr addObjectsFromArray:data];
+        [_listArr addObjectsFromArray:data];
         if (data.count< 10) {
             [_tableview.mj_footer endRefreshingWithNoMoreData];
         }
@@ -81,7 +84,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _followArr.count;
+    return _listArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -94,13 +97,16 @@
     if (!cell) {
         cell = [[MioProductCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    MioProductModel *model = [MioProductModel mj_objectWithKeyValues:_followArr[indexPath.row]];
+    cell.delegate = self;
+    MioProductModel *model = [MioProductModel mj_objectWithKeyValues:_listArr[indexPath.row]];
     cell.model = model;
     return cell;
 }
 
 - (void)clickModify:(MioProductModel *)model{
-    
+    MioModifyProductVC *vc = [[MioModifyProductVC alloc] init];
+    vc.productId = model.product_id;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)clickUpDown:(MioProductModel *)model{
     

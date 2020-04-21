@@ -14,6 +14,7 @@
 #import "MioAddProductVC.h"
 #import "MioProductListVC.h"
 #import "MioOrderDetailVC.h"
+#import "MioOrderListVC.h"
 @interface MioHomeVC ()
 @property (nonatomic, strong) UILabel *followCountLab;
 @property (nonatomic, strong) UILabel *fansCountLab;
@@ -101,7 +102,8 @@
     
     //待支付
     UIButton *waitPayBtn = [UIButton creatBtn:frame(18, StatusHeight + 209, ksWidth/2 - 24, 100) inView:self.view bgImage:@"store_card_bg" action:^{
-        
+        MioOrderListVC *vc = [[MioOrderListVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }];
     UIImageView *waitPayImg = [UIImageView creatImgView:frame(waitPayBtn.left - 45, waitPayBtn.top - 41, waitPayBtn.width *1.55 , 190) inView:self.view image:@"store_card_shadow" radius:0];
 //    waitPayImg.alpha = 0.5;

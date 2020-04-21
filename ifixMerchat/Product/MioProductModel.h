@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MioProductModel : NSObject
-
+@property (nonatomic,copy) NSString * product_id;
 @property (nonatomic,copy) NSString * category_id;
 @property (nonatomic,copy) NSString * category_name;
 @property (nonatomic,copy) NSString * product_title;
