@@ -37,6 +37,7 @@
 @property (nonatomic, strong) UIView *skuView;
 @property (nonatomic, strong) UITableView *skuTableView;
 @property (nonatomic, assign) int skuNum;
+@property (nonatomic, strong) NSArray *skuArr;
 @property (nonatomic, strong) UIButton *addSkuBtn;
 @end
 
@@ -58,7 +59,8 @@
     _detailShowsKeyArr = [[NSArray alloc] init];
     [self getQiniuToken];
     [self getType];
-    [self getProduct];
+//    [self creatUI];
+//    [self getProduct];
 }
 
 -(void)getType{
@@ -68,19 +70,19 @@
     } failure:^(NSString *errorInfo) {}];
 }
 
--(void)getProduct{
-    [MioGetReq(api_getProduct(_productId), @{@"k":@"v"}) success:^(NSDictionary *result){
-        _typeArr = [result objectForKey:@"data"];
-       
-    } failure:^(NSString *errorInfo) {}];
-}
+//-(void)getProduct{
+//    [MioGetReq(api_getProduct(_productId), @{@"k":@"v"}) success:^(NSDictionary *result){
+//        _typeArr = [result objectForKey:@"data"];
+//
+//    } failure:^(NSString *errorInfo) {}];
+//}
 
 -(void)creatUI{
     _scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NavHeight, ksWidth, ksHeight - NavHeight)];
     _scroll.contentSize = CGSizeMake(ksWidth, 1000);
     [self.view addSubview:_scroll];
     
-    UILabel *nameLab = [UILabel creatLabel:frame(18, 31, 64, 15) inView:_scroll text:@"添加商品" color:appSubColor size:15 alignment:NSTextAlignmentLeft];nameLab.font = BoldFont(15);
+    UILabel *nameLab = [UILabel creatLabel:frame(18, 31, 64, 15) inView:_scroll text:@"商品名称" color:appSubColor size:15 alignment:NSTextAlignmentLeft];nameLab.font = BoldFont(15);
     UILabel *typeLab = [UILabel creatLabel:frame(18, nameLab.bottom + 37, 64, 15) inView:_scroll text:@"商品分类" color:appSubColor size:15 alignment:NSTextAlignmentLeft];typeLab.font = BoldFont(15);
     UILabel *showLab = [UILabel creatLabel:frame(18, typeLab.bottom + 37, 78, 15) inView:_scroll text:@"商品展示图" color:appSubColor size:15 alignment:NSTextAlignmentLeft];showLab.font = BoldFont(15);
     UILabel *deatilLab = [UILabel creatLabel:frame(18, showLab.bottom + 111, 94, 15) inView:_scroll text:@"商品详细介绍" color:appSubColor size:14 alignment:NSTextAlignmentLeft];deatilLab.font = BoldFont(15);
@@ -102,12 +104,23 @@
     _productName.textColor = appSubColor;
     _productName.font = Font(14);
     _productName.placeholder = @"请输入商品名称";
+    _productName.text = _model.product_title;
     [_scroll addSubview:_productName];
     
     _typeName = [[UITextField alloc] initWithFrame:frame(102, typeLab.top, ksWidth - 160, 14)];
     _typeName.textColor = appSubColor;
     _typeName.font = Font(14);
     _typeName.placeholder = @"请选择商品分类";
+    NSString *type = @"";
+    for (NSDictionary *topDic in _typeArr) {
+        for (NSDictionary *typeDic in topDic[@"items"]) {
+            if ([_model.category_id isEqualToString:[NSString stringWithFormat:@"%@",typeDic[@"category_id"]]]) {
+                type = typeDic[@"category_name"];
+            }
+        }
+    }
+    
+    _typeName.text = type;
     [_scroll addSubview:_typeName];
     
     UIView *boderView2 = [UIView creatView:frame(90, 70 , ksWidth - 90 - 18, 40) inView:_scroll bgColor:appClearColor];
@@ -141,6 +154,7 @@
     _showView.addImageName = @"icon_add";
     _showView.delegate = self;
     [_scroll addSubview:_showView];
+//    [_showView refreshView];
     
     UIView *boderView3 = [UIView creatView:frame(18, deatilLab.bottom + 10, ksWidth - 36, 80) inView:_scroll bgColor:appClearColor];
     boderView3.layer.borderColor = appBottomLineColor.CGColor;
@@ -152,6 +166,7 @@
     _detail.font = Font(14);
     _detail.placeholder = @"请输入商品详细介绍";
     _detail.placeholderFont = Font(14);
+    _detail.text = _model.product_detail;
     [_scroll addSubview:_detail];
     
     _detailShowView = [HXPhotoView photoManager:self.detailShowManager];
@@ -180,6 +195,9 @@
     }];
     [_addSkuBtn setTitleColor:appMainColor forState:UIControlStateNormal];
     _addSkuBtn.titleLabel.font = Font(12);
+    
+    _skuArr = _model.product_sku[@"sku"];
+    _skuNum = _skuArr.count;
 }
 
 #pragma mark - 七牛
@@ -328,6 +346,13 @@
     if (!_showManager) {
         _showManager = [[HXPhotoManager alloc] initWithType:HXPhotoManagerSelectedTypePhoto];
         _showManager.configuration.photoMaxNum = 4;
+        NSMutableArray *array = [NSMutableArray arrayWithArray:_model.product_images];
+        NSMutableArray *assets = @[].mutableCopy;
+        for (NSString *url in array) {
+            HXCustomAssetModel *asset = [HXCustomAssetModel assetWithNetworkImageURL:[NSURL URLWithString:url] selected:YES];
+            [assets addObject:asset];
+        }
+        [_showManager addCustomAssetModel:assets];
 
     }
     return _showManager;
@@ -337,6 +362,14 @@
     if (!_detailShowManager) {
         _detailShowManager = [[HXPhotoManager alloc] initWithType:HXPhotoManagerSelectedTypePhoto];
         _detailShowManager.configuration.photoMaxNum = 8;
+        NSMutableArray *array = [NSMutableArray arrayWithArray:_model.product_detail_images];
+        NSMutableArray *assets = @[].mutableCopy;
+        for (NSString *url in array) {
+            HXCustomAssetModel *asset = [HXCustomAssetModel assetWithNetworkImageURL:[NSURL URLWithString:url] selected:YES];
+            [assets addObject:asset];
+        }
+        [_detailShowManager addCustomAssetModel:assets];
+
     }
     return _detailShowManager;
 }
@@ -346,14 +379,22 @@
     if (photoView == _showView) {
         [self.showsImgArr removeAllObjects];
         for (HXPhotoModel *model in photos) {
-            [[PHImageManager defaultManager] requestImageDataForAsset:model.asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
-                
-                [self.showsImgArr addObject:[UIImage imageWithData:imageData]];
-            }];
+            if (model.asset) {
+                [[PHImageManager defaultManager] requestImageDataForAsset:model.asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
 
+                    [self.showsImgArr addObject:[UIImage imageWithData:imageData]];
+                }];
+            }else{
+                UIImageView *a = [[UIImageView alloc ] init];
+                [a sd_setImageWithURL:model.networkPhotoUrl completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+                    [self.showsImgArr addObject:a.image];
+                }];
+                
+            }
+            
         }
     }else{
-        
+
         if (photos.count < 4) {
             _skuView.top = 510;
             _scroll.contentSize = CGSizeMake(ksWidth, _skuNum * 48 + 71 + 510 + SafeBottomH);
@@ -363,11 +404,17 @@
         }
         [self.detailShowsImgArr removeAllObjects];
         for (HXPhotoModel *model in photos) {
-            [[PHImageManager defaultManager] requestImageDataForAsset:model.asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
-                
-                [self.detailShowsImgArr addObject:[UIImage imageWithData:imageData]];
-            }];
+            if (model.asset) {
+                [[PHImageManager defaultManager] requestImageDataForAsset:model.asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
 
+                    [self.detailShowsImgArr addObject:[UIImage imageWithData:imageData]];
+                }];
+            }else{
+                UIImageView *a = [[UIImageView alloc ] init];
+                [a sd_setImageWithURL:model.networkPhotoUrl completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+                    [self.detailShowsImgArr addObject:a.image];
+                }];
+            }
         }
     }
 }
@@ -397,7 +444,9 @@
         cell = [[MioSkuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
 //        cell.backgroundColor = appMainColor;
     }
-    
+    cell.skuName.text = _skuArr[indexPath.row][@"规格"];
+    cell.price.text = _skuArr[indexPath.row][@"price"];
+    cell.stock.text = _skuArr[indexPath.row][@"stock"];
     return cell;
 }
 

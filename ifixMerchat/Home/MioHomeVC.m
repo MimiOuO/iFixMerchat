@@ -65,7 +65,9 @@
         else{
             [self creatUI];
         }
-    } failure:^(NSString *errorInfo) {}];
+    } failure:^(NSString *errorInfo) {
+        NSLog(@"%@",errorInfo);
+    }];
 }
 
 -(void)creatUI{
@@ -150,7 +152,7 @@
     UIImageView *waitRefundArrow = [UIImageView creatImgView:frame(waitPayBtn.width - 28, 14, 14, 14) inView:waitRefundBtn image:@"store_icon_arrow" radius:0];
     UILabel *waitRefundLab = [UILabel creatLabel:frame(12, 50, 100, 14) inView:waitRefundBtn text:@"待支付" color:appSubColor size:14 alignment:NSTextAlignmentLeft];waitRefundLab.font = BoldFont(14);
     _waitRefundCount = [UILabel creatLabel:frame(12, 70, 100, 19) inView:waitRefundBtn text:@"68" color:rgb(252, 73, 73) size:19  alignment:NSTextAlignmentLeft];_waitRefundCount.font = [UIFont fontWithName:@"Futura" size:19];
-    
+    self.waitRefundCount = [[UILabel alloc] init];
     [self.view sendSubviewToBack:bgImg];
     
     //评论

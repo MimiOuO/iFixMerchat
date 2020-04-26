@@ -52,7 +52,7 @@
 
         _deleteBtn = [UIButton creatBtn:frame(Margin, 117, (ksWidth-2*Margin)/3, 43) inView:self.contentView bgColor:appClearColor title:@"删除" action:^{
             if([self.delegate respondsToSelector:@selector(clickDelete:)]) {
-                [self.delegate clickDelete:weakSelf.model];
+                [self.delegate clickDelete:self.model];
             }
         }];
         [_deleteBtn setTitleColor:rgb(252, 73, 73) forState:UIControlStateNormal];
@@ -70,7 +70,8 @@
         
         _modifyBtn = [UIButton creatBtn:frame(_upDownBtn.right, 117, (ksWidth-2*Margin)/3, 43) inView:self.contentView bgColor:appClearColor title:@"修改" action:^{
             if([self.delegate respondsToSelector:@selector(clickModify:)]) {
-                [self.delegate clickModify:_model];
+                
+                [self.delegate clickModify:self.model];
             }
         }];
         [_modifyBtn setTitleColor:appMainColor forState:UIControlStateNormal];
@@ -80,6 +81,7 @@
 }
 
 - (void)setModel:(MioProductModel *)model{
+    _model = model;
     [_showImg sd_setImageWithURL:model.product_images[0] placeholderImage:image(@"icon")];
     _productName.text = model.product_title;
     _typeLab.text = model.category_name;

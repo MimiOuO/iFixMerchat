@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MioOrderDetailVC : MioViewController
-
+@property (nonatomic,copy) NSString * orderID;
 @end
 
 NS_ASSUME_NONNULL_END

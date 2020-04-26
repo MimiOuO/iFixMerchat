@@ -9,6 +9,7 @@
 #import "MioWaitPayOrderVC.h"
 #import "MioOrderModel.h"
 #import "MioOrderListCell.h"
+#import "MioOrderDetailVC.h"
 @interface MioWaitPayOrderVC ()
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, assign) NSInteger page;
@@ -26,7 +27,7 @@
 }
 
 -(void)getOrder{
-    [MioGetReq(api_getProducts, (@{@"page":[NSString stringWithFormat:@"%ld",(long)_page]})) success:^(NSDictionary *result){
+    [MioGetReq(api_getOrders, (@{@"page":[NSString stringWithFormat:@"%ld",(long)_page]})) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         [_tableview.mj_footer endRefreshing];
         [_listArr addObjectsFromArray:data];
@@ -50,7 +51,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return _listArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,10 +64,18 @@
     if (!cell) {
         cell = [[MioOrderListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     MioOrderModel *model = [MioOrderModel mj_objectWithKeyValues:_listArr[indexPath.row]];
     cell.model = model;
+    
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MioOrderModel *model = [MioOrderModel mj_objectWithKeyValues:_listArr[indexPath.row]];
+    MioOrderDetailVC *vc = [[MioOrderDetailVC alloc] init];
+    vc.orderID = model.order_id;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 @end

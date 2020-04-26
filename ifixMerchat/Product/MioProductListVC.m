@@ -28,7 +28,8 @@
     [self.navView.rightButton setTitle:@"添加" forState:UIControlStateNormal];
     [self.navView.rightButton setTitleColor:appMainColor forState:UIControlStateNormal];
     self.navView.rightButtonBlock = ^{
-      
+        MioAddProductVC *vc = [[MioAddProductVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     };
     self.navView.split.hidden = YES;
     UISegmentedControl *con =  [[UISegmentedControl alloc] initWithItems:@[@"已上架(65)",@"已下架(15)"]];
@@ -63,6 +64,7 @@
     NSInteger i = seg.selectedSegmentIndex;
     _page = 1;
     _status = 1 + i;
+    [_listArr removeAllObjects];
     [self getProduct];
     
 
@@ -105,7 +107,7 @@
 
 - (void)clickModify:(MioProductModel *)model{
     MioModifyProductVC *vc = [[MioModifyProductVC alloc] init];
-    vc.productId = model.product_id;
+    vc.model = model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)clickUpDown:(MioProductModel *)model{

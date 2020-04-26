@@ -192,6 +192,8 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define api_addProduct              @"" api_base"/shop-auth/product"
 #define api_getProducts             @"" api_base"/shop-auth/products"
 #define api_getProduct(product_id)  [NSString stringWithFormat:@"" api_base"/shop-auth/product/%@",product_id]
+#define api_getOrder(order_id)      [NSString stringWithFormat:@"" api_base"/shop/orders/%@",order_id]
+#define api_getOrders               @"" api_base"/shop-orders"
 
 #define api_wxLogin                 @"" api_base"/socials/wechat_service_account/authorizations"
 #define api_boundPhone              @"" api_base"/my/phone"

@@ -402,6 +402,8 @@
 		23C6CC3A2432E4D700CFC4E3 /* EMConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C6CAF42432E4D600CFC4E3 /* EMConversationCell.m */; };
 		23C6CC3B2432E4D700CFC4E3 /* MioMessegeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C6CAF72432E4D600CFC4E3 /* MioMessegeCell.m */; };
 		23C6CC3C2432E4D700CFC4E3 /* MessegeTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C6CAF82432E4D600CFC4E3 /* MessegeTestVC.m */; };
+		23ED3A6B24519D9B00BF13B6 /* MioCustomerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23ED3A6A24519D9B00BF13B6 /* MioCustomerModel.m */; };
+		23ED3A6E2452760F00BF13B6 /* MioAdressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23ED3A6D2452760F00BF13B6 /* MioAdressModel.m */; };
 		23FBDC8A243C26C000B6E0E1 /* ChartTestVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FBDC89243C26C000B6E0E1 /* ChartTestVCViewController.m */; };
 		D29BF3EC7FB14B1E75FC4006 /* libPods-ifixMerchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB6069E29C029B2B9430D85 /* libPods-ifixMerchat.a */; };
 /* End PBXBuildFile section */
@@ -983,6 +985,10 @@
 		23C6CAF72432E4D600CFC4E3 /* MioMessegeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioMessegeCell.m; sourceTree = "<group>"; };
 		23C6CAF82432E4D600CFC4E3 /* MessegeTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessegeTestVC.m; sourceTree = "<group>"; };
 		23C6CAF92432E4D600CFC4E3 /* EMConversationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMConversationCell.h; sourceTree = "<group>"; };
+		23ED3A6924519D9B00BF13B6 /* MioCustomerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioCustomerModel.h; sourceTree = "<group>"; };
+		23ED3A6A24519D9B00BF13B6 /* MioCustomerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioCustomerModel.m; sourceTree = "<group>"; };
+		23ED3A6C2452760F00BF13B6 /* MioAdressModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioAdressModel.h; sourceTree = "<group>"; };
+		23ED3A6D2452760F00BF13B6 /* MioAdressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioAdressModel.m; sourceTree = "<group>"; };
 		23FBDC88243C26C000B6E0E1 /* ChartTestVCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartTestVCViewController.h; sourceTree = "<group>"; };
 		23FBDC89243C26C000B6E0E1 /* ChartTestVCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChartTestVCViewController.m; sourceTree = "<group>"; };
 		A4641F2232E4633554341B90 /* Pods-ifixMerchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ifixMerchat.release.xcconfig"; path = "Target Support Files/Pods-ifixMerchat/Pods-ifixMerchat.release.xcconfig"; sourceTree = "<group>"; };
@@ -1016,6 +1022,10 @@
 		2330B777244D41FD0062478B /* Need */ = {
 			isa = PBXGroup;
 			children = (
+				23ED3A6924519D9B00BF13B6 /* MioCustomerModel.h */,
+				23ED3A6A24519D9B00BF13B6 /* MioCustomerModel.m */,
+				23ED3A6C2452760F00BF13B6 /* MioAdressModel.h */,
+				23ED3A6D2452760F00BF13B6 /* MioAdressModel.m */,
 			);
 			path = Need;
 			sourceTree = "<group>";
@@ -2486,6 +2496,7 @@
 				23C6CC352432E4D700CFC4E3 /* EMTextViewController.m in Sources */,
 				23C6CBE62432E4D700CFC4E3 /* EMStreamView.m in Sources */,
 				23C6CC2A2432E4D700CFC4E3 /* EMRefreshViewController.m in Sources */,
+				23ED3A6E2452760F00BF13B6 /* MioAdressModel.m in Sources */,
 				23C6CC1B2432E4D700CFC4E3 /* PSTCollectionViewUpdateItem.m in Sources */,
 				23C6CB2C2432E4D700CFC4E3 /* EMMsgTextBubbleView.m in Sources */,
 				23C6CC162432E4D700CFC4E3 /* PSTCollectionViewFlowLayout.m in Sources */,
@@ -2615,6 +2626,7 @@
 				23C6CC102432E4D700CFC4E3 /* MWPhoto.m in Sources */,
 				237E07A0243EF3EF009B44E1 /* MioAFPutRequest.m in Sources */,
 				23C24FD62446A4CA00EE0BE2 /* NSCalendar+STPicker.m in Sources */,
+				23ED3A6B24519D9B00BF13B6 /* MioCustomerModel.m in Sources */,
 				23C6CBE32432E4D700CFC4E3 /* EMCallViewController.m in Sources */,
 				23A45C55243D9AF900ADCE2F /* MioCommentModel.m in Sources */,
 				23AB235D2431C8BA00DBB427 /* UITextField+NumberFormat.m in Sources */,
