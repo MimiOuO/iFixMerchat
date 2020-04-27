@@ -15,6 +15,7 @@
 #import "MioProductListVC.h"
 #import "MioOrderDetailVC.h"
 #import "MioOrderListVC.h"
+#import "MioCommentVC.h"
 @interface MioHomeVC ()
 @property (nonatomic, strong) UILabel *followCountLab;
 @property (nonatomic, strong) UILabel *fansCountLab;
@@ -157,7 +158,7 @@
     
     //评论
     UIButton *cmtBtn = [UIButton creatBtn:frame(0, 443 + StatusHeight, ksWidth, 46) inView:self.view bgColor:appClearColor title:@"" action:^{
-        MioProductListVC *vc = [[MioProductListVC alloc] init];
+        MioCommentVC *vc = [[MioCommentVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
     UIImageView *cmtImg = [UIImageView creatImgView:frame(30, 11, 24, 24) inView:cmtBtn image:@"store_icon_comments" radius:0];

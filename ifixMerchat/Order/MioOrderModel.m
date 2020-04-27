@@ -33,4 +33,17 @@
     }
 }
 
+- (NSString *)refund_reason{
+    if (_refund_show) {
+        return [_refund_show objectForKey:@"refund_reason"];
+    }
+    return @"";
+}
+- (NSArray *)refund_images_path{
+    if (_refund_show) {
+        return [_refund_show objectForKey:@"refund_images_path"];
+    }
+    return @[];
+}
+
 @end

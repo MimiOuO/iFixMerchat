@@ -7,10 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "MioCustomerModel.h"
+#import "MioOrderModel.h"
+#import "MioProductModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MioCommentModel : NSObject
+@property (nonatomic, strong) MioOrderModel *order;
+@property (nonatomic, strong) MioCustomerModel *customer;
+@property (nonatomic,copy) NSString * comment;
+@property (nonatomic, strong) NSArray *comment_images_path;
+@property (nonatomic,copy) NSString * created_at;
+@property (nonatomic,copy) NSString * shop_reply;
+@property (nonatomic,copy) NSString * comment_score;
+@property (nonatomic, assign) int comment_rate;
+@property (nonatomic,copy) MioProductModel * product;
+
 
 @end
 

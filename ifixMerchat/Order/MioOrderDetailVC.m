@@ -32,7 +32,7 @@
 }
 
 -(void)creatUI{
-    
+    WEAKSELF;
     UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NavHeight, ksWidth, ksHeight - NavHeight)];
     scroll.showsVerticalScrollIndicator = NO;
     [self.view addSubview:scroll];
@@ -69,14 +69,18 @@
     [AttributedStr addAttribute:NSFontAttributeName value:BoldFont(10) range:NSMakeRange(0, 1)];
     priceLab.attributedText = AttributedStr;
     UIButton *modifyBtn = [UIButton creatBtn:frame(ksWidth - 34 - 40, 58, 40, 16) inView:productView bgColor:appWhiteColor title:@"修改" action:^{
-        
+        [weakSelf modifyPrice];
     }];
     modifyBtn.titleLabel.font = Font(10);
     [modifyBtn setTitleColor:appMainColor forState:UIControlStateNormal];
     modifyBtn.layer.borderColor = appMainColor.CGColor;
     modifyBtn.layer.borderWidth = 0.5;
     ViewRadius(modifyBtn, 2);
-
+    
+    if (![_model.zh_status isEqualToString:@"待支付"]) {
+        priceLab.left = ksWidth - 34 - 100;
+        modifyBtn.hidden = YES;
+    }
     
     //订单
     UIView *orderView = [UIView creatView:frame(Margin, productView.bottom + 10, ksWidth - 2*Margin, 180) inView:scroll bgColor:appWhiteColor];
@@ -115,7 +119,7 @@
     ViewRadius(callBtn, 2);
     
     UIButton *gpsBtn = [UIButton creatBtn:frame(ksWidth - 34 - 40,serviceAdresss.top - 1, 40, 16) inView:orderView bgColor:appWhiteColor title:@"导航" action:^{
-        
+        [weakSelf clickLine:gpsBtn];
     }];
     gpsBtn.titleLabel.font = Font(10);
     [gpsBtn setTitleColor:appMainColor forState:UIControlStateNormal];
@@ -172,7 +176,7 @@
     btnView.hidden = YES;
     
     scroll.contentSize = CGSizeMake(ksWidth, userView.height + productView.height + orderView.height + needView.height + 5 * 14 );
-    if ([_model.zh_status isEqualToString:@"已完成"] || [_model.zh_status isEqualToString:@"退款中"]) {
+    if ([_model.zh_status isEqualToString:@"待完成"] || [_model.zh_status isEqualToString:@"退款中"]) {
         scroll.contentSize = CGSizeMake(ksWidth, userView.height + productView.height + orderView.height + needView.height + 5 * 14 + 68);
         btnView.hidden = NO;
     }
@@ -187,27 +191,260 @@
         [completeBtn setTitleColor:appWhiteColor forState:UIControlStateNormal];
     }
     
-    if ([_model.zh_status isEqualToString:@"退款中"]) {
-        scroll.contentSize = CGSizeMake(ksWidth, userView.height + productView.height + orderView.height + needView.height + 5 * 14 + 68);
-        btnView.hidden = NO;
-        
-        UIButton *rejectBtn = [UIButton creatBtn:frame(12, 12, 131, 44) inView:btnView bgColor:appWhiteColor title:@"拒绝" action:^{
-            
-        }];
-        [rejectBtn setTitleColor:appRedTextColor forState:UIControlStateNormal];
-        ViewRadius(rejectBtn, 4);
-        rejectBtn.layer.borderColor = appRedTextColor.CGColor;
-        rejectBtn.layer.borderWidth = 1;
-        
-        UIButton *completeBtn = [UIButton creatBtn:frame(rejectBtn.right + 12, 12, ksWidth - 36 - 131, 44) inView:btnView bgImage:@"button" action:^{
-            
-        }];
-        [completeBtn setTitle:@"同意退款" forState:UIControlStateNormal];
-        [completeBtn setTitleColor:appWhiteColor forState:UIControlStateNormal];
-    }
+
     
+    if ([_model.zh_status isEqualToString:@"退款中"] || [_model.zh_status isEqualToString:@"已退款"] || [_model.zh_status isEqualToString:@"拒绝退款"]){
+    
+        UILabel *reasonLab = [UILabel creatLabel:frame(Margin, needView.bottom + 14, 100, 15) inView:scroll text:@"退款原因" color:appRedTextColor size:15 alignment:NSTextAlignmentLeft];
+        reasonLab.font = BoldFont(15);
+        
+        UIView *refundView = [UIView creatView:frame(Margin, needView.bottom + 35, ksWidth - 2*Margin, 180) inView:scroll bgColor:appWhiteColor];
+        refundView.layer.borderColor = appBottomLineColor.CGColor;
+        refundView.layer.borderWidth = 0.5;
+        ViewRadius(refundView, 4);
+
+        UILabel *reason = [UILabel creatLabel:frame(10, 10, ksWidth - 44, 10) inView:refundView text:_model.refund_reason color:appSubColor size:14 alignment:NSTextAlignmentLeft];
+        reason.height = [reason.text heightForFont:Font(14) width:ksWidth - 44];
+        
+        HXPhotoManager * refundShowManager = [[HXPhotoManager alloc] initWithType:HXPhotoManagerSelectedTypePhoto];
+        refundShowManager.configuration.photoMaxNum = _model.refund_images_path.count;
+    
+        NSMutableArray *array = [NSMutableArray arrayWithArray:_model.refund_images_path];
+        NSMutableArray *assets = @[].mutableCopy;
+        for (NSString *url in array) {
+            HXCustomAssetModel *asset = [HXCustomAssetModel assetWithNetworkImageURL:[NSURL URLWithString:url] selected:YES];
+            [assets addObject:asset];
+        }
+        [refundShowManager addCustomAssetModel:assets];
+        
+        HXPhotoView * showView = [HXPhotoView photoManager:refundShowManager];
+        showView.frame = frame(10, reason.bottom+ 8, ksWidth - 44, 80);
+        showView.spacing = 9;
+        showView.lineCount = 4;
+        showView.hideDeleteButton = YES;
+        [refundView addSubview:showView];
+        
+        refundView.height = reason.height + 28 + (_model.refund_images_path.count >4 ? 164 : 80);
+        
+        scroll.contentSize = CGSizeMake(ksWidth, userView.height + productView.height + orderView.height + needView.height + 5 * 14 + refundView.height + 35);
+        
+        if ([_model.zh_status isEqualToString:@"退款中"]) {
+            scroll.contentSize = CGSizeMake(ksWidth, userView.height + productView.height + orderView.height + needView.height + 5 * 14 + refundView.height + 35 + 68);
+            btnView.hidden = NO;
+            
+            UIButton *rejectBtn = [UIButton creatBtn:frame(12, 12, 131, 44) inView:btnView bgColor:appWhiteColor title:@"拒绝" action:^{
+                [weakSelf rejectRefund];
+            }];
+            [rejectBtn setTitleColor:appRedTextColor forState:UIControlStateNormal];
+            ViewRadius(rejectBtn, 4);
+            rejectBtn.layer.borderColor = appRedTextColor.CGColor;
+            rejectBtn.layer.borderWidth = 1;
+            
+            UIButton *agreeBtn = [UIButton creatBtn:frame(rejectBtn.right + 12, 12, ksWidth - 36 - 131, 44) inView:btnView bgImage:@"button" action:^{
+                [weakSelf agreeRefund];
+            }];
+            [agreeBtn setTitle:@"同意退款" forState:UIControlStateNormal];
+            [agreeBtn setTitleColor:appWhiteColor forState:UIControlStateNormal];
+        }
+    }
 }
 
+-(void)agreeRefund{
+    WEAKSELF;
+    UIAlertController *alertController = [[UIAlertController alloc] init];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"确认退款" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        
+        [MioPostReq(api_agreeRefund(_orderID), @{@"k":@"v"}) success:^(NSDictionary *result){
+            [SVProgressHUD showSuccessWithStatus:@"已经同意退款"];
+            
+        } failure:^(NSString *errorInfo) {}];
+    }];
+
+    [alertController addAction:cancelAction];
+
+    [alertController addAction:deleteAction];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alertController animated:YES completion:nil];
+    });
+}
+
+-(void)rejectRefund{
+ 
+     //提示框添加文本输入框
+     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"拒绝原因" message:@"*如果您拒绝用户的退款申请，用户可能会发起申诉，申诉过程中该订单的资金将会被冻结！" preferredStyle:UIAlertControllerStyleAlert];
+     
+     UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+         
+         [MioPostReq(api_rejectRefund(_orderID), @{@"reject_reason":alert.textFields[0].text}) success:^(NSDictionary *result){
+             [SVProgressHUD showSuccessWithStatus:@"已经同意退款"];
+             
+         } failure:^(NSString *errorInfo) {}];
+         
+                                        }];
+     UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {}];
+     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+         textField.placeholder = @"拒绝原因，最多300个字";
+     }];
+
+     [alert addAction:okAction];
+     [alert addAction:cancelAction];
+     [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(void)modifyPrice{
+    //提示框添加文本输入框
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"请输入修改后价格" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        
+        [MioPostReq(api_changePrice(_orderID), @{@"total_price":alert.textFields[0].text}) success:^(NSDictionary *result){
+            [SVProgressHUD showSuccessWithStatus:@"修改成功！"];
+            [self getOrder];
+        } failure:^(NSString *errorInfo) {}];
+        
+    }];
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {}];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+//        textField.placeholder = @"拒绝原因，最多300个字";
+        textField.keyboardType = UIKeyboardTypeDecimalPad;
+    }];
+
+    [alert addAction:okAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+#pragma mark - 导航
+
+
+//查看线路
+- (void)clickLine:(UIButton *)sender{
+    NSMutableArray *mapArr = [NSMutableArray arrayWithCapacity:0];
+    
+    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"baidumap://"]]){
+        [mapArr addObject:@"百度地图"];
+    }
+    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"iosamap://"]]){
+        [mapArr addObject:@"高德地图"];
+    }
+    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"qqmap://"]]){
+        [mapArr addObject:@"腾讯地图"];
+    }
+    
+    if (mapArr.count == 1) {
+        [self JumpToMap:mapArr[0]];
+    }else if(mapArr.count > 0){
+        UIAlertController *mapAlert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        for (NSString *mapName in mapArr) {
+            UIAlertAction *Action = [UIAlertAction actionWithTitle:mapName style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self JumpToMap:action.title];
+            }];
+            [mapAlert addAction:Action];
+        }
+        
+        //取消
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [mapAlert addAction:cancelAction];
+        
+        [self presentViewController:mapAlert animated:YES completion:^{
+            
+        }];
+    }else{
+        //使用自带地图
+        [self JumpToMap:@"苹果地图"];
+    }
+}
+
+//选择地图
+- (void)JumpToMap:(NSString *)mapName{
+    if ([mapName isEqualToString:@"苹果地图"]) {
+//        [self appleMap];
+    }else if ([mapName isEqualToString:@"百度地图"]){
+//        [self BaiduMap];
+    }else if ([mapName isEqualToString:@"高德地图"]){
+        [self iosMap];
+    }else if ([mapName isEqualToString:@"腾讯地图"]){
+//        [self qqMap];
+    }
+}
+
+////百度地图
+//- (void)BaiduMap{
+//    float shopLat = 30.1526459161;
+//    float shoplng = 106.1631561654;
+//
+//    NSString *urlString = [NSString stringWithFormat:@"baidumap://map/direction?origin=latlng:%f,%f|name:我的位置&mode=transit&coord_type= bd09ll",self.userLocation.location.coordinate.latitude, self.userLocation.location.coordinate.longitude];
+//
+//    if (shopLat != 0 && shoplng != 0) {
+//        urlString = [NSString stringWithFormat:@"%@&destination=latlng:%f,%f|name:%@", urlString, shopLat, shoplng, @"目标地址,你可以自行替换"];
+//    }else{
+//        urlString = [NSString stringWithFormat:@"%@&destination=%@|name:%@",urlString, _orderModel.addressStr,_orderModel.addressStr];
+//    }
+//
+//    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString] options:@{} completionHandler:^(BOOL success) {
+//
+//    }];
+//}
+
+//高德地图
+- (void)iosMap{
+    CLLocationCoordinate2D gcj02Coord = CLLocationCoordinate2DMake(30.1526459161,106.1631561654);
+    
+    float shopLat = gcj02Coord.latitude;
+    float shoplng = gcj02Coord.longitude;
+    
+    NSString *urlString = [NSString stringWithFormat:@"iosamap://path?sourceApplication=jikexiue&backScheme=jkxe&sname=我的位置&dname=我的位置&dlat=%f&dlon=%f&dev=1&t=1",shopLat, shoplng];
+    
+    if (shopLat != 0 && shoplng != 0) {
+        urlString = [NSString stringWithFormat:@"%@&dlat=%f&dlon=%f&dname=%@", urlString, shopLat, shoplng ,@"城市花园"];
+    }else{
+        urlString = [NSString stringWithFormat:@"%@&dname=%@",urlString, @"城市花园"];
+    }
+    
+    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString] options:@{} completionHandler:^(BOOL success) {
+        
+    }];
+}
+
+//- (void)qqMap{
+//
+//    CLLocationCoordinate2D gcj02Coord = CLLocationCoordinate2DMake(30.1526459161, 106.1631561654);
+//
+//    float shopLat = gcj02Coord.latitude;
+//    float shoplng = gcj02Coord.longitude;
+//
+//    NSString *urlString = [NSString stringWithFormat:@"qqmap://map/routeplan?type=bus&fromcoord=%f,%f&from=我的位置&referer=jikexiu",self.userLocation.location.coordinate.latitude, self.userLocation.location.coordinate.longitude];
+//
+//    urlString = [NSString stringWithFormat:@"%@&tocoord=%f,%f&to=%@",urlString, shopLat, shoplng, _orderModel.addressStr];
+//
+//    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString] options:@{} completionHandler:^(BOOL success) {
+//
+//    }];
+//}
+//
+////苹果原生地图
+//- (void)appleMap{
+//    CLLocationCoordinate2D desCoordinate = CLLocationCoordinate2DMake(30.1526459161, 106.1631561654);
+//
+//    MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
+//    currentLocation.name = @"我的位置";
+//    MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:desCoordinate addressDictionary:nil]];
+//    toLocation.name = [NSString stringWithFormat:@"%@",_orderModel.addressStr];
+//
+//    [MKMapItem openMapsWithItems:@[currentLocation, toLocation]
+//                   launchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeTransit,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
+//}
 
 
 @end

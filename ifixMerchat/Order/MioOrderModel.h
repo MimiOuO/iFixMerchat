@@ -42,6 +42,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * need_category;
 @property (nonatomic,copy) NSString * need_description;
 @property (nonatomic, strong) NSArray *need_images_path;
-@end
 
+
+//退款
+@property (nonatomic, strong) NSDictionary *refund_show;
+@property (nonatomic,copy) NSString * refund_reason;
+@property (nonatomic, strong) NSArray *refund_images_path;
+@end
 NS_ASSUME_NONNULL_END
