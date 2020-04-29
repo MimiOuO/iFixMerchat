@@ -84,7 +84,7 @@
 - (void)_setupButtonsView
 {
 //    NSInteger count = 7;
-    NSInteger count = 6;
+    NSInteger count = 5;
     CGFloat width = [UIScreen mainScreen].bounds.size.width / count;
     
     self.buttonArray = [[NSMutableArray alloc] init];
@@ -154,19 +154,19 @@
     }];
     [self.buttonArray addObject:adressButton];
     
-    UIButton *callButton = [[UIButton alloc] init];
-    [callButton setImage:[UIImage imageNamed:@"chatbar_call"] forState:UIControlStateNormal];
-    [callButton setImage:[UIImage imageNamed:@"chatbar_call_blue"] forState:UIControlStateSelected];
-    [callButton addTarget:self action:@selector(callButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.buttonsView addSubview:callButton];
-    [callButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.buttonsView);
-        make.left.equalTo(adressButton.mas_right);
-        make.bottom.equalTo(adressButton);
-//        make.width.mas_equalTo(width);
-        make.right.equalTo(self.buttonsView);
-    }];
-    [self.buttonArray addObject:callButton];
+//    UIButton *callButton = [[UIButton alloc] init];
+//    [callButton setImage:[UIImage imageNamed:@"chatbar_call"] forState:UIControlStateNormal];
+//    [callButton setImage:[UIImage imageNamed:@"chatbar_call_blue"] forState:UIControlStateSelected];
+//    [callButton addTarget:self action:@selector(callButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.buttonsView addSubview:callButton];
+//    [callButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.buttonsView);
+//        make.left.equalTo(adressButton.mas_right);
+//        make.bottom.equalTo(adressButton);
+////        make.width.mas_equalTo(width);
+//        make.right.equalTo(self.buttonsView);
+//    }];
+//    [self.buttonArray addObject:callButton];
     
 //    UIButton *moreButton = [[UIButton alloc] init];
 //    [moreButton setImage:[UIImage imageNamed:@"chatbar_extend"] forState:UIControlStateNormal];

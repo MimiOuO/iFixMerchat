@@ -17,6 +17,7 @@
 #import "MioOrderListVC.h"
 #import "MioCommentVC.h"
 #import "MioNeedVC.h"
+#import "MioEditShopVC.h"
 @interface MioHomeVC ()
 @property (nonatomic, strong) UILabel *followCountLab;
 @property (nonatomic, strong) UILabel *fansCountLab;
@@ -65,6 +66,7 @@
             [self presentViewController:nav animated:NO completion:nil];
         }
         else{
+            [self.view removeAllSubviews];
             [self creatUI];
         }
     } failure:^(NSString *errorInfo) {
@@ -74,11 +76,29 @@
 
 -(void)creatUI{
     UIImageView *bgImg = [UIImageView creatImgView:frame(0, IPHONE_X ? 0 : -20, ksWidth, 333) inView:self.view image:@"store_bg" radius:0];
-    UIImageView *logoImg = [UIImageView creatImgView:frame(18, StatusHeight + 22, 106, 106) inView:self.view image:@"logo_bg" radius:0];
-    UILabel *shopName = [UILabel creatLabel:frame(120, StatusHeight + 44, ksWidth - 190, 17) inView:self.view text:@"京东方电脑维修" color:appWhiteColor size:17 alignment:NSTextAlignmentLeft];
-    shopName.font = BoldFont(17);
+    UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0,StatusHeight, ksWidth , ksHeight -  StatusHeight - TabHeight)];
+    scroll.contentSize = CGSizeMake(ksWidth, 641);
+    scroll.showsVerticalScrollIndicator = NO;
+    [self.view addSubview:scroll];
     
-    UIView *countView = [UIView creatView:frame(Margin, shopName.bottom + 56, ksWidth - 2* Margin, 80) inView:self.view bgColor:appClearColor];
+    
+    UIImageView *logoImg = [UIImageView creatImgView:frame(18, 0 + 22, 106, 106) inView:scroll image:@"logo_bg" radius:0];
+    UIImageView *logo = [UIImageView creatImgView:frame(20, 10, 66, 66) inView:logoImg image:@"" radius:6];
+    [logo sd_setImageWithURL:Url(@"http://file.duoduo.apphw.com/app/image/1031/1587643632128") placeholderImage:image(@"icon")];
+    UILabel *shopName = [UILabel creatLabel:frame(120, 0 + 44, ksWidth - 190, 17) inView:scroll text:@"京东方电脑维修" color:appWhiteColor size:17 alignment:NSTextAlignmentLeft];
+    shopName.font = BoldFont(17);
+    shopName.width = [shopName.text widthForFont:BoldFont(17)];
+    
+    UIImageView *star = [UIImageView creatImgView:frame(120, 73, 88, 10) inView:scroll image:@"score_icon_5.0" radius:0];
+    
+    UIImageView *edit = [UIImageView creatImgView:frame( shopName.right + 8 ,47, 12, 12) inView:scroll image:@"store_" radius:0];
+    
+    UIButton *shopBtn = [UIButton creatBtn:frame(0, 0, ksWidth, 110) inView:scroll bgColor:appClearColor title:@"" action:^{
+        MioEditShopVC *vc = [[MioEditShopVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
+    
+    UIView *countView = [UIView creatView:frame(Margin, shopName.bottom + 56, ksWidth - 2* Margin, 80) inView:scroll bgColor:appClearColor];
     ViewRadius(countView, 8);
     _followCountLab = [UILabel creatLabel:frame(0, 24, countView.width/4, 17) inView:countView text:@"123" color:appWhiteColor size:14];
     _fansCountLab = [UILabel creatLabel:frame(countView.width/4, 24, countView.width/4, 17) inView:countView text:@"456" color:appWhiteColor size:14];
@@ -105,13 +125,13 @@
 
     
     //待支付
-    UIButton *waitPayBtn = [UIButton creatBtn:frame(18, StatusHeight + 209, ksWidth/2 - 24, 100) inView:self.view bgImage:@"store_card_bg" action:^{
+    UIButton *waitPayBtn = [UIButton creatBtn:frame(18, 0 + 209, ksWidth/2 - 24, 100) inView:scroll bgImage:@"store_card_bg" action:^{
         MioOrderListVC *vc = [[MioOrderListVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
-    UIImageView *waitPayImg = [UIImageView creatImgView:frame(waitPayBtn.left - 45, waitPayBtn.top - 41, waitPayBtn.width *1.55 , 190) inView:self.view image:@"store_card_shadow" radius:0];
+    UIImageView *waitPayImg = [UIImageView creatImgView:frame(waitPayBtn.left - 45, waitPayBtn.top - 41, waitPayBtn.width *1.55 , 190) inView:scroll image:@"store_card_shadow" radius:0];
 //    waitPayImg.alpha = 0.5;
-    [self.view sendSubviewToBack:waitPayImg];
+    [scroll sendSubviewToBack:waitPayImg];
     UIImageView *waitPayIcon = [UIImageView creatImgView:frame(12, 13, 31, 22) inView:waitPayBtn image:@"store_icon_pay" radius:0];
     UIImageView *waitPayArrow = [UIImageView creatImgView:frame(waitPayBtn.width - 28, 14, 14, 14) inView:waitPayBtn image:@"store_icon_arrow" radius:0];
     UILabel *waitPayLab = [UILabel creatLabel:frame(12, 50, 100, 14) inView:waitPayBtn text:@"待支付" color:appSubColor size:14 alignment:NSTextAlignmentLeft];waitPayLab.font = BoldFont(14);
@@ -119,24 +139,24 @@
 
     
     //待完成
-    UIButton *waitFinishBtn = [UIButton creatBtn:frame(ksWidth/2 + 6, StatusHeight + 209, ksWidth/2 - 24, 100) inView:self.view bgImage:@"store_card_bg" action:^{
+    UIButton *waitFinishBtn = [UIButton creatBtn:frame(ksWidth/2 + 6, 0 + 209, ksWidth/2 - 24, 100) inView:scroll bgImage:@"store_card_bg" action:^{
         
     }];
-    UIImageView *waitFinishImg = [UIImageView creatImgView:frame(waitFinishBtn.left - 45, waitFinishBtn.top - 41, waitFinishBtn.width *1.55 , 190) inView:self.view image:@"store_card_shadow" radius:0];
+    UIImageView *waitFinishImg = [UIImageView creatImgView:frame(waitFinishBtn.left - 45, waitFinishBtn.top - 41, waitFinishBtn.width *1.55 , 190) inView:scroll image:@"store_card_shadow" radius:0];
 //    waitFinishImg.alpha = 0.5;
-    [self.view sendSubviewToBack:waitFinishImg];
+    [scroll sendSubviewToBack:waitFinishImg];
     UIImageView *waitFinishIcon = [UIImageView creatImgView:frame(12, 13, 31, 22) inView:waitFinishBtn image:@"store_icon_unfinished" radius:0];
     UIImageView *waitFinishArrow = [UIImageView creatImgView:frame(waitPayBtn.width - 28, 14, 14, 14) inView:waitFinishBtn image:@"store_icon_arrow" radius:0];
     UILabel *waitFinishLab = [UILabel creatLabel:frame(12, 50, 100, 14) inView:waitFinishBtn text:@"待支付" color:appSubColor size:14 alignment:NSTextAlignmentLeft];waitFinishLab.font = BoldFont(14);
     _waitFinishCount = [UILabel creatLabel:frame(12, 70, 100, 19) inView:waitFinishBtn text:@"68" color:rgb(252, 73, 73) size:19  alignment:NSTextAlignmentLeft];_waitFinishCount.font = [UIFont fontWithName:@"Futura" size:19];
     
     //已完成
-    UIButton *alreadyFinishBtn = [UIButton creatBtn:frame(18, StatusHeight + 323, ksWidth/2 - 24, 100) inView:self.view bgImage:@"store_card_bg" action:^{
+    UIButton *alreadyFinishBtn = [UIButton creatBtn:frame(18, 0 + 323, ksWidth/2 - 24, 100) inView:scroll bgImage:@"store_card_bg" action:^{
         
     }];
-    UIImageView *alreadyFinishImg = [UIImageView creatImgView:frame(alreadyFinishBtn.left - 45, alreadyFinishBtn.top - 41, alreadyFinishBtn.width *1.55 , 190) inView:self.view image:@"store_card_shadow" radius:0];
+    UIImageView *alreadyFinishImg = [UIImageView creatImgView:frame(alreadyFinishBtn.left - 45, alreadyFinishBtn.top - 41, alreadyFinishBtn.width *1.55 , 190) inView:scroll image:@"store_card_shadow" radius:0];
 //    alreadyFinishImg.alpha = 0.5;
-    [self.view sendSubviewToBack:alreadyFinishImg];
+    [scroll sendSubviewToBack:alreadyFinishImg];
     UIImageView *alreadyFinishIcon = [UIImageView creatImgView:frame(12, 13, 31, 22) inView:alreadyFinishBtn image:@"store_icon_complete" radius:0];
     UIImageView *alreadyFinishArrow = [UIImageView creatImgView:frame(waitPayBtn.width - 28, 14, 14, 14) inView:alreadyFinishBtn image:@"store_icon_arrow" radius:0];
     UILabel *alreadyFinishLab = [UILabel creatLabel:frame(12, 50, 100, 14) inView:alreadyFinishBtn text:@"待支付" color:appSubColor size:14 alignment:NSTextAlignmentLeft];alreadyFinishLab.font = BoldFont(14);
@@ -144,21 +164,21 @@
     
     
     //待退款
-    UIButton *waitRefundBtn = [UIButton creatBtn:frame(ksWidth/2 + 6, StatusHeight +323, ksWidth/2 - 24, 100) inView:self.view bgImage:@"store_card_bg" action:^{
+    UIButton *waitRefundBtn = [UIButton creatBtn:frame(ksWidth/2 + 6, 0 +323, ksWidth/2 - 24, 100) inView:scroll bgImage:@"store_card_bg" action:^{
         
     }];
-    UIImageView *waitRefundImg = [UIImageView creatImgView:frame(waitRefundBtn.left - 45, waitRefundBtn.top - 41, waitRefundBtn.width *1.55 , 190) inView:self.view image:@"store_card_shadow" radius:0];
+    UIImageView *waitRefundImg = [UIImageView creatImgView:frame(waitRefundBtn.left - 45, waitRefundBtn.top - 41, waitRefundBtn.width *1.55 , 190) inView:scroll image:@"store_card_shadow" radius:0];
 //    waitRefundImg.alpha = 0.5;
-    [self.view sendSubviewToBack:waitRefundImg];
+    [scroll sendSubviewToBack:waitRefundImg];
     UIImageView *waitRefundIcon = [UIImageView creatImgView:frame(12, 13, 31, 22) inView:waitRefundBtn image:@"store_icon_refund" radius:0];
     UIImageView *waitRefundArrow = [UIImageView creatImgView:frame(waitPayBtn.width - 28, 14, 14, 14) inView:waitRefundBtn image:@"store_icon_arrow" radius:0];
     UILabel *waitRefundLab = [UILabel creatLabel:frame(12, 50, 100, 14) inView:waitRefundBtn text:@"待支付" color:appSubColor size:14 alignment:NSTextAlignmentLeft];waitRefundLab.font = BoldFont(14);
     _waitRefundCount = [UILabel creatLabel:frame(12, 70, 100, 19) inView:waitRefundBtn text:@"68" color:rgb(252, 73, 73) size:19  alignment:NSTextAlignmentLeft];_waitRefundCount.font = [UIFont fontWithName:@"Futura" size:19];
     self.waitRefundCount = [[UILabel alloc] init];
-    [self.view sendSubviewToBack:bgImg];
+    [scroll sendSubviewToBack:bgImg];
     
     //评论
-    UIButton *cmtBtn = [UIButton creatBtn:frame(0, 443 + StatusHeight, ksWidth, 46) inView:self.view bgColor:appClearColor title:@"" action:^{
+    UIButton *cmtBtn = [UIButton creatBtn:frame(0, 443 + 0, ksWidth, 46) inView:scroll bgColor:appClearColor title:@"" action:^{
         MioCommentVC *vc = [[MioCommentVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
@@ -167,7 +187,7 @@
     UIImageView *arrow1 = [UIImageView creatImgView:frame(ksWidth - 30 - 7.5, 17, 7.5, 12) inView:cmtBtn image:@"rightArrow" radius:0];
     
     //商品
-    UIButton *goodsBtn = [UIButton creatBtn:frame(0, cmtBtn.bottom , ksWidth, 46) inView:self.view bgColor:appClearColor title:@"" action:^{
+    UIButton *goodsBtn = [UIButton creatBtn:frame(0, cmtBtn.bottom , ksWidth, 46) inView:scroll bgColor:appClearColor title:@"" action:^{
         MioAddProductVC *vc = [[MioAddProductVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
@@ -175,14 +195,23 @@
     UILabel *goodsLab = [UILabel creatLabel:frame(64, 0, 100, 46) inView:goodsBtn text:@"商品管理" color:appSubColor size:15 alignment:NSTextAlignmentLeft];
     UIImageView *arrow2 = [UIImageView creatImgView:frame(ksWidth - 30 - 7.5, 17, 7.5, 12) inView:goodsBtn image:@"rightArrow" radius:0];
     
+    //商品
+    UIButton *BillBtn = [UIButton creatBtn:frame(0, goodsBtn.bottom , ksWidth, 46) inView:scroll bgColor:appClearColor title:@"" action:^{
+        MioAddProductVC *vc = [[MioAddProductVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
+    UIImageView *BillImage = [UIImageView creatImgView:frame(30, 11, 24, 24) inView:BillBtn image:@"store_icon_bill" radius:0];
+    UILabel *BillLab = [UILabel creatLabel:frame(64, 0, 100, 46) inView:BillBtn text:@"我的收益" color:appSubColor size:15 alignment:NSTextAlignmentLeft];
+    UIImageView *arrow3 = [UIImageView creatImgView:frame(ksWidth - 30 - 7.5, 17, 7.5, 12) inView:BillBtn image:@"rightArrow" radius:0];
+    
     //设置
-    UIButton *settingBtn = [UIButton creatBtn:frame(0, goodsBtn.bottom, ksWidth, 46) inView:self.view bgColor:appClearColor title:@"" action:^{
+    UIButton *settingBtn = [UIButton creatBtn:frame(0, BillBtn.bottom, ksWidth, 46) inView:scroll bgColor:appClearColor title:@"" action:^{
         MioSettingVC *vc = [[MioSettingVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
     UIImageView *settingImg = [UIImageView creatImgView:frame(30, 11, 24, 24) inView:settingBtn image:@"store_icon_set" radius:0];
     UILabel *settingLab = [UILabel creatLabel:frame(64, 0, 100, 46) inView:settingBtn text:@"设置" color:appSubColor size:15 alignment:NSTextAlignmentLeft];
-    UIImageView *arrow3 = [UIImageView creatImgView:frame(ksWidth - 30 - 7.5, 17, 7.5, 12) inView:settingBtn image:@"rightArrow" radius:0];
+    UIImageView *arrow4 = [UIImageView creatImgView:frame(ksWidth - 30 - 7.5, 17, 7.5, 12) inView:settingBtn image:@"rightArrow" radius:0];
 
     
     UIButton *grabBtn = [UIButton creatBtn:frame(ksWidth - 62 -11, ksHeight - 130 - SafeBottomH, 62, 62) inView:self.view bgImage:@"store_button_order" action:^{

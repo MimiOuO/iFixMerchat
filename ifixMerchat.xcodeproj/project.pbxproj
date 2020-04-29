@@ -25,6 +25,7 @@
 		237E079A243DBA0F009B44E1 /* MioShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 237E0799243DBA0F009B44E1 /* MioShopModel.m */; };
 		237E079D243DC3A4009B44E1 /* MioApplyErrorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 237E079C243DC3A4009B44E1 /* MioApplyErrorVC.m */; };
 		237E07A0243EF3EF009B44E1 /* MioAFPutRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 237E079E243EF3EF009B44E1 /* MioAFPutRequest.m */; };
+		23A209B22459287500921BA5 /* MioEditShopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A209B12459287500921BA5 /* MioEditShopVC.m */; };
 		23A45C47243D966200ADCE2F /* MioApplyWaitVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A45C46243D966200ADCE2F /* MioApplyWaitVC.m */; };
 		23A45C4A243D979D00ADCE2F /* inreview.svga in Resources */ = {isa = PBXBuildFile; fileRef = 23A45C48243D96E400ADCE2F /* inreview.svga */; };
 		23A45C4B243D97A200ADCE2F /* 不通过动画.svga in Resources */ = {isa = PBXBuildFile; fileRef = 23A45C49243D96E400ADCE2F /* 不通过动画.svga */; };
@@ -449,6 +450,8 @@
 		237E079C243DC3A4009B44E1 /* MioApplyErrorVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioApplyErrorVC.m; sourceTree = "<group>"; };
 		237E079E243EF3EF009B44E1 /* MioAFPutRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioAFPutRequest.m; sourceTree = "<group>"; };
 		237E079F243EF3EF009B44E1 /* MioAFPutRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioAFPutRequest.h; sourceTree = "<group>"; };
+		23A209B02459287500921BA5 /* MioEditShopVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioEditShopVC.h; sourceTree = "<group>"; };
+		23A209B12459287500921BA5 /* MioEditShopVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioEditShopVC.m; sourceTree = "<group>"; };
 		23A45C45243D966200ADCE2F /* MioApplyWaitVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioApplyWaitVC.h; sourceTree = "<group>"; };
 		23A45C46243D966200ADCE2F /* MioApplyWaitVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioApplyWaitVC.m; sourceTree = "<group>"; };
 		23A45C48243D96E400ADCE2F /* inreview.svga */ = {isa = PBXFileReference; lastKnownFileType = file; path = inreview.svga; sourceTree = "<group>"; };
@@ -1097,6 +1100,8 @@
 			children = (
 				230779442434791E00EFCD1D /* MioApplyShopVC.h */,
 				230779452434791E00EFCD1D /* MioApplyShopVC.m */,
+				23A209B02459287500921BA5 /* MioEditShopVC.h */,
+				23A209B12459287500921BA5 /* MioEditShopVC.m */,
 				230779592436E21C00EFCD1D /* MamapVC.h */,
 				230779582436E21C00EFCD1D /* MamapVC.m */,
 				230779532436E1BF00EFCD1D /* PlaceAroundTableView.h */,
@@ -2606,6 +2611,7 @@
 				23C6CB2F2432E4D700CFC4E3 /* EMMsgLocationBubbleView.m in Sources */,
 				23C24FD22446A4CA00EE0BE2 /* STPickerViewUI.m in Sources */,
 				23AB23B42431DAEE00DBB427 /* TFQClickAreaButton.m in Sources */,
+				23A209B22459287500921BA5 /* MioEditShopVC.m in Sources */,
 				23C6CB692432E4D700CFC4E3 /* ConfInviteUserCell.m in Sources */,
 				23AB23AA2431DA5300DBB427 /* HWTFCursorView.m in Sources */,
 				2368D66B2449833800E1546E /* MioWaitPayOrderVC.m in Sources */,

@@ -24,6 +24,5 @@ pod 'SVGAPlayer'
 pod 'AMap3DMap'
 pod 'AMapSearch'
 pod 'AAChartKit'
-pod 'WMPageController', '~> 2.3.0'
 pod 'LEEAlert'
 end

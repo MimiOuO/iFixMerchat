@@ -31,6 +31,10 @@
         _page = _page + 1;
         [self requestComment];
     }];
+    _cmtTable.mj_header = [MJRefreshHeader  headerWithRefreshingBlock:^{
+        _page = 1;
+        [self requestComment];
+    }];
     _page = 1;
     _cmtArr = [[NSMutableArray alloc] init];
     [self requestComment];
