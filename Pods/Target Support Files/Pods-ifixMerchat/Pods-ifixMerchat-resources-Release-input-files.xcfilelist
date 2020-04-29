@@ -4,5 +4,4 @@ ${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle
 ${PODS_ROOT}/HXPhotoPicker/照片选择器/HXPhotoPicker/Resource/HXPhotoPicker.bundle
 ${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle
 ${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle
-${PODS_ROOT}/WMZDialog/WMZDialog/WMZDialog/WMZDialog.bundle
 ${PODS_ROOT}/YBImageBrowser/YBImageBrowser/YBImageBrowser.bundle

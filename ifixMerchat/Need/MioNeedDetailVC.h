@@ -1,16 +1,17 @@
 //
-//  MioNeedCell.h
+//  MioNeedDetailVC.h
 //  ifixMerchat
 //
-//  Created by Mimio on 2020/4/26.
+//  Created by Mimio on 2020/4/28.
 //  Copyright © 2020 Mimio. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "MioViewController.h"
 #import "MioNeedModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MioNeedCell : UITableViewCell
+@interface MioNeedDetailVC : MioViewController
+@property (nonatomic,copy) NSString * needId;
 @property (nonatomic, strong) MioNeedModel *model;
 @end
 

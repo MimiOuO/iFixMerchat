@@ -16,6 +16,7 @@
 #import "MioOrderDetailVC.h"
 #import "MioOrderListVC.h"
 #import "MioCommentVC.h"
+#import "MioNeedVC.h"
 @interface MioHomeVC ()
 @property (nonatomic, strong) UILabel *followCountLab;
 @property (nonatomic, strong) UILabel *fansCountLab;
@@ -185,7 +186,7 @@
 
     
     UIButton *grabBtn = [UIButton creatBtn:frame(ksWidth - 62 -11, ksHeight - 130 - SafeBottomH, 62, 62) inView:self.view bgImage:@"store_button_order" action:^{
-        MioOrderDetailVC *vc = [[MioOrderDetailVC alloc] init];
+        MioNeedVC *vc = [[MioNeedVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
 }

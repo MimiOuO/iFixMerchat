@@ -13,6 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MioCommentModel : NSObject
+@property (nonatomic,copy) NSString * order_comment_id;
 @property (nonatomic, strong) MioOrderModel *order;
 @property (nonatomic, strong) MioCustomerModel *customer;
 @property (nonatomic,copy) NSString * comment;

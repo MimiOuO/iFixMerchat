@@ -406,6 +406,9 @@
 		23ED3A6E2452760F00BF13B6 /* MioAdressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23ED3A6D2452760F00BF13B6 /* MioAdressModel.m */; };
 		23ED3A722455685F00BF13B6 /* MioNeedListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23ED3A712455685F00BF13B6 /* MioNeedListVC.m */; };
 		23ED3A752455688500BF13B6 /* MioNeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23ED3A742455688500BF13B6 /* MioNeedCell.m */; };
+		23ED3A782457D5F700BF13B6 /* MioNeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23ED3A772457D5F700BF13B6 /* MioNeedModel.m */; };
+		23ED3A7B2457FBE900BF13B6 /* MioNeedDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23ED3A7A2457FBE900BF13B6 /* MioNeedDetailVC.m */; };
+		23ED3A7E245824EE00BF13B6 /* MioNeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23ED3A7D245824EE00BF13B6 /* MioNeedVC.m */; };
 		23FBDC8A243C26C000B6E0E1 /* ChartTestVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FBDC89243C26C000B6E0E1 /* ChartTestVCViewController.m */; };
 		D29BF3EC7FB14B1E75FC4006 /* libPods-ifixMerchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB6069E29C029B2B9430D85 /* libPods-ifixMerchat.a */; };
 /* End PBXBuildFile section */
@@ -995,6 +998,12 @@
 		23ED3A712455685F00BF13B6 /* MioNeedListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioNeedListVC.m; sourceTree = "<group>"; };
 		23ED3A732455688500BF13B6 /* MioNeedCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioNeedCell.h; sourceTree = "<group>"; };
 		23ED3A742455688500BF13B6 /* MioNeedCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioNeedCell.m; sourceTree = "<group>"; };
+		23ED3A762457D5F700BF13B6 /* MioNeedModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioNeedModel.h; sourceTree = "<group>"; };
+		23ED3A772457D5F700BF13B6 /* MioNeedModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioNeedModel.m; sourceTree = "<group>"; };
+		23ED3A792457FBE900BF13B6 /* MioNeedDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioNeedDetailVC.h; sourceTree = "<group>"; };
+		23ED3A7A2457FBE900BF13B6 /* MioNeedDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioNeedDetailVC.m; sourceTree = "<group>"; };
+		23ED3A7C245824EE00BF13B6 /* MioNeedVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioNeedVC.h; sourceTree = "<group>"; };
+		23ED3A7D245824EE00BF13B6 /* MioNeedVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioNeedVC.m; sourceTree = "<group>"; };
 		23FBDC88243C26C000B6E0E1 /* ChartTestVCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartTestVCViewController.h; sourceTree = "<group>"; };
 		23FBDC89243C26C000B6E0E1 /* ChartTestVCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChartTestVCViewController.m; sourceTree = "<group>"; };
 		A4641F2232E4633554341B90 /* Pods-ifixMerchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ifixMerchat.release.xcconfig"; path = "Target Support Files/Pods-ifixMerchat/Pods-ifixMerchat.release.xcconfig"; sourceTree = "<group>"; };
@@ -1032,6 +1041,12 @@
 				23ED3A712455685F00BF13B6 /* MioNeedListVC.m */,
 				23ED3A732455688500BF13B6 /* MioNeedCell.h */,
 				23ED3A742455688500BF13B6 /* MioNeedCell.m */,
+				23ED3A762457D5F700BF13B6 /* MioNeedModel.h */,
+				23ED3A772457D5F700BF13B6 /* MioNeedModel.m */,
+				23ED3A792457FBE900BF13B6 /* MioNeedDetailVC.h */,
+				23ED3A7A2457FBE900BF13B6 /* MioNeedDetailVC.m */,
+				23ED3A7C245824EE00BF13B6 /* MioNeedVC.h */,
+				23ED3A7D245824EE00BF13B6 /* MioNeedVC.m */,
 			);
 			path = Need;
 			sourceTree = "<group>";
@@ -2471,6 +2486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23ED3A7E245824EE00BF13B6 /* MioNeedVC.m in Sources */,
 				23FBDC8A243C26C000B6E0E1 /* ChartTestVCViewController.m in Sources */,
 				23C6CAFA2432E4D700CFC4E3 /* EMNotificationCell.m in Sources */,
 				23A45C4F243D9AB900ADCE2F /* MioCommentVC.m in Sources */,
@@ -2540,6 +2556,7 @@
 				23C6CC362432E4D700CFC4E3 /* EMRealtimeSearch.m in Sources */,
 				23AB23572431C8BA00DBB427 /* UIImageView+MioExtension.m in Sources */,
 				23C6CC0A2432E4D700CFC4E3 /* amrFileCodec.mm in Sources */,
+				23ED3A782457D5F700BF13B6 /* MioNeedModel.m in Sources */,
 				237E079D243DC3A4009B44E1 /* MioApplyErrorVC.m in Sources */,
 				234FF8CB24444C5400FE34F7 /* MioAboutUsVC.m in Sources */,
 				23C24FCF2446A4CA00EE0BE2 /* STPickerArea.m in Sources */,
@@ -2593,6 +2610,7 @@
 				23AB23AA2431DA5300DBB427 /* HWTFCursorView.m in Sources */,
 				2368D66B2449833800E1546E /* MioWaitPayOrderVC.m in Sources */,
 				23C6CC0F2432E4D700CFC4E3 /* MWTapDetectingImageView.m in Sources */,
+				23ED3A7B2457FBE900BF13B6 /* MioNeedDetailVC.m in Sources */,
 				23AB23582431C8BA00DBB427 /* UIView+MioExtension.m in Sources */,
 				23C6CC272432E4D700CFC4E3 /* EMMulticastDelegate.m in Sources */,
 				23C6CC302432E4D700CFC4E3 /* EMAlertController.m in Sources */,
