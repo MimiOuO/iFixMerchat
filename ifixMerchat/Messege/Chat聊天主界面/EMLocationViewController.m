@@ -77,6 +77,7 @@
     if (self.canSend) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStylePlain target:self action:@selector(sendAction)];
     }
+    
     self.title = @"地理位置";
     self.view.backgroundColor = [UIColor whiteColor];
     
