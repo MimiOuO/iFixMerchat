@@ -149,7 +149,6 @@
 
     } failure:^(NSString *errorInfo) {
         [SVProgressHUD showErrorWithStatus:errorInfo ];
-        
     }];
 }
 

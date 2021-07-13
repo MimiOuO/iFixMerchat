@@ -9,6 +9,7 @@
 #import "MioNeedVC.h"
 #import <WMPageController.h>
 #import "MioNeedListVC.h"
+#import "MioWaitPayOrderVC.h"
 @interface MioNeedVC ()<WMPageControllerDelegate,WMPageControllerDataSource>
 @property (nonatomic, strong) WMPageController *pageController;
 
@@ -59,14 +60,14 @@
 
 
 #pragma mark - WMPageDelegate
-//- (void)pageController:(WMPageController *)pageController willEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info{
-//
+- (void)pageController:(WMPageController *)pageController willEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info{
+
 //    _scrollView.scrollEnabled = NO;
-//}
-//
-//- (void)pageController:(WMPageController *)pageController didEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info{
+}
+
+- (void)pageController:(WMPageController *)pageController didEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info{
 //    _scrollView.scrollEnabled = YES;
-//}
+}
 
 - (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{
 //    NSLog(@"%@",_trailPageArr);

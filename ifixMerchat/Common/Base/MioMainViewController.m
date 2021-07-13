@@ -11,6 +11,7 @@
 #import "TestViewController.h"
 #import "EMConversationsViewController.h"
 #import "MioHomeVC.h"
+#import "MioOrderListVC.h"
 @interface MioMainViewController ()
 
 @property (nonatomic, strong) UIControl *shadowView;
@@ -63,7 +64,7 @@
     //首页
     [self addChildVc:[MioHomeVC new] title:@"店铺" image:@"tab_icon_store" selectedImage:@"tab_icon_store_selected"];
     //发现
-    [self addChildVc:[TestViewController new] title:@"订单" image:@"tab_icon_order" selectedImage:@"tab_icon_order_selected"];
+    [self addChildVc:[MioOrderListVC new] title:@"订单" image:@"tab_icon_order" selectedImage:@"tab_icon_order_selected"];
     //消息
     [self addChildVc:[EMConversationsViewController new] title:@"消息" image:@"tab_icon_message" selectedImage:@"tab_icon_message_selected"];
     //我的

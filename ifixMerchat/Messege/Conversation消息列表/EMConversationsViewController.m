@@ -12,7 +12,8 @@
 #import "EMConversationHelper.h"
 
 #import "EMConversationCell.h"
-
+#import "MioOrderMessegeVC.h"
+#import "MioInteractMessegeVC.h"
 #import "MioMessegeCell.h"
 @interface EMConversationsViewController()<EMChatManagerDelegate, EMGroupManagerDelegate,  EMConversationsDelegate>
 
@@ -289,7 +290,13 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 0) {
-
+        if (indexPath.row == 0) {
+            MioInteractMessegeVC *vc = [[MioInteractMessegeVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }else{
+            MioOrderMessegeVC *vc = [[MioOrderMessegeVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }else{
         NSInteger row = indexPath.row;
         EMConversationModel *model = [self.dataArray objectAtIndex:row];

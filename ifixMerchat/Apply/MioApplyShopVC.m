@@ -14,6 +14,7 @@
 #import "MamapVC.h"
 #import "MioShopTypeView.h"
 #import "MioAFPutRequest.h"
+#import "MioApplyWaitVC.h"
 @interface MioApplyShopVC ()<HXPhotoViewControllerDelegate,HXPhotoViewDelegate,AMapDelegate>
 
 @property (nonatomic, strong) UITextField *shopName;
@@ -451,7 +452,8 @@
 //
     [MioPutReq(api_me, params) success:^(NSDictionary *result){
         NSDictionary *data = [result objectForKey:@"data"];
-
+        MioApplyWaitVC *vc = [[MioApplyWaitVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     } failure:^(NSString *errorInfo) {
         [SVProgressHUD showErrorWithStatus:@"提交失败"];
     }];

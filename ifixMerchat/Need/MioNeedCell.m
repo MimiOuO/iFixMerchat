@@ -36,7 +36,7 @@
 }
 
 - (void)setModel:(MioNeedModel *)model{
-    [_avatar sd_setImageWithURL:model.customer.customer_face placeholderImage:@"icon"];
+    [_avatar sd_setImageWithURL:Url(model.customer.customer_face) placeholderImage:image(@"icon")];
     _nickName.text = model.customer.customer_nickname;
     _state.text = model.zh_status;
     _type.text = model.need_category;

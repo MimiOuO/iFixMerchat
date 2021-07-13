@@ -17,9 +17,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
     [self.navView.centerButton setTitle:@"订单管理" forState:UIControlStateNormal];
     self.navView.split.hidden = YES;
+    if ([self.navigationController viewControllers].count > 1) {
+        [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal]; 
+    }
+
     [self creatPage];
 }
 

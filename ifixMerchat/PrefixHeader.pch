@@ -184,11 +184,15 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define api_base @"http://test.giggsgame.com/api"
 //登录
 #define api_me                      @"" api_base"/shop-auth/me"
+#define api_close                   @"" api_base"/shop/close"
+#define api_open                    @"" api_base"/shop/open"
 #define api_getVerifyCode           @"" api_base"/verification_codes"
 #define api_login                   @"" api_base"/shop/login-phone"
 #define api_passwordLogin           @"" api_base"/shop/login-password"
 #define api_QNToken                 @"" api_base"/upload/token"
 #define api_type                    @"" api_base"/category"
+#define api_statistics              @"" api_base"/shop/statistics"
+#define api_orderData               @"" api_base"/shop/statistics/order"
 #define api_addProduct              @"" api_base"/shop-auth/product"
 #define api_getProducts             @"" api_base"/shop-auth/products"
 #define api_getProduct(product_id)  [NSString stringWithFormat:@"" api_base"/shop-auth/product/%@",product_id]
@@ -202,6 +206,9 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define api_getNeeds                @"" api_base"/shop/needs"
 #define api_getNeed(need_id)        [NSString stringWithFormat:@"" api_base"/shop/needs/%@",need_id]
 #define api_grabNeed(need_id)       [NSString stringWithFormat:@"" api_base"/shop/needs/%@/accept",need_id]
+#define api_orderMessege            @"" api_base"/shop/notifications/order"
+#define api_BillLog                 @"" api_base"/shop/currency-log"
+
 
 #define api_wxLogin                 @"" api_base"/socials/wechat_service_account/authorizations"
 #define api_boundPhone              @"" api_base"/my/phone"
@@ -263,7 +270,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define api_orderlist               @"" api_base"/orders"
 #define api_masterOrderlist         @"" api_base"/master/orders"
 #define api_onlineOrder             @"" api_base"/order/talk"
-#define api_orderMessege            @"" api_base"/order/operation"
+
 #define api_masterOrderHandle(order_id) [NSString stringWithFormat:@"" api_base"/master/orders/%@/confirm",order_id]
 #define api_userOrderHandle(order_id)   [NSString stringWithFormat:@"" api_base"/orders/%@/confirm",order_id]
 #define api_payment                 @"" api_base"/payment/ios"

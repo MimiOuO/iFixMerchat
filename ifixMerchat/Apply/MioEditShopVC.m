@@ -14,7 +14,10 @@
 #import "MamapVC.h"
 #import "MioShopTypeView.h"
 #import "MioAFPutRequest.h"
+#import "MioShopModel.h"
 @interface MioEditShopVC ()<HXPhotoViewControllerDelegate,HXPhotoViewDelegate,AMapDelegate>
+
+@property (nonatomic, strong) MioShopModel *model;
 
 @property (nonatomic, strong) UITextField *shopName;
 @property (nonatomic, strong) UITextField *shopType;
@@ -75,7 +78,8 @@
     _shopShowsKeyArr = [[NSMutableArray alloc] init];
     _locationArr = [[NSMutableArray alloc] init];
     [self getQiniuToken];
-    [self creatUI];
+    [self getInfo];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -103,6 +107,14 @@
     }
 }
 
+-(void)getInfo{
+    [MioGetReq(api_me, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        _model = [MioShopModel mj_objectWithKeyValues:data];
+        [self creatUI];
+    } failure:^(NSString *errorInfo) {}];
+}
+
 
 -(void)creatUI{
     UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NavHeight, ksWidth, ksHeight - NavHeight)];
@@ -116,7 +128,7 @@
     
     
     _avatar = [UIImageView creatImgView:frame(ksWidth/2 - 32, 22, 64, 64) inView:bgview image:@"logo_default" radius:4];
-    
+    [_avatar sd_setImageWithURL:Url(_model.shop_cover)];
     [_avatar whenTapped:^{
         [self selectAvatar];
     }];
@@ -125,6 +137,7 @@
     _shopName.textColor = appSubColor;
     _shopName.font = Font(15);
     _shopName.placeholder = @"请输入店铺名称";
+    _shopName.text = _model.shop_title;
     [bgview addSubview:_shopName];
     
 //    UILabel *shopTypeLab = [UILabel creatLabel:frame(36, 144, 60, 14) inView:bgview text:@"店铺类型" color:appSubColor size:14 alignment:NSTextAlignmentLeft];
@@ -157,6 +170,7 @@
     _phone.textColor = appSubColor;
     _phone.font = Font(14);
     _phone.placeholder = @"请输入手机号码或座机号";
+    _phone.text = _model.shop_contact_phone;
     [bgview addSubview:_phone];
     
     _adress = [[UITextField alloc] initWithFrame:frame(114, adressLab.top, ksWidth - 160, 14)];
@@ -164,6 +178,7 @@
     _adress.font = Font(14);
     _adress.placeholder = @"请选择地址";
     [bgview addSubview:_adress];
+    _adress.text = _model.shop_area;
     [_adress whenTapped:^{
         MamapVC *vc = [[MamapVC alloc] init];
         vc.delegate = self;
@@ -174,9 +189,10 @@
     _detailAdress.textColor = appSubColor;
     _detailAdress.font = Font(14);
     _detailAdress.placeholder = @"请输入详细地址(选填)";
+    _detailAdress.text = _model.shop_address_full;
     [bgview addSubview:_detailAdress];
     
-    _distance = [UILabel creatLabel:frame(114, distanceLab.top, 40, 14) inView:bgview text:@"5km" color:appSubColor size:14 alignment:NSTextAlignmentLeft];
+    _distance = [UILabel creatLabel:frame(114, distanceLab.top, 40, 14) inView:bgview text:[NSString stringWithFormat:@"%dkm",_model.shop_service_scope] color:appSubColor size:14 alignment:NSTextAlignmentLeft];
     UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(_distance.right + 8, _distance.top+ 3, ksWidth - 195, 8)];
     slider.minimumValue = 1.0;
     slider.maximumValue = 30.0;
@@ -184,7 +200,8 @@
     slider.minimumTrackTintColor = appMainColor;
     slider.maximumTrackTintColor = [[UIColor lightGrayColor] colorWithAlphaComponent:.5];
     [bgview addSubview:slider];
-    [slider setValue:5 animated:YES];
+    [slider setValue:_model.shop_service_scope animated:YES];
+    
     [slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
     
     _intro = [FSTextView textView] ;
@@ -192,18 +209,21 @@
     _intro.font = Font(14);
     _intro.placeholder = @"请填写您的详细的店铺介绍与服务内容等信息，可以吸引更多客户下单。";
     _intro.placeholderFont = Font(14);
+    _intro.text = _model.shop_introduce;
     [bgview addSubview:_intro];
     
     _realName = [[UITextField alloc] initWithFrame:frame(114, nameLab.top, ksWidth - 160, 14)];
     _realName.textColor = appSubColor;
     _realName.font = Font(14);
     _realName.placeholder = @"请输入真实姓名";
+    _realName.text = _model.shop_master_name;
     [bgview addSubview:_realName];
     
     _idcardNumber = [[UITextField alloc] initWithFrame:frame(114, idCardLab.top, ksWidth - 160, 14)];
     _idcardNumber.textColor = appSubColor;
     _idcardNumber.font = Font(14);
     _idcardNumber.placeholder = @"请输入身份证号码";
+    _idcardNumber.text = _model.shop_id_card;
     [bgview addSubview:_idcardNumber];
 
     _photoView = [HXPhotoView photoManager:self.twoManager];
@@ -215,10 +235,12 @@
     [bgview addSubview:_photoView];
     
     _frontPhoto = [UIImageView creatImgView:frame(36, idPhotoLab.bottom + 14, ksWidth/2 -36 -5, 93) inView:bgview image:@"id_icon_positive" radius:0];
+    [_frontPhoto sd_setImageWithURL:Url(_model.shop_id_card_positive)];
     [_frontPhoto whenTapped:^{
         [self selectFront];
     }];
     _backPhoto = [UIImageView creatImgView:frame(ksWidth/2 + 5, idPhotoLab.bottom + 14, ksWidth/2 -36 -5, 93) inView:bgview image:@"id_icon_reverse" radius:0];
+    [_backPhoto sd_setImageWithURL:Url(_model.shop_id_card_back)];
     [_backPhoto whenTapped:^{
         [self selectBack];
     }];
@@ -282,6 +304,13 @@
     if (!_twoManager) {
         _twoManager = [[HXPhotoManager alloc] initWithType:HXPhotoManagerSelectedTypePhoto];
         _twoManager.configuration.photoMaxNum = 4;
+        NSMutableArray *array = [NSMutableArray arrayWithArray:_model.shop_images];
+        NSMutableArray *assets = @[].mutableCopy;
+        for (NSString *url in array) {
+            HXCustomAssetModel *asset = [HXCustomAssetModel assetWithNetworkImageURL:[NSURL URLWithString:url] selected:YES];
+            [assets addObject:asset];
+        }
+        [_twoManager addCustomAssetModel:assets];
     }
     return _twoManager;
 }
@@ -306,10 +335,17 @@
     [self.shopShowsImgArr removeAllObjects];
     for (HXPhotoModel *model in photos) {
 //        [_shopShowsImgArr addObject:photo.previewPhoto];
-        [[PHImageManager defaultManager] requestImageDataForAsset:model.asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
-            
-            [self.shopShowsImgArr addObject:[UIImage imageWithData:imageData]];
-        }];
+        if (model.asset) {
+            [[PHImageManager defaultManager] requestImageDataForAsset:model.asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+                
+                [self.shopShowsImgArr addObject:[UIImage imageWithData:imageData]];
+            }];
+        }else{
+            UIImageView *a = [[UIImageView alloc ] init];
+            [a sd_setImageWithURL:model.networkPhotoUrl completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+                [self.shopShowsImgArr addObject:a.image];
+            }];
+        }
 
     }
     

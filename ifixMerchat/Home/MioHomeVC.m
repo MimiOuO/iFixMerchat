@@ -18,7 +18,12 @@
 #import "MioCommentVC.h"
 #import "MioNeedVC.h"
 #import "MioEditShopVC.h"
+#import "ChartTestVCViewController.h"
+#import "MioShopModel.h"
+#import "MioBillVC.h"
 @interface MioHomeVC ()
+@property (nonatomic, strong) MioShopModel *model;
+
 @property (nonatomic, strong) UILabel *followCountLab;
 @property (nonatomic, strong) UILabel *fansCountLab;
 @property (nonatomic, strong) UILabel *recentCountLab;
@@ -35,12 +40,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = appWhiteColor;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestShop) name:@"loginSuccess" object:nil];
+   [self requestShop];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleLightContent;
-    [self requestShop];
+    
+    [self requestStatistics];
 
 }
 
@@ -48,8 +57,9 @@
     goLogin
     [MioGetReq(api_me, @{@"k":@"v"}) success:^(NSDictionary *result){
         NSDictionary *data = [result objectForKey:@"data"];
+        _model = [MioShopModel mj_objectWithKeyValues:data];
         NSString *state = [NSString stringWithFormat:@"%@",[data  objectForKey:@"shop_status"]];
-        if ([state isEqualToString:@"1"]) {
+        if ([state isEqualToString:@"0"]) {
             MioBaseNavigationController *nav = [[MioBaseNavigationController alloc] initWithRootViewController:[MioApplyShopVC new]];
             nav.modalPresentationStyle = 0;
             [self presentViewController:nav animated:NO completion:nil];
@@ -74,6 +84,22 @@
     }];
 }
 
+-(void)requestStatistics{
+    [MioGetReq(api_statistics, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        _followCountLab.text = [NSString stringWithFormat:@"%@",data[@"order"]];
+        _fansCountLab.text = [NSString stringWithFormat:@"%@",data[@"visit"]];
+        _recentCountLab.text = [NSString stringWithFormat:@"%@",data[@"favorite"]];
+        _footCountLab.text = [NSString stringWithFormat:@"%@",data[@"income"]];
+        _waitPayCount.text = [NSString stringWithFormat:@"%@",data[@"order_pending"]];
+        _waitFinishCount.text = [NSString stringWithFormat:@"%@",data[@"order_payed"]];
+        _alreadyFinishCount.text = [NSString stringWithFormat:@"%@",data[@"order_completed"]];
+        _waitRefundCount.text = [NSString stringWithFormat:@"%@",data[@"order_reject"]];
+    } failure:^(NSString *errorInfo) {
+        NSLog(@"%@",errorInfo);
+    }];
+}
+
 -(void)creatUI{
     UIImageView *bgImg = [UIImageView creatImgView:frame(0, IPHONE_X ? 0 : -20, ksWidth, 333) inView:self.view image:@"store_bg" radius:0];
     UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0,StatusHeight, ksWidth , ksHeight -  StatusHeight - TabHeight)];
@@ -84,12 +110,12 @@
     
     UIImageView *logoImg = [UIImageView creatImgView:frame(18, 0 + 22, 106, 106) inView:scroll image:@"logo_bg" radius:0];
     UIImageView *logo = [UIImageView creatImgView:frame(20, 10, 66, 66) inView:logoImg image:@"" radius:6];
-    [logo sd_setImageWithURL:Url(@"http://file.duoduo.apphw.com/app/image/1031/1587643632128") placeholderImage:image(@"icon")];
-    UILabel *shopName = [UILabel creatLabel:frame(120, 0 + 44, ksWidth - 190, 17) inView:scroll text:@"京东方电脑维修" color:appWhiteColor size:17 alignment:NSTextAlignmentLeft];
+    [logo sd_setImageWithURL:Url(_model.shop_cover) placeholderImage:image(@"icon")];
+    UILabel *shopName = [UILabel creatLabel:frame(120, 0 + 44, ksWidth - 190, 17) inView:scroll text:_model.shop_title color:appWhiteColor size:17 alignment:NSTextAlignmentLeft];
     shopName.font = BoldFont(17);
     shopName.width = [shopName.text widthForFont:BoldFont(17)];
     
-    UIImageView *star = [UIImageView creatImgView:frame(120, 73, 88, 10) inView:scroll image:@"score_icon_5.0" radius:0];
+    UIImageView *star = [UIImageView creatImgView:frame(120, 73, 88, 10) inView:scroll image:[NSString stringWithFormat:@"score_icon_%@",_model.shop_star] radius:0];
     
     UIImageView *edit = [UIImageView creatImgView:frame( shopName.right + 8 ,47, 12, 12) inView:scroll image:@"store_" radius:0];
     
@@ -100,10 +126,10 @@
     
     UIView *countView = [UIView creatView:frame(Margin, shopName.bottom + 56, ksWidth - 2* Margin, 80) inView:scroll bgColor:appClearColor];
     ViewRadius(countView, 8);
-    _followCountLab = [UILabel creatLabel:frame(0, 24, countView.width/4, 17) inView:countView text:@"123" color:appWhiteColor size:14];
-    _fansCountLab = [UILabel creatLabel:frame(countView.width/4, 24, countView.width/4, 17) inView:countView text:@"456" color:appWhiteColor size:14];
-    _recentCountLab = [UILabel creatLabel:frame(countView.width/2, 24, countView.width/4, 17) inView:countView text:@"789" color:appWhiteColor size:14];
-    _footCountLab = [UILabel creatLabel:frame(countView.width*3/4, 24, countView.width/4, 17) inView:countView text:@"123.00" color:appWhiteColor size:14];
+    _followCountLab = [UILabel creatLabel:frame(0, 24, countView.width/4, 17) inView:countView text:@"" color:appWhiteColor size:14];
+    _fansCountLab = [UILabel creatLabel:frame(countView.width/4, 24, countView.width/4, 17) inView:countView text:@"" color:appWhiteColor size:14];
+    _recentCountLab = [UILabel creatLabel:frame(countView.width/2, 24, countView.width/4, 17) inView:countView text:@"" color:appWhiteColor size:14];
+    _footCountLab = [UILabel creatLabel:frame(countView.width*3/4, 24, countView.width/4, 17) inView:countView text:@"" color:appWhiteColor size:14];
     _followCountLab.font = [UIFont fontWithName:@"Futura" size:17];
     _fansCountLab.font = [UIFont fontWithName:@"Futura" size:17];
     _recentCountLab.font = [UIFont fontWithName:@"Futura" size:17];
@@ -135,7 +161,7 @@
     UIImageView *waitPayIcon = [UIImageView creatImgView:frame(12, 13, 31, 22) inView:waitPayBtn image:@"store_icon_pay" radius:0];
     UIImageView *waitPayArrow = [UIImageView creatImgView:frame(waitPayBtn.width - 28, 14, 14, 14) inView:waitPayBtn image:@"store_icon_arrow" radius:0];
     UILabel *waitPayLab = [UILabel creatLabel:frame(12, 50, 100, 14) inView:waitPayBtn text:@"待支付" color:appSubColor size:14 alignment:NSTextAlignmentLeft];waitPayLab.font = BoldFont(14);
-    _waitPayCount = [UILabel creatLabel:frame(12, 70, 100, 19) inView:waitPayBtn text:@"68" color:rgb(252, 73, 73) size:19  alignment:NSTextAlignmentLeft];_waitPayCount.font = [UIFont fontWithName:@"Futura" size:19];
+    _waitPayCount = [UILabel creatLabel:frame(12, 70, 100, 19) inView:waitPayBtn text:@"" color:rgb(252, 73, 73) size:19  alignment:NSTextAlignmentLeft];_waitPayCount.font = [UIFont fontWithName:@"Futura" size:19];
 
     
     //待完成
@@ -148,7 +174,7 @@
     UIImageView *waitFinishIcon = [UIImageView creatImgView:frame(12, 13, 31, 22) inView:waitFinishBtn image:@"store_icon_unfinished" radius:0];
     UIImageView *waitFinishArrow = [UIImageView creatImgView:frame(waitPayBtn.width - 28, 14, 14, 14) inView:waitFinishBtn image:@"store_icon_arrow" radius:0];
     UILabel *waitFinishLab = [UILabel creatLabel:frame(12, 50, 100, 14) inView:waitFinishBtn text:@"待支付" color:appSubColor size:14 alignment:NSTextAlignmentLeft];waitFinishLab.font = BoldFont(14);
-    _waitFinishCount = [UILabel creatLabel:frame(12, 70, 100, 19) inView:waitFinishBtn text:@"68" color:rgb(252, 73, 73) size:19  alignment:NSTextAlignmentLeft];_waitFinishCount.font = [UIFont fontWithName:@"Futura" size:19];
+    _waitFinishCount = [UILabel creatLabel:frame(12, 70, 100, 19) inView:waitFinishBtn text:@"" color:rgb(252, 73, 73) size:19  alignment:NSTextAlignmentLeft];_waitFinishCount.font = [UIFont fontWithName:@"Futura" size:19];
     
     //已完成
     UIButton *alreadyFinishBtn = [UIButton creatBtn:frame(18, 0 + 323, ksWidth/2 - 24, 100) inView:scroll bgImage:@"store_card_bg" action:^{
@@ -160,7 +186,7 @@
     UIImageView *alreadyFinishIcon = [UIImageView creatImgView:frame(12, 13, 31, 22) inView:alreadyFinishBtn image:@"store_icon_complete" radius:0];
     UIImageView *alreadyFinishArrow = [UIImageView creatImgView:frame(waitPayBtn.width - 28, 14, 14, 14) inView:alreadyFinishBtn image:@"store_icon_arrow" radius:0];
     UILabel *alreadyFinishLab = [UILabel creatLabel:frame(12, 50, 100, 14) inView:alreadyFinishBtn text:@"待支付" color:appSubColor size:14 alignment:NSTextAlignmentLeft];alreadyFinishLab.font = BoldFont(14);
-    _alreadyFinishCount = [UILabel creatLabel:frame(12, 70, 100, 19) inView:alreadyFinishBtn text:@"68" color:rgb(252, 73, 73) size:19  alignment:NSTextAlignmentLeft];_alreadyFinishCount.font = [UIFont fontWithName:@"Futura" size:19];
+    _alreadyFinishCount = [UILabel creatLabel:frame(12, 70, 100, 19) inView:alreadyFinishBtn text:@"" color:rgb(252, 73, 73) size:19  alignment:NSTextAlignmentLeft];_alreadyFinishCount.font = [UIFont fontWithName:@"Futura" size:19];
     
     
     //待退款
@@ -173,8 +199,8 @@
     UIImageView *waitRefundIcon = [UIImageView creatImgView:frame(12, 13, 31, 22) inView:waitRefundBtn image:@"store_icon_refund" radius:0];
     UIImageView *waitRefundArrow = [UIImageView creatImgView:frame(waitPayBtn.width - 28, 14, 14, 14) inView:waitRefundBtn image:@"store_icon_arrow" radius:0];
     UILabel *waitRefundLab = [UILabel creatLabel:frame(12, 50, 100, 14) inView:waitRefundBtn text:@"待支付" color:appSubColor size:14 alignment:NSTextAlignmentLeft];waitRefundLab.font = BoldFont(14);
-    _waitRefundCount = [UILabel creatLabel:frame(12, 70, 100, 19) inView:waitRefundBtn text:@"68" color:rgb(252, 73, 73) size:19  alignment:NSTextAlignmentLeft];_waitRefundCount.font = [UIFont fontWithName:@"Futura" size:19];
-    self.waitRefundCount = [[UILabel alloc] init];
+    _waitRefundCount = [UILabel creatLabel:frame(12, 70, 100, 19) inView:waitRefundBtn text:@"" color:rgb(252, 73, 73) size:19  alignment:NSTextAlignmentLeft];_waitRefundCount.font = [UIFont fontWithName:@"Futura" size:19];
+//    self.waitRefundCount = [[UILabel alloc] init];
     [scroll sendSubviewToBack:bgImg];
     
     //评论
@@ -197,7 +223,7 @@
     
     //商品
     UIButton *BillBtn = [UIButton creatBtn:frame(0, goodsBtn.bottom , ksWidth, 46) inView:scroll bgColor:appClearColor title:@"" action:^{
-        MioAddProductVC *vc = [[MioAddProductVC alloc] init];
+        MioBillVC *vc = [[MioBillVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
     UIImageView *BillImage = [UIImageView creatImgView:frame(30, 11, 24, 24) inView:BillBtn image:@"store_icon_bill" radius:0];
@@ -218,6 +244,20 @@
         MioNeedVC *vc = [[MioNeedVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
+    [self requestStatistics];
+}
+
+-(void)followCountClick{
+    ChartTestVCViewController *vc = [[ChartTestVCViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)fansCountClick{
+    
+}
+
+-(void)footClick{
+    
 }
 
 @end

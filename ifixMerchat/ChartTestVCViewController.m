@@ -10,6 +10,8 @@
 #import <AAChartKit.h>
 @interface ChartTestVCViewController ()
 @property (nonatomic, strong) AAChartView *aaChartView;
+@property (nonatomic, strong) NSMutableArray *dateArr;
+@property (nonatomic, strong) NSMutableArray *numberArr;
 @end
 
 @implementation ChartTestVCViewController
@@ -18,13 +20,32 @@
     [super viewDidLoad];
     [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
     [self.navView.centerButton setTitle:@"图表" forState:UIControlStateNormal];
+    _dateArr = [[NSMutableArray alloc] init];
+    _numberArr = [[NSMutableArray alloc] init];
     [self creatChart];
-    [self setupChartModel];
+    
+    [self getData];
+}
+
+-(void)getData{
+    [MioGetReq(api_orderData, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSArray *data = [result objectForKey:@"data"];
+        for (NSDictionary *dic in data) {
+            [dic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                NSLog(@"%@",key);
+                [_dateArr addObject:key];
+                [_numberArr addObject:obj];
+                [self setupChartModel];
+            }];
+        
+        }
+        
+    } failure:^(NSString *errorInfo) {}];
 }
 
 -(void)creatChart{
-    UISegmentedControl *con =  [[UISegmentedControl alloc] initWithItems:@[@"订单",@"访客",@"收藏",@"收入"]];//[[UISegmentedControl alloc] initWithFrame:frame(100, NavHeight +10, ksWidth - 200, 30)];
-    con.frame = frame(50, NavHeight +10, ksWidth - 100, 40);
+    UISegmentedControl *con =  [[UISegmentedControl alloc] initWithItems:@[@"订单",@"访客",@"收入"]];//[[UISegmentedControl alloc] initWithFrame:frame(100, NavHeight +10, ksWidth - 200, 30)];
+    con.frame = frame(50, NavHeight +10, ksWidth - 100, 30);
     con.selectedSegmentIndex = 1;
     [self.view addSubview:con];
     
@@ -44,14 +65,14 @@
     .chartTypeSet(AAChartTypeColumn)//设置图表的类型(这里以设置的为折线面积图为例)
     .titleSet(@"")//设置图表标题
     .subtitleSet(@"")//设置图表副标题
-    .categoriesSet(@[@"1",@"2",@"3",@"4", @"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14", @"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24", @"25",@"26",@"27",@"28",@"29",@"30"])//图表横轴的内容
+    .categoriesSet(_dateArr)//图表横轴的内容
     .yAxisTitleSet(@"")//设置图表 y 轴的单位
     .yAxisAllowDecimalsSet(NO)
     .legendEnabledSet(NO)
     .seriesSet(@[
             AAObject(AASeriesElement)
 //            .nameSet(@"")
-            .dataSet(@[@0, @0,@0,@0,@0,@0,@0,@0,@0,@0, @0, @0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0]),
+            .dataSet(_numberArr),
 
     ]);
 //    AAOptions *aaOptions = [AAOptionsConstructor configureChartOptionsWithAAChartModel:aaChartModel];
